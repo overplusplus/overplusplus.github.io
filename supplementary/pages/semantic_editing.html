@@ -1,0 +1,912 @@
+<html>
+<link>
+<title>Semantic Editing</title>
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<style type="text/css">
+	l, body, #wrapper
+	{
+		background-color: #ffffff;
+		color: #000000;
+		font-family: Arial, Helvetica, sans-serif;
+		text-align: center;
+		margin: 0;
+		padding: 0;
+	}
+	
+	img
+	{
+		border: 0;
+	}
+	
+	td
+	{
+		text-align: center;
+		padding: 5px;
+	}
+	
+	.section
+	{
+		font-size: 40px;
+		font-weight: bold;
+		text-align: center;
+		margin-top: 10px;
+	}
+	
+	.subsection
+	{
+		font-size: 28px;
+		font-weight: bold;
+		text-align: center;
+		margin-top: 20px;
+	}
+	
+	.subsubsection
+	{
+		font-size: 20px;
+		font-weight: bold;
+		text-align: center;
+		margin-top: 20px;
+	}
+	
+	.navselected
+	{
+		color: #ff0000;
+		text-decoration: underline;
+		cursor: pointer;
+	}
+	
+	.navunselected
+	{
+		color: #4488ff;
+		text-decoration: underline;
+		cursor: pointer;
+	}
+
+	a:link {color: #4488ff; text-decoration: underline; }
+	a:active {color: #4488ff; text-decoration: underline; }
+	a:visited {color: #4488ff; text-decoration: underline; }
+	a:hover {color: #ff0000; text-decoration: none; }
+
+
+
+	.before,
+	.after {
+		margin: 0;
+	}
+
+	.before figcaption,
+	.after figcaption {
+		background: #fff;
+		border: 1px solid #c0c0c0;
+		border-radius: 12px;
+		color: #2e3452;
+		opacity: 0.8;
+		padding: 12px;
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		line-height: 100%;
+	}
+
+	.before figcaption {
+		left: 12px;
+	}
+
+	.after figcaption {
+		right: 12px;
+	}
+
+</style>
+<script
+	defer
+	src="../static/js/index.js"
+></script>
+<link
+	rel="stylesheet"
+	href="../static/css/styles.css"
+/>
+
+
+
+</head>
+<body>
+
+<center>
+
+
+<div class="section">
+    Semantic Editing
+</div>
+
+<div class="subsubsection" style="text-align: center; width: 75%;">
+	<p style="text-align: left;">
+	For each row, we show the input image on the left, followed by edited multi-view reconstructions. You may hover over and slide the mouse to check the corresponding geometry. We also show the reconstruction video on the right.
+	</p>
+	<p>
+	We compare the results of our method against the pretrained method and the full fine-tuning method.
+	</p>
+	<p>
+	A closer check at the personalization without LoRA (Full F.T.) shows that floater artifacts may be introduced in the final video results.
+	</p>
+</div>
+
+<br>
+<br>
+
+<table style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+	<tbody>
+		<tr style="padding:0px">
+		<td style="padding:0px">
+		  <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+			<tbody>
+				<!-- example -->
+
+				<!-- Dwayne -->
+				<!-- make some gap here -->
+				<tr style="text-align: center;">
+					<td colspan="5">
+                        <div class="subsubsection" style="text-align: center;">
+                            Adding smile to Dwayne Johnson
+                        </div>
+                        <br>
+					</td>
+				</tr>
+				<tr>
+					<td style="padding:5;vertical-align:middle">
+					</td>
+				</tr>
+				<tr>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+						Pretrained
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+						  <img-comparison-slider hover="hover" style="height: 100%;">
+							<img slot="first" style="height: 100%; width: auto;" src="../results/semantic_editing/Dwayne/pretrained/test_5.jpg
+							"></img>
+							<img slot="second" style="height: 100%; width: auto;" src="../results/semantic_editing/Dwayne/pretrained/interpolate_video_test_5_pretrained_geometry.jpg"></img>
+						  </img-comparison-slider>
+						</div>
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <video class="sync-video" style="height: 128px;" loop muted playsinline autoplay>
+						<source src="../results/semantic_editing/Dwayne/pretrained/video.mp4" type="video/mp4">
+					  </video>
+					</td>
+				</tr>
+
+				<tr>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+						Full Fine-Tuning
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+						  <img-comparison-slider hover="hover" style="height: 100%;">
+							<img slot="first" style="height: 100%; width: auto;" src="../results/semantic_editing/Dwayne/no_lora/test_5.jpg"></img>
+							<img slot="second" style="height: 100%; width: auto;" src="../results/semantic_editing/Dwayne/no_lora/interpolate_video_test_5_no_lora_geometry.jpg"></img>
+						  </img-comparison-slider>
+						</div>
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <video class="sync-video" style="height: 128px;" loop muted playsinline autoplay>
+						<source src="../results/semantic_editing/Dwayne/no_lora/video.mp4" type="video/mp4">
+					  </video>
+					</td>
+				</tr>
+
+			  	<tr>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+						My3DGen
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+						  <img-comparison-slider hover="hover" style="height: 100%;">
+							<img slot="first" style="height: 100%; width: auto;" src="../results/semantic_editing/Dwayne/lora/test_5.jpg"></img>
+							<img slot="second" style="height: 100%; width: auto;" src="../results/semantic_editing/Dwayne/lora/interpolate_video_test_5_lora_geometry.jpg"></img>
+						  </img-comparison-slider>
+						</div>
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <video class="sync-video" style="height: 128px;" loop muted playsinline autoplay>
+						<source src="../results/semantic_editing/Dwayne/lora/video.mp4" type="video/mp4">
+					  </video>
+					</td>
+				</tr>
+				
+				<!-- Oprah smile -->
+				<!-- make some gap here -->
+				<tr style="text-align: center;">
+					<td colspan="5">
+                        <div class="subsubsection" style="text-align: center;">
+                            Removing smile from Oprah Winfrey
+                        </div>
+                        <br>
+					</td>
+				</tr>
+				<tr>
+					<td style="padding:5;vertical-align:middle">
+					</td>
+				</tr>
+				<tr>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+						Pretrained
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+						  <img-comparison-slider hover="hover" style="height: 100%;">
+							<img slot="first" style="height: 100%; width: auto;" src="../results/semantic_editing/Oprah/pretrained/test_1.jpg
+							"></img>
+							<img slot="second" style="height: 100%; width: auto;" src="../results/semantic_editing/Oprah/pretrained/interpolate_video_test_1_pretrained_geometry.jpg"></img>
+						  </img-comparison-slider>
+						</div>
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <video class="sync-video" style="height: 128px;" loop muted playsinline autoplay>
+						<source src="../results/semantic_editing/Oprah/pretrained/video.mp4" type="video/mp4">
+					  </video>
+					</td>
+				</tr>
+
+				<tr>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+						Full Fine-Tuning
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+						  <img-comparison-slider hover="hover" style="height: 100%;">
+							<img slot="first" style="height: 100%; width: auto;" src="../results/semantic_editing/Oprah/no_lora/test_1.jpg"></img>
+							<img slot="second" style="height: 100%; width: auto;" src="../results/semantic_editing/Oprah/no_lora/interpolate_video_test_1_no_lora_geometry.jpg"></img>
+						  </img-comparison-slider>
+						</div>
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <video class="sync-video" style="height: 128px;" loop muted playsinline autoplay>
+						<source src="../results/semantic_editing/Oprah/no_lora/video.mp4" type="video/mp4">
+					  </video>
+					</td>
+				</tr>
+
+			  	<tr>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+						My3DGen
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+						  <img-comparison-slider hover="hover" style="height: 100%;">
+							<img slot="first" style="height: 100%; width: auto;" src="../results/semantic_editing/Oprah/lora/test_1.jpg"></img>
+							<img slot="second" style="height: 100%; width: auto;" src="../results/semantic_editing/Oprah/lora/interpolate_video_test_1_lora_geometry.jpg"></img>
+						  </img-comparison-slider>
+						</div>
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <video class="sync-video" style="height: 128px;" loop muted playsinline autoplay>
+						<source src="../results/semantic_editing/Oprah/lora/video.mp4" type="video/mp4">
+					  </video>
+					</td>
+				</tr>
+
+				<!-- make some gap here -->
+				<tr style="text-align: center;">
+					<td colspan="5">
+                        <div class="subsubsection" style="text-align: center;">
+                            Adding age to Barack Obama
+                        </div>
+                        <br>
+					</td>
+				</tr>
+				<tr>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+						Pretrained
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+						  <img-comparison-slider hover="hover" style="height: 100%;">
+							<img slot="first" style="height: 100%; width: auto;" src="../results/semantic_editing/Barack_age/pretrained/140.jpg"></img>
+							<img slot="second" style="height: 100%; width: auto;" src="../results/semantic_editing/Barack_age/pretrained/interpolate_video_140_pretrained_geometry.jpg"></img>
+						  </img-comparison-slider>
+						</div>
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <video class="sync-video" style="height: 128px;" loop muted playsinline autoplay>
+						<source src="../results/semantic_editing/Barack_age/pretrained/video.mp4" type="video/mp4">
+					  </video>
+					</td>
+				</tr>
+
+				<tr>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+						Full Fine-Tuning
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+						  <img-comparison-slider hover="hover" style="height: 100%;">
+							<img slot="first" style="height: 100%; width: auto;" src="../results/semantic_editing/Barack_age/no_lora/140.jpg"></img>
+							<img slot="second" style="height: 100%; width: auto;" src="../results/semantic_editing/Barack_age/no_lora/interpolate_video_140_no_lora_geometry.jpg"></img>
+						  </img-comparison-slider>
+						</div>
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <video class="sync-video" style="height: 128px;" loop muted playsinline autoplay>
+						<source src="../results/semantic_editing/Barack_age/no_lora/video.mp4" type="video/mp4">
+					  </video>
+					</td>
+				</tr>
+
+			  	<tr>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+						My3DGen
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+						  <img-comparison-slider hover="hover" style="height: 100%;">
+							<img slot="first" style="height: 100%; width: auto;" src="../results/semantic_editing/Barack_age/lora/140.jpg"></img>
+							<img slot="second" style="height: 100%; width: auto;" src="../results/semantic_editing/Barack_age/lora/interpolate_video_140_lora_geometry.jpg"></img>
+						  </img-comparison-slider>
+						</div>
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <video class="sync-video" style="height: 128px;" loop muted playsinline autoplay>
+						<source src="../results/semantic_editing/Barack_age/lora/video.mp4" type="video/mp4">
+					  </video>
+					</td>
+				</tr>
+
+				<!-- make some gap here -->
+				<tr style="text-align: center;">
+					<td colspan="5">
+                        <div class="subsubsection" style="text-align: center;">
+                            Removing smile from Kamala Harris
+                        </div>
+                        <br>
+					</td>
+				</tr>
+				<tr>
+					<td style="padding:5;vertical-align:middle">
+					</td>
+				</tr>
+				<tr>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+						Pretrained
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+						  <img-comparison-slider hover="hover" style="height: 100%;">
+							<img slot="first" style="height: 100%; width: auto;" src="../results/semantic_editing/Kamala/pretrained/test_1.jpg
+							"></img>
+							<img slot="second" style="height: 100%; width: auto;" src="../results/semantic_editing/Kamala/pretrained/interpolate_video_test_1_pretrained_geometry.jpg"></img>
+						  </img-comparison-slider>
+						</div>
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <video class="sync-video" style="height: 128px;" loop muted playsinline autoplay>
+						<source src="../results/semantic_editing/Kamala/pretrained/video.mp4" type="video/mp4">
+					  </video>
+					</td>
+				</tr>
+
+				<tr>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+						Full Fine-Tuning
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+						  <img-comparison-slider hover="hover" style="height: 100%;">
+							<img slot="first" style="height: 100%; width: auto;" src="../results/semantic_editing/Kamala/no_lora/test_1.jpg"></img>
+							<img slot="second" style="height: 100%; width: auto;" src="../results/semantic_editing/Kamala/no_lora/interpolate_video_test_1_no_lora_geometry.jpg"></img>
+						  </img-comparison-slider>
+						</div>
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <video class="sync-video" style="height: 128px;" loop muted playsinline autoplay>
+						<source src="../results/semantic_editing/Kamala/no_lora/video.mp4" type="video/mp4">
+					  </video>
+					</td>
+				</tr>
+
+			  	<tr>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+						My3DGen
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+						  <img-comparison-slider hover="hover" style="height: 100%;">
+							<img slot="first" style="height: 100%; width: auto;" src="../results/semantic_editing/Kamala/lora/test_1.jpg"></img>
+							<img slot="second" style="height: 100%; width: auto;" src="../results/semantic_editing/Kamala/lora/interpolate_video_test_1_lora_geometry.jpg"></img>
+						  </img-comparison-slider>
+						</div>
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <video class="sync-video" style="height: 128px;" loop muted playsinline autoplay>
+						<source src="../results/semantic_editing/Kamala/lora/video.mp4" type="video/mp4">
+					  </video>
+					</td>
+				</tr>
+
+				<!-- Barack smile -->
+				<!-- make some gap here -->
+				<tr style="text-align: center;">
+					<td colspan="5">
+                        <div class="subsubsection" style="text-align: center;">
+                            Adding smile to Barack Obama
+                        </div>
+                        <br>
+					</td>
+				</tr>
+				<tr>
+					<td style="padding:5;vertical-align:middle">
+					</td>
+				</tr>
+				
+				<tr>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+						Pretrained
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+						  <img-comparison-slider hover="hover" style="height: 100%;">
+							<img slot="first" style="height: 100%; width: auto;" src="../results/semantic_editing/Barack/pretrained/54.jpg
+							"></img>
+							<img slot="second" style="height: 100%; width: auto;" src="../results/semantic_editing/Barack/pretrained/interpolate_video_54_pretrained_geometry.jpg"></img>
+						  </img-comparison-slider>
+						</div>
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <video class="sync-video" style="height: 128px;" loop muted playsinline autoplay>
+						<source src="../results/semantic_editing/Barack/pretrained/video.mp4" type="video/mp4">
+					  </video>
+					</td>
+				</tr>
+
+				<tr>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+						Full Fine-Tuning
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+						  <img-comparison-slider hover="hover" style="height: 100%;">
+							<img slot="first" style="height: 100%; width: auto;" src="../results/semantic_editing/Barack/no_lora/54.jpg"></img>
+							<img slot="second" style="height: 100%; width: auto;" src="../results/semantic_editing/Barack/no_lora/interpolate_video_54_no_lora_geometry.jpg"></img>
+						  </img-comparison-slider>
+						</div>
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <video class="sync-video" style="height: 128px;" loop muted playsinline autoplay>
+						<source src="../results/semantic_editing/Barack/no_lora/video.mp4" type="video/mp4">
+					  </video>
+					</td>
+				</tr>
+
+			  	<tr>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+						My3DGen
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+						  <img-comparison-slider hover="hover" style="height: 100%;">
+							<img slot="first" style="height: 100%; width: auto;" src="../results/semantic_editing/Barack/lora/54.jpg"></img>
+							<img slot="second" style="height: 100%; width: auto;" src="../results/semantic_editing/Barack/lora/interpolate_video_54_lora_geometry.jpg"></img>
+						  </img-comparison-slider>
+						</div>
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <video class="sync-video" style="height: 128px;" loop muted playsinline autoplay>
+						<source src="../results/semantic_editing/Barack/lora/video.mp4" type="video/mp4">
+					  </video>
+					</td>
+				</tr>
+
+				<!-- Joe smile -->
+				<!-- make some gap here -->
+				<tr style="text-align: center;">
+					<td colspan="5">
+                        <div class="subsubsection" style="text-align: center;">
+                            Adding smile to Joe Biden
+                        </div>
+                        <br>
+					</td>
+				</tr>
+				<tr>
+					<td style="padding:5;vertical-align:middle">
+					</td>
+				</tr>
+				<tr>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+						Pretrained
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+						  <img-comparison-slider hover="hover" style="height: 100%;">
+							<img slot="first" style="height: 100%; width: auto;" src="../results/semantic_editing/Joe/pretrained/test_0.jpg
+							"></img>
+							<img slot="second" style="height: 100%; width: auto;" src="../results/semantic_editing/Joe/pretrained/interpolate_video_test_0_pretrained_geometry.jpg"></img>
+						  </img-comparison-slider>
+						</div>
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <video class="sync-video" style="height: 128px;" loop muted playsinline autoplay>
+						<source src="../results/semantic_editing/Joe/pretrained/video.mp4" type="video/mp4">
+					  </video>
+					</td>
+				</tr>
+
+				<tr>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+						Full Fine-Tuning
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+						  <img-comparison-slider hover="hover" style="height: 100%;">
+							<img slot="first" style="height: 100%; width: auto;" src="../results/semantic_editing/Joe/no_lora/test_0.jpg"></img>
+							<img slot="second" style="height: 100%; width: auto;" src="../results/semantic_editing/Joe/no_lora/interpolate_video_test_0_no_lora_geometry.jpg"></img>
+						  </img-comparison-slider>
+						</div>
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <video class="sync-video" style="height: 128px;" loop muted playsinline autoplay>
+						<source src="../results/semantic_editing/Joe/no_lora/video.mp4" type="video/mp4">
+					  </video>
+					</td>
+				</tr>
+
+			  	<tr>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+						My3DGen
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+						  <img-comparison-slider hover="hover" style="height: 100%;">
+							<img slot="first" style="height: 100%; width: auto;" src="../results/semantic_editing/Joe/lora/test_0.jpg"></img>
+							<img slot="second" style="height: 100%; width: auto;" src="../results/semantic_editing/Joe/lora/interpolate_video_test_0_lora_geometry.jpg"></img>
+						  </img-comparison-slider>
+						</div>
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <video class="sync-video" style="height: 128px;" loop muted playsinline autoplay>
+						<source src="../results/semantic_editing/Joe/lora/video.mp4" type="video/mp4">
+					  </video>
+					</td>
+				</tr>
+
+
+				<!-- Scarlett smile -->
+				<!-- make some gap here -->
+				<tr style="text-align: center;">
+					<td colspan="5">
+                        <div class="subsubsection" style="text-align: center;">
+                            Removing smile from Scarlett Johansson 
+                        </div>
+                        <br>
+					</td>
+				</tr>
+				<tr>
+					<td style="padding:5;vertical-align:middle">
+					</td>
+				</tr>
+				<tr>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+						Pretrained
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+						  <img-comparison-slider hover="hover" style="height: 100%;">
+							<img slot="first" style="height: 100%; width: auto;" src="../results/semantic_editing/Scarlett/pretrained/test_0.jpg
+							"></img>
+							<img slot="second" style="height: 100%; width: auto;" src="../results/semantic_editing/Scarlett/pretrained/interpolate_video_test_0_pretrained_geometry.jpg"></img>
+						  </img-comparison-slider>
+						</div>
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <video class="sync-video" style="height: 128px;" loop muted playsinline autoplay>
+						<source src="../results/semantic_editing/Scarlett/pretrained/video.mp4" type="video/mp4">
+					  </video>
+					</td>
+				</tr>
+
+				<tr>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+						Full Fine-Tuning
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+						  <img-comparison-slider hover="hover" style="height: 100%;">
+							<img slot="first" style="height: 100%; width: auto;" src="../results/semantic_editing/Scarlett/no_lora/test_0.jpg"></img>
+							<img slot="second" style="height: 100%; width: auto;" src="../results/semantic_editing/Scarlett/no_lora/interpolate_video_test_0_no_lora_geometry.jpg"></img>
+						  </img-comparison-slider>
+						</div>
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <video class="sync-video" style="height: 128px;" loop muted playsinline autoplay>
+						<source src="../results/semantic_editing/Scarlett/no_lora/video.mp4" type="video/mp4">
+					  </video>
+					</td>
+				</tr>
+
+			  	<tr>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+						My3DGen
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+						  <img-comparison-slider hover="hover" style="height: 100%;">
+							<img slot="first" style="height: 100%; width: auto;" src="../results/semantic_editing/Scarlett/lora/test_0.jpg"></img>
+							<img slot="second" style="height: 100%; width: auto;" src="../results/semantic_editing/Scarlett/lora/interpolate_video_test_0_lora_geometry.jpg"></img>
+						  </img-comparison-slider>
+						</div>
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <video class="sync-video" style="height: 128px;" loop muted playsinline autoplay>
+						<source src="../results/semantic_editing/Scarlett/lora/video.mp4" type="video/mp4">
+					  </video>
+					</td>
+				</tr>
+
+				<!-- example -->
+				<!-- make some gap here -->
+				<tr style="text-align: center;">
+					<td colspan="5">
+                        <div class="subsubsection" style="text-align: center;">
+                            Decreasing age of Scarlett Johansson
+                        </div>
+                        <br>
+					</td>
+				</tr>
+				<tr>
+					<td style="padding:5;vertical-align:middle">
+					</td>
+				</tr>
+				<tr>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+						Pretrained
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+						  <img-comparison-slider hover="hover" style="height: 100%;">
+							<img slot="first" style="height: 100%; width: auto;" src="../results/semantic_editing/Scarlett_age/pretrained/test_9.jpg
+							"></img>
+							<img slot="second" style="height: 100%; width: auto;" src="../results/semantic_editing/Scarlett_age/pretrained/interpolate_video_test_9_pretrained_geometry.jpg"></img>
+						  </img-comparison-slider>
+						</div>
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <video class="sync-video" style="height: 128px;" loop muted playsinline autoplay>
+						<source src="../results/semantic_editing/Scarlett_age/pretrained/video.mp4" type="video/mp4">
+					  </video>
+					</td>
+				</tr>
+
+				<tr>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+						Full Fine-Tuning
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+						  <img-comparison-slider hover="hover" style="height: 100%;">
+							<img slot="first" style="height: 100%; width: auto;" src="../results/semantic_editing/Scarlett_age/no_lora/test_9.jpg"></img>
+							<img slot="second" style="height: 100%; width: auto;" src="../results/semantic_editing/Scarlett_age/no_lora/interpolate_video_test_9_no_lora_geometry.jpg"></img>
+						  </img-comparison-slider>
+						</div>
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <video class="sync-video" style="height: 128px;" loop muted playsinline autoplay>
+						<source src="../results/semantic_editing/Scarlett_age/no_lora/video.mp4" type="video/mp4">
+					  </video>
+					</td>
+				</tr>
+
+			  	<tr>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+						My3DGen
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+						  <img-comparison-slider hover="hover" style="height: 100%;">
+							<img slot="first" style="height: 100%; width: auto;" src="../results/semantic_editing/Scarlett_age/lora/test_9.jpg"></img>
+							<img slot="second" style="height: 100%; width: auto;" src="../results/semantic_editing/Scarlett_age/lora/interpolate_video_test_9_lora_geometry.jpg"></img>
+						  </img-comparison-slider>
+						</div>
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <video class="sync-video" style="height: 128px;" loop muted playsinline autoplay>
+						<source src="../results/semantic_editing/Scarlett_age/lora/video.mp4" type="video/mp4">
+					  </video>
+					</td>
+				</tr>
+
+
+				<!-- Xi smile -->
+				<!-- make some gap here -->
+				<tr style="text-align: center;">
+					<td colspan="5">
+                        <div class="subsubsection" style="text-align: center;">
+                            Adding smile to Xi Jingping 
+                        </div>
+                        <br>
+					</td>
+				</tr>
+				<tr>
+					<td style="padding:5;vertical-align:middle">
+					</td>
+				</tr>
+				<tr>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+						Pretrained
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+						  <img-comparison-slider hover="hover" style="height: 100%;">
+							<img slot="first" style="height: 100%; width: auto;" src="../results/semantic_editing/Xi/pretrained/test_1.jpg
+							"></img>
+							<img slot="second" style="height: 100%; width: auto;" src="../results/semantic_editing/Xi/pretrained/interpolate_video_test_1_pretrained_geometry.jpg"></img>
+						  </img-comparison-slider>
+						</div>
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <video class="sync-video" style="height: 128px;" loop muted playsinline autoplay>
+						<source src="../results/semantic_editing/Xi/pretrained/video.mp4" type="video/mp4">
+					  </video>
+					</td>
+				</tr>
+
+				<tr>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+						Full Fine-Tuning
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+						  <img-comparison-slider hover="hover" style="height: 100%;">
+							<img slot="first" style="height: 100%; width: auto;" src="../results/semantic_editing/Xi/no_lora/test_1.jpg"></img>
+							<img slot="second" style="height: 100%; width: auto;" src="../results/semantic_editing/Xi/no_lora/interpolate_video_test_1_no_lora_geometry.jpg"></img>
+						  </img-comparison-slider>
+						</div>
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <video class="sync-video" style="height: 128px;" loop muted playsinline autoplay>
+						<source src="../results/semantic_editing/Xi/no_lora/video.mp4" type="video/mp4">
+					  </video>
+					</td>
+				</tr>
+
+			  	<tr>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+						My3DGen
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+						  <img-comparison-slider hover="hover" style="height: 100%;">
+							<img slot="first" style="height: 100%; width: auto;" src="../results/semantic_editing/Xi/lora/test_1.jpg"></img>
+							<img slot="second" style="height: 100%; width: auto;" src="../results/semantic_editing/Xi/lora/interpolate_video_test_1_lora_geometry.jpg"></img>
+						  </img-comparison-slider>
+						</div>
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <video class="sync-video" style="height: 128px;" loop muted playsinline autoplay>
+						<source src="../results/semantic_editing/Xi/lora/video.mp4" type="video/mp4">
+					  </video>
+					</td>
+				</tr>
+
+				
+				<tr style="text-align: center;">
+					<td colspan="5">
+                        <br>
+					</td>
+				</tr>
+				
+			</tbody>
+		  </table>
+		</td>
+		</tr>
+	</tbody>
+</table>
+  
+
+</body>
+</html>

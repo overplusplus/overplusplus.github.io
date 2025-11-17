@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link>
+    <title>Over++ Supplementary Material</title>
+    <meta content="text/html; utf-8" http-equiv="Content-Type">
+    <style type="text/css">
+        l, body, #wrapper
+        {
+            background-color: #ffffff;
+            color: #000000;
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        
+        img
+        {
+            border: 0;
+        }
+        
+        td
+        {
+            text-align: center;
+            padding: 5px;
+        }
+        
+        .section
+        {
+            font-size: 40px;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 10px;
+        }
+        
+        .subsection
+        {
+            font-size: 28px;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .subsubsection
+        {
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .navselected
+        {
+            color: #ff0000;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+        
+        .navunselected
+        {
+            color: #4488ff;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+    
+        a:link {color: #4488ff; text-decoration: underline; }
+        a:active {color: #4488ff; text-decoration: underline; }
+        a:visited {color: #4488ff; text-decoration: underline; }
+        a:hover {color: #ff0000; text-decoration: none; }
+    
+    
+    
+        .before,
+        .after {
+            margin: 0;
+        }
+    
+        .before figcaption,
+        .after figcaption {
+            background: #fff;
+            border: 1px solid #c0c0c0;
+            border-radius: 12px;
+            color: #2e3452;
+            opacity: 0.8;
+            padding: 12px;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            line-height: 100%;
+        }
+    
+        .before figcaption {
+            left: 12px;
+        }
+    
+        .after figcaption {
+            right: 12px;
+        }
+    </style>
+    
+    
+    <script defer src="./static/js/index.js"></script>
+    <link rel="stylesheet" href="./static/css/styles.css">
+    
+    <!-- css -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+    
+    
+    <!-- nerfies -->
+    <link rel="stylesheet" href="./static/css/index.css">
+    <!-- reconfusion -->
+    <link rel="stylesheet" href="./static/css/app.css">
+    
+    <!-- js -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    
+    <!-- mathjax -->
+    <!-- https://docs.mathjax.org/en/latest/web/configuration.html#using-a-local-file-for-configuration -->
+    <script src="./static/js/mathjax-config.js" defer></script>
+    <script type="text/javascript" id="MathJax-script" defer
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+    </script>
+
+    <!-- Simple Citation Handler -->
+    <script src="./static/js/citations.js"></script>
+
+    <!-- nerfies -->
+    <script src="./static/js/index.js"></script>
+    <!-- reconfusion -->
+    <script src="./static/js/app.js"></script>
+    
+    <!-- Override framework styles -->
+    <style>
+        /* Force Arial font to match index.html */
+        body, div, p, h1, h2, h3, h4, h5, h6, td, th {
+            font-family: Arial, Helvetica, sans-serif !important;
+        }
+        
+        /* Table styles */
+        table {
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+            border-collapse: separate;
+            border-spacing: 0px 5px;
+            table-layout: fixed;
+        }
+        
+        td {
+            text-align: center;
+            padding: 5px;
+            vertical-align: top;
+            width: 33.33%;
+        }
+        
+        /* References section styling */
+        #my-bib {
+            text-align: left;
+            margin: 0 auto;
+            max-width: 1000px;
+            padding: 0 20px;
+        }
+        
+        #my-bib ol {
+            padding-left: 40px;
+        }
+        
+        #my-bib li {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+    </style>
+    
+</head>
+
+<body>
+    <div style="text-align: center;">
+        <a href="#">
+            <button class="backButton">
+                Back to Top
+            </button>
+        </a>
+    </div>
+
+    <div class="container">
+
+        <div class="hero is-light section" style="margin:0px; font-size:35px;">
+            Over++: Generative Video Compositing for Layer Interaction Effects
+        </div>
+        <div class="subsection" style="margin: 0px; margin-top: 0px;">Supplementary Material</div>
+        
+        <div style="text-align: left; display: inline-block; max-width: 100%; margin-left: 100px; margin-right: 100px; margin-top: 20px; margin-bottom: 20px;">
+        <!-- <div class="subsubsection"> -->
+            <p>
+            Video compositing in real production environments requires artists to reason about foreground–background separation and the complex interaction effects between them (e.g., shadows, reflections, dust; example courtesy of ILM).
+            </p>
+            <br>
+            <p>
+            We introduce $\textbf{augmented compositing}$, a new generative task that aims to synthesize realistic interaction effects while preserving both the foreground subject and the background scene. This task extends conventional compositing by explicitly modeling semi-transparent, spatially varying environmental effects.
+            </p>
+            <br>
+            <p>
+            Our method, $\textit{Over++}$, is the first to address the augmented compositing task.
+            Despite the limited availability of training data \cite{gillman2025force}, $\textit{Over++}$ exhibits strong generalization across a wide range of visual effects, as demonstrated in the benchmarking results below. In addition, we show that $\textit{Over++}$ enables several downstream applications—including text-guided and mask-guided editing—highlighting its flexibility and broader usefulness. Further details are provided in the sections that follow.
+            </p>
+            <div style="text-align: center; margin-top: 20px; margin-bottom: 20px;">
+                <video width="800" controls muted autoplay loop>
+                    <source src="teasers/teaser.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+
+        <div class="section-container hero is-light" style="padding-left: 100px; padding-right: 100px;">
+            <h2 class="subsection" style="padding: 20px 0; text-align: left; margin: 0;">Augmented Compositing - Visual Results (TOC)</h2>
+            
+            <p style="margin: 10px 0; text-align: left;">Below, we provide additional augmented compositing results. Click on any entry to view more details.</p>
+            
+            <ul style="list-style: disc; padding-left: 20px; margin: 0; font-size: 18px; line-height: 2; text-align: left;">
+                     <li style="margin-bottom: 10px;">
+                        <a href="pages/inversion.html" target="_blank" style="color: #4488ff !important; text-decoration: underline;" onmouseover="this.style.color='#ff0000';" onmouseout="this.style.color='#4488ff';">
+                            Visual Benchmarking with untrimmed full results
+                        </a>
+                    </li>
+                    <li style="margin-bottom: 10px;">
+                        <a href="pages/interpolation.html" target="_blank" style="color: #4488ff !important; text-decoration: underline;" onmouseover="this.style.color='#ff0000';" onmouseout="this.style.color='#4488ff';">
+                            Downstream Applications with Fig 6 + Sec 5 + stationary foreground + stacked async keyframe masking
+                        </a>
+                    </li>
+                    <li style="margin-bottom: 10px;">
+                        <a href="pages/synthesis.html" target="_blank" style="color: #4488ff !important; text-decoration: underline;" onmouseover="this.style.color='#ff0000';" onmouseout="this.style.color='#4488ff';">
+                            Training data (video + mask + prompt)
+                        </a>
+                    </li>
+                    <li style="margin-bottom: 10px;">
+                        <a href="pages/enhancement.html" target="_blank" style="color: #4488ff !important; text-decoration: underline;" onmouseover="this.style.color='#ff0000';" onmouseout="this.style.color='#4488ff';">
+                            User Study Demo
+                        </a>
+                    </li>
+                    <!-- <li style="margin-bottom: 10px;">
+                        <a href="pages/semantic_editing.html" target="_blank" style="color: #4488ff !important; text-decoration: underline;" onmouseover="this.style.color='#ff0000';" onmouseout="this.style.color='#4488ff';">
+                            Semantic Editing
+                        </a>
+                    </li> -->
+                    <li style="margin-bottom: 10px;">
+                        <a href="pages/failure_cases.html" target="_blank" style="color: #4488ff !important; text-decoration: underline;" onmouseover="this.style.color='#ff0000';" onmouseout="this.style.color='#4488ff';">
+                            Failure Cases
+                        </a>
+                    </li>
+            </ul>
+        </div>
+
+        
+        <h2 class="subsection hero" style="padding: 20px; text-align: left; width: 100%;">References</h2>
+        <div id="my-bib" style="margin-left:5px; padding-left:5px">
+            <!-- bibliography will appear here -->
+        </div>
+          
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,912 @@
+<html>
+<link>
+<title>Image Inversion</title>
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<style type="text/css">
+	l, body, #wrapper
+	{
+		background-color: #ffffff;
+		color: #000000;
+		font-family: Arial, Helvetica, sans-serif;
+		text-align: center;
+		margin: 0;
+		padding: 0;
+	}
+	
+	img
+	{
+		border: 0;
+	}
+	
+	td
+	{
+		text-align: center;
+		padding: 5px;
+	}
+	
+	.section
+	{
+		font-size: 40px;
+		font-weight: bold;
+		text-align: center;
+		margin-top: 10px;
+	}
+	
+	.subsection
+	{
+		font-size: 28px;
+		font-weight: bold;
+		text-align: center;
+		margin-top: 20px;
+	}
+	
+	.subsubsection
+	{
+		font-size: 20px;
+		font-weight: bold;
+		text-align: center;
+		margin-top: 20px;
+	}
+	
+	.navselected
+	{
+		color: #ff0000;
+		text-decoration: underline;
+		cursor: pointer;
+	}
+	
+	.navunselected
+	{
+		color: #4488ff;
+		text-decoration: underline;
+		cursor: pointer;
+	}
+
+	a:link {color: #4488ff; text-decoration: underline; }
+	a:active {color: #4488ff; text-decoration: underline; }
+	a:visited {color: #4488ff; text-decoration: underline; }
+	a:hover {color: #ff0000; text-decoration: none; }
+
+
+
+	.before,
+	.after {
+		margin: 0;
+	}
+
+	.before figcaption,
+	.after figcaption {
+		background: #fff;
+		border: 1px solid #c0c0c0;
+		border-radius: 12px;
+		color: #2e3452;
+		opacity: 0.8;
+		padding: 12px;
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		line-height: 100%;
+	}
+
+	.before figcaption {
+		left: 12px;
+	}
+
+	.after figcaption {
+		right: 12px;
+	}
+
+</style>
+<script
+	defer
+	src="../static/js/index.js"
+></script>
+<link
+	rel="stylesheet"
+	href="../static/css/styles.css"
+/>
+
+
+
+</head>
+<body>
+
+<center>
+
+
+<div class="section">
+    Image Inversion
+</div>
+
+<div class="subsubsection" style="text-align: center; width: 75%;">
+	<p style="text-align: left;">
+	For each row, we show the input image on the left, followed by multi-view reconstructions. You may hover over and slide the mouse to check the corresponding geometry. We also show the reconstruction video on the right.
+	</p>
+	<p>
+	We compare the results of our method with the pretrained method and the full fine-tuning method. 
+	</p>
+	<p>
+		Similar to what we claimed in the main pdf, we show that personalization without LoRA (naive full-finetuning) can sometimes introduce artifacts, 
+		<span style="color: #ff0000;">such as rendering floaters (1st, 2nd, and 3rd example) and facial texture/shape artifacts (4th example)</span>. Our method, on the other hand, is able to generate high-quality reconstructions with minimal artifacts.
+	</p>
+</div>
+
+<br>
+<br>
+
+<table style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+	<tbody>
+		<tr style="padding:0px">
+		<td style="padding:0px">
+		  <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+			<tbody>
+				<!-- example -->
+				<tr>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+						Pretrained
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+						  <img-comparison-slider hover="hover" style="height: 100%;">
+							<img slot="first" style="height: 100%; width: auto;" src="../results/inversion/michelle/pretrained/interpolate_video_91_ffhqrebalanced512-128_image_0.36.jpg"></img>
+							<img slot="second" style="height: 100%; width: auto;" src="../results/inversion/michelle/pretrained/interpolate_video_91_ffhqrebalanced512-128_geometry.jpg"></img>
+						  </img-comparison-slider>
+						</div>
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <video class="sync-video" style="height: 128px;" loop muted playsinline autoplay>
+						<source src="../results/inversion/michelle/pretrained/interpolation_91_final_ffhqrebalanced512-128.mp4" type="video/mp4">
+					  </video>
+					</td>
+				</tr>
+
+				<tr>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+						Full Fine-Tuning
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+						  <img-comparison-slider hover="hover" style="height: 100%;">
+							<img slot="first" style="height: 100%; width: auto;" src="../results/inversion/michelle/full/interpolate_video_91_network-snapshot-000500_image_0.336.jpg"></img>
+							<img slot="second" style="height: 100%; width: auto;" src="../results/inversion/michelle/full/interpolate_video_91_network-snapshot-000500_geometry.jpg"></img>
+						  </img-comparison-slider>
+						</div>
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <video class="sync-video" style="height: 128px;" loop muted playsinline autoplay>
+						<source src="../results/inversion/michelle/full/interpolation_91_final_network-snapshot-000500.mp4" type="video/mp4">
+					  </video>
+					</td>
+				</tr>
+
+			  	<tr>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+						My3DGen
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+						  <img-comparison-slider hover="hover" style="height: 100%;">
+							<img slot="first" style="height: 100%; width: auto;" src="../results/inversion/michelle/lora/interpolate_video_91_network-snapshot-000500_image_0.368.jpg"></img>
+							<img slot="second" style="height: 100%; width: auto;" src="../results/inversion/michelle/lora/interpolate_video_91_network-snapshot-000500_geometry.jpg"></img>
+						  </img-comparison-slider>
+						</div>
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <video class="sync-video" style="height: 128px;" loop muted playsinline autoplay>
+						<source src="../results/inversion/michelle/lora/interpolation_91_final_network-snapshot-000500.mp4" type="video/mp4">
+					  </video>
+					</td>
+				</tr>
+
+
+				<!-- scarlett -->
+				<!-- make some gap here -->
+				<tr>
+					<td style="padding:5;vertical-align:middle">
+					</td>
+				</tr>
+				<tr>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+						Pretrained
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+						  <img-comparison-slider hover="hover" style="height: 100%;">
+							<img slot="first" style="height: 100%; width: auto;" src="../results/inversion/scarlett/pretrained/interpolate_video_51_ffhqrebalanced512-128_image_0.47.jpg
+							"></img>
+							<img slot="second" style="height: 100%; width: auto;" src="../results/inversion/scarlett/pretrained/interpolate_video_51_ffhqrebalanced512-128_geometry.jpg"></img>
+						  </img-comparison-slider>
+						</div>
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <video class="sync-video" style="height: 128px;" loop muted playsinline autoplay>
+						<source src="../results/inversion/scarlett/pretrained/interpolation_51_final_ffhqrebalanced512-128.mp4" type="video/mp4">
+					  </video>
+					</td>
+				</tr>
+
+				<tr>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+						Full Fine-Tuning
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+						  <img-comparison-slider hover="hover" style="height: 100%;">
+							<img slot="first" style="height: 100%; width: auto;" src="../results/inversion/scarlett/full/interpolate_video_51_network-snapshot-000500_image_0.411.jpg"></img>
+							<img slot="second" style="height: 100%; width: auto;" src="../results/inversion/scarlett/full/interpolate_video_51_network-snapshot-000500_geometry.jpg"></img>
+						  </img-comparison-slider>
+						</div>
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <video class="sync-video" style="height: 128px;" loop muted playsinline autoplay>
+						<source src="../results/inversion/scarlett/full/interpolation_51_final_network-snapshot-000500.mp4" type="video/mp4">
+					  </video>
+					</td>
+				</tr>
+
+			  	<tr>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+						My3DGen
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+						  <img-comparison-slider hover="hover" style="height: 100%;">
+							<img slot="first" style="height: 100%; width: auto;" src="../results/inversion/scarlett/lora/interpolate_video_51_network-snapshot-000500_image_0.469.jpg"></img>
+							<img slot="second" style="height: 100%; width: auto;" src="../results/inversion/scarlett/lora/interpolate_video_51_network-snapshot-000500_geometry.jpg"></img>
+						  </img-comparison-slider>
+						</div>
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <video class="sync-video" style="height: 128px;" loop muted playsinline autoplay>
+						<source src="../results/inversion/scarlett/lora/interpolation_51_final_network-snapshot-000500.mp4" type="video/mp4">
+					  </video>
+					</td>
+				</tr>
+
+				<!-- xi -->
+				<!-- make some gap here -->
+				<tr>
+					<td style="padding:5;vertical-align:middle">
+					</td>
+				</tr>
+				<tr>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+						Pretrained
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+						  <img-comparison-slider hover="hover" style="height: 100%;">
+							<img slot="first" style="height: 100%; width: auto;" src="../results/inversion/xi/pretrained/interpolate_video_50_ffhqrebalanced512-128_image_0.436.jpg
+							"></img>
+							<img slot="second" style="height: 100%; width: auto;" src="../results/inversion/xi/pretrained/interpolate_video_50_ffhqrebalanced512-128_geometry.jpg"></img>
+						  </img-comparison-slider>
+						</div>
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <video class="sync-video" style="height: 128px;" loop muted playsinline autoplay>
+						<source src="../results/inversion/xi/pretrained/interpolation_50_final_ffhqrebalanced512-128.mp4" type="video/mp4">
+					  </video>
+					</td>
+				</tr>
+
+				<tr>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+						Full Fine-Tuning
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+						  <img-comparison-slider hover="hover" style="height: 100%;">
+							<img slot="first" style="height: 100%; width: auto;" src="../results/inversion/xi/full/interpolate_video_50_network-snapshot-000500_image_0.365.jpg"></img>
+							<img slot="second" style="height: 100%; width: auto;" src="../results/inversion/xi/full/interpolate_video_50_network-snapshot-000500_geometry.jpg"></img>
+						  </img-comparison-slider>
+						</div>
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <video class="sync-video" style="height: 128px;" loop muted playsinline autoplay>
+						<source src="../results/inversion/xi/full/interpolation_50_final_network-snapshot-000500.mp4" type="video/mp4">
+					  </video>
+					</td>
+				</tr>
+
+			  	<tr>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+						My3DGen
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+						  <img-comparison-slider hover="hover" style="height: 100%;">
+							<img slot="first" style="height: 100%; width: auto;" src="../results/inversion/xi/lora/interpolate_video_50_network-snapshot-000500_image_0.359.jpg"></img>
+							<img slot="second" style="height: 100%; width: auto;" src="../results/inversion/xi/lora/interpolate_video_50_network-snapshot-000500_geometry.jpg"></img>
+						  </img-comparison-slider>
+						</div>
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <video class="sync-video" style="height: 128px;" loop muted playsinline autoplay>
+						<source src="../results/inversion/xi/lora/interpolation_50_final_network-snapshot-000500.mp4" type="video/mp4">
+					  </video>
+					</td>
+				</tr>
+
+				<!-- oprah # 2 -->
+				<!-- make some gap here -->
+				<tr>
+					<td style="padding:5;vertical-align:middle">
+					</td>
+				</tr>
+				<tr>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+						Pretrained
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+						  <img-comparison-slider hover="hover" style="height: 100%;">
+							<img slot="first" style="height: 100%; width: auto;" src="../results/inversion/oprah/pretrained/interpolate_video_67_ffhqrebalanced512-128_image_0.405.jpg
+							"></img>
+							<img slot="second" style="height: 100%; width: auto;" src="../results/inversion/oprah/pretrained/interpolate_video_67_ffhqrebalanced512-128_geometry.jpg"></img>
+						  </img-comparison-slider>
+						</div>
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <video class="sync-video" style="height: 128px;" loop muted playsinline autoplay>
+						<source src="../results/inversion/oprah/pretrained/interpolation_67_final_ffhqrebalanced512-128.mp4" type="video/mp4">
+					  </video>
+					</td>
+				</tr>
+
+				<tr>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+						Full Fine-Tuning
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+						  <img-comparison-slider hover="hover" style="height: 100%;">
+							<img slot="first" style="height: 100%; width: auto;" src="../results/inversion/oprah/full/interpolate_video_67_network-snapshot-000500_image_0.373.jpg"></img>
+							<img slot="second" style="height: 100%; width: auto;" src="../results/inversion/oprah/full/interpolate_video_67_network-snapshot-000500_geometry.jpg"></img>
+						  </img-comparison-slider>
+						</div>
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <video class="sync-video" style="height: 128px;" loop muted playsinline autoplay>
+						<source src="../results/inversion/oprah/full/interpolation_67_final_network-snapshot-000500.mp4" type="video/mp4">
+					  </video>
+					</td>
+				</tr>
+
+			  	<tr>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+						My3DGen
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+						  <img-comparison-slider hover="hover" style="height: 100%;">
+							<img slot="first" style="height: 100%; width: auto;" src="../results/inversion/oprah/lora/interpolate_video_67_network-snapshot-000500_image_0.344.jpg"></img>
+							<img slot="second" style="height: 100%; width: auto;" src="../results/inversion/oprah/lora/interpolate_video_67_network-snapshot-000500_geometry.jpg"></img>
+						  </img-comparison-slider>
+						</div>
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <video class="sync-video" style="height: 128px;" loop muted playsinline autoplay>
+						<source src="../results/inversion/oprah/lora/interpolation_67_final_network-snapshot-000500.mp4" type="video/mp4">
+					  </video>
+					</td>
+				</tr>
+
+				<!-- example -->
+				<!-- make some gap here -->
+				<tr>
+					<td style="padding:5;vertical-align:middle">
+					</td>
+				</tr>
+				<tr>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+						Pretrained
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+						  <img-comparison-slider hover="hover" style="height: 100%;">
+							<img slot="first" style="height: 100%; width: auto;" src="../results/inversion/michelle/pretrained/interpolate_video_228_ffhqrebalanced512-128_image_0.47.jpg
+							"></img>
+							<img slot="second" style="height: 100%; width: auto;" src="../results/inversion/michelle/pretrained/interpolate_video_228_ffhqrebalanced512-128_geometry.jpg"></img>
+						  </img-comparison-slider>
+						</div>
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <video class="sync-video" style="height: 128px;" loop muted playsinline autoplay>
+						<source src="../results/inversion/michelle/pretrained/interpolation_228_final_ffhqrebalanced512-128.mp4" type="video/mp4">
+					  </video>
+					</td>
+				</tr>
+
+				<tr>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+						Full Fine-Tuning
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+						  <img-comparison-slider hover="hover" style="height: 100%;">
+							<img slot="first" style="height: 100%; width: auto;" src="../results/inversion/michelle/full/interpolate_video_228_network-snapshot-000500_image_0.398.jpg"></img>
+							<img slot="second" style="height: 100%; width: auto;" src="../results/inversion/michelle/full/interpolate_video_228_network-snapshot-000500_geometry.jpg"></img>
+						  </img-comparison-slider>
+						</div>
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <video class="sync-video" style="height: 128px;" loop muted playsinline autoplay>
+						<source src="../results/inversion/michelle/full/interpolation_228_final_network-snapshot-000500.mp4" type="video/mp4">
+					  </video>
+					</td>
+				</tr>
+
+			  	<tr>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+						My3DGen
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+						  <img-comparison-slider hover="hover" style="height: 100%;">
+							<img slot="first" style="height: 100%; width: auto;" src="../results/inversion/michelle/lora/interpolate_video_228_network-snapshot-000500_image_0.385.jpg"></img>
+							<img slot="second" style="height: 100%; width: auto;" src="../results/inversion/michelle/lora/interpolate_video_228_network-snapshot-000500_geometry.jpg"></img>
+						  </img-comparison-slider>
+						</div>
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <video class="sync-video" style="height: 128px;" loop muted playsinline autoplay>
+						<source src="../results/inversion/michelle/lora/interpolation_228_final_network-snapshot-000500.mp4" type="video/mp4">
+					  </video>
+					</td>
+				</tr>
+
+
+				<!-- barack -->
+				<!-- make some gap here -->
+				<!-- <tr>
+					<td style="padding:5;vertical-align:middle">
+					</td>
+				</tr>
+				<tr>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+						Pretrained
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+						  <img-comparison-slider hover="hover" style="height: 100%;">
+							<img slot="first" style="height: 100%; width: auto;" src="../results/inversion/barack/pretrained/interpolate_video_test_9_ffhqrebalanced512-128_image_0.47.jpg
+							"></img>
+							<img slot="second" style="height: 100%; width: auto;" src="../results/inversion/barack/pretrained/interpolate_video_test_9_ffhqrebalanced512-128_geometry.jpg"></img>
+						  </img-comparison-slider>
+						</div>
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <video class="sync-video" style="height: 128px;" loop muted playsinline autoplay>
+						<source src="../results/inversion/barack/pretrained/interpolation_test_9_final_ffhqrebalanced512-128.mp4" type="video/mp4">
+					  </video>
+					</td>
+				</tr>
+
+				<tr>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+						Full Fine-Tuning
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+						  <img-comparison-slider hover="hover" style="height: 100%;">
+							<img slot="first" style="height: 100%; width: auto;" src="../results/inversion/barack/full/interpolate_video_test_9_network-snapshot-000500_image_0.422.jpg"></img>
+							<img slot="second" style="height: 100%; width: auto;" src="../results/inversion/barack/full/interpolate_video_test_9_network-snapshot-000500_geometry.jpg"></img>
+						  </img-comparison-slider>
+						</div>
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <video class="sync-video" style="height: 128px;" loop muted playsinline autoplay>
+						<source src="../results/inversion/barack/full/interpolation_test_9_final_network-snapshot-000500.mp4" type="video/mp4">
+					  </video>
+					</td>
+				</tr>
+
+			  	<tr>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+						My3DGen
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+						  <img-comparison-slider hover="hover" style="height: 100%;">
+							<img slot="first" style="height: 100%; width: auto;" src="../results/inversion/barack/lora/interpolate_video_test_9_network-snapshot-000500_image_0.444.jpg"></img>
+							<img slot="second" style="height: 100%; width: auto;" src="../results/inversion/barack/lora/interpolate_video_test_9_network-snapshot-000500_geometry.jpg"></img>
+						  </img-comparison-slider>
+						</div>
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <video class="sync-video" style="height: 128px;" loop muted playsinline autoplay>
+						<source src="../results/inversion/barack/lora/interpolation_test_9_final_network-snapshot-000500.mp4" type="video/mp4">
+					  </video>
+					</td>
+				</tr> -->
+
+				<!-- make some gap here -->
+				<!-- <tr>
+					<td style="padding:5;vertical-align:middle">
+					</td>
+				</tr>
+				<tr>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+						Pretrained
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+						  <img-comparison-slider hover="hover" style="height: 100%;">
+							<img slot="first" style="height: 100%; width: auto;" src="../results/inversion/barack/pretrained/interpolate_video_98_ffhqrebalanced512-128_image_0.385.jpg
+							"></img>
+							<img slot="second" style="height: 100%; width: auto;" src="../results/inversion/barack/pretrained/interpolate_video_98_ffhqrebalanced512-128_geometry.jpg"></img>
+						  </img-comparison-slider>
+						</div>
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <video class="sync-video" style="height: 128px;" loop muted playsinline autoplay>
+						<source src="../results/inversion/barack/pretrained/interpolation_98_final_ffhqrebalanced512-128.mp4" type="video/mp4">
+					  </video>
+					</td>
+				</tr>
+
+				<tr>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+						Full Fine-Tuning
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+						  <img-comparison-slider hover="hover" style="height: 100%;">
+							<img slot="first" style="height: 100%; width: auto;" src="../results/inversion/barack/full/interpolate_video_98_network-snapshot-000500_image_0.384.jpg"></img>
+							<img slot="second" style="height: 100%; width: auto;" src="../results/inversion/barack/full/interpolate_video_98_network-snapshot-000500_geometry.jpg"></img>
+						  </img-comparison-slider>
+						</div>
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <video class="sync-video" style="height: 128px;" loop muted playsinline autoplay>
+						<source src="../results/inversion/barack/full/interpolation_98_final_network-snapshot-000500.mp4" type="video/mp4">
+					  </video>
+					</td>
+				</tr>
+
+			  	<tr>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+						My3DGen
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+						  <img-comparison-slider hover="hover" style="height: 100%;">
+							<img slot="first" style="height: 100%; width: auto;" src="../results/inversion/barack/lora/interpolate_video_98_network-snapshot-000500_image_0.38.jpg"></img>
+							<img slot="second" style="height: 100%; width: auto;" src="../results/inversion/barack/lora/interpolate_video_98_network-snapshot-000500_geometry.jpg"></img>
+						  </img-comparison-slider>
+						</div>
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <video class="sync-video" style="height: 128px;" loop muted playsinline autoplay>
+						<source src="../results/inversion/barack/lora/interpolation_98_final_network-snapshot-000500.mp4" type="video/mp4">
+					  </video>
+					</td>
+				</tr> -->
+
+				<!-- xi # 2 -->
+				<!-- make some gap here -->
+				<tr>
+					<td style="padding:5;vertical-align:middle">
+					</td>
+				</tr>
+				<tr>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+						Pretrained
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+						  <img-comparison-slider hover="hover" style="height: 100%;">
+							<img slot="first" style="height: 100%; width: auto;" src="../results/inversion/xi/pretrained/interpolate_video_69_ffhqrebalanced512-128_image_0.338.jpg
+							"></img>
+							<img slot="second" style="height: 100%; width: auto;" src="../results/inversion/xi/pretrained/interpolate_video_69_ffhqrebalanced512-128_geometry.jpg"></img>
+						  </img-comparison-slider>
+						</div>
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <video class="sync-video" style="height: 128px;" loop muted playsinline autoplay>
+						<source src="../results/inversion/xi/pretrained/interpolation_69_final_ffhqrebalanced512-128.mp4" type="video/mp4">
+					  </video>
+					</td>
+				</tr>
+
+				<tr>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+						Full Fine-Tuning
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+						  <img-comparison-slider hover="hover" style="height: 100%;">
+							<img slot="first" style="height: 100%; width: auto;" src="../results/inversion/xi/full/interpolate_video_69_network-snapshot-000500_image_0.301.jpg"></img>
+							<img slot="second" style="height: 100%; width: auto;" src="../results/inversion/xi/full/interpolate_video_69_network-snapshot-000500_geometry.jpg"></img>
+						  </img-comparison-slider>
+						</div>
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <video class="sync-video" style="height: 128px;" loop muted playsinline autoplay>
+						<source src="../results/inversion/xi/full/interpolation_69_final_network-snapshot-000500.mp4" type="video/mp4">
+					  </video>
+					</td>
+				</tr>
+
+			  	<tr>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+						My3DGen
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+						  <img-comparison-slider hover="hover" style="height: 100%;">
+							<img slot="first" style="height: 100%; width: auto;" src="../results/inversion/xi/lora/interpolate_video_69_network-snapshot-000500_image_0.35.jpg"></img>
+							<img slot="second" style="height: 100%; width: auto;" src="../results/inversion/xi/lora/interpolate_video_69_network-snapshot-000500_geometry.jpg"></img>
+						  </img-comparison-slider>
+						</div>
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <video class="sync-video" style="height: 128px;" loop muted playsinline autoplay>
+						<source src="../results/inversion/xi/lora/interpolation_69_final_network-snapshot-000500.mp4" type="video/mp4">
+					  </video>
+					</td>
+				</tr>
+
+				<!-- oprah # 1 -->
+				<!-- make some gap here -->
+				<tr>
+					<td style="padding:5;vertical-align:middle">
+					</td>
+				</tr>
+				<tr>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+						Pretrained
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+						  <img-comparison-slider hover="hover" style="height: 100%;">
+							<img slot="first" style="height: 100%; width: auto;" src="../results/inversion/oprah/pretrained/interpolate_video_90_ffhqrebalanced512-128_image_0.451.jpg
+							"></img>
+							<img slot="second" style="height: 100%; width: auto;" src="../results/inversion/oprah/pretrained/interpolate_video_90_ffhqrebalanced512-128_geometry.jpg"></img>
+						  </img-comparison-slider>
+						</div>
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <video class="sync-video" style="height: 128px;" loop muted playsinline autoplay>
+						<source src="../results/inversion/oprah/pretrained/interpolation_90_final_ffhqrebalanced512-128.mp4" type="video/mp4">
+					  </video>
+					</td>
+				</tr>
+
+				<tr>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+						Full Fine-Tuning
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+						  <img-comparison-slider hover="hover" style="height: 100%;">
+							<img slot="first" style="height: 100%; width: auto;" src="../results/inversion/oprah/full/interpolate_video_90_network-snapshot-000500_image_0.467.jpg"></img>
+							<img slot="second" style="height: 100%; width: auto;" src="../results/inversion/oprah/full/interpolate_video_90_network-snapshot-000500_geometry.jpg"></img>
+						  </img-comparison-slider>
+						</div>
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <video class="sync-video" style="height: 128px;" loop muted playsinline autoplay>
+						<source src="../results/inversion/oprah/full/interpolation_90_final_network-snapshot-000500.mp4" type="video/mp4">
+					  </video>
+					</td>
+				</tr>
+
+			  	<tr>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+						My3DGen
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+						  <img-comparison-slider hover="hover" style="height: 100%;">
+							<img slot="first" style="height: 100%; width: auto;" src="../results/inversion/oprah/lora/interpolate_video_90_network-snapshot-000500_image_0.447.jpg"></img>
+							<img slot="second" style="height: 100%; width: auto;" src="../results/inversion/oprah/lora/interpolate_video_90_network-snapshot-000500_geometry.jpg"></img>
+						  </img-comparison-slider>
+						</div>
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <video class="sync-video" style="height: 128px;" loop muted playsinline autoplay>
+						<source src="../results/inversion/oprah/lora/interpolation_90_final_network-snapshot-000500.mp4" type="video/mp4">
+					  </video>
+					</td>
+				</tr>
+
+
+				<!-- joe -->
+				<!-- make some gap here -->
+				<tr>
+					<td style="padding:5;vertical-align:middle">
+					</td>
+				</tr>
+				<tr>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+						Pretrained
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+						  <img-comparison-slider hover="hover" style="height: 100%;">
+							<img slot="first" style="height: 100%; width: auto;" src="../results/inversion/joe/pretrained/interpolate_video_192_ffhqrebalanced512-128_image_0.457.jpg
+							"></img>
+							<img slot="second" style="height: 100%; width: auto;" src="../results/inversion/joe/pretrained/interpolate_video_192_ffhqrebalanced512-128_geometry.jpg"></img>
+						  </img-comparison-slider>
+						</div>
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <video class="sync-video" style="height: 128px;" loop muted playsinline autoplay>
+						<source src="../results/inversion/joe/pretrained/interpolation_192_final_ffhqrebalanced512-128.mp4" type="video/mp4">
+					  </video>
+					</td>
+				</tr>
+
+				<tr>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+						Full Fine-Tuning
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+						  <img-comparison-slider hover="hover" style="height: 100%;">
+							<img slot="first" style="height: 100%; width: auto;" src="../results/inversion/joe/full/interpolate_video_192_network-snapshot-000500_image_0.396.jpg"></img>
+							<img slot="second" style="height: 100%; width: auto;" src="../results/inversion/joe/full/interpolate_video_192_network-snapshot-000500_geometry.jpg"></img>
+						  </img-comparison-slider>
+						</div>
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <video class="sync-video" style="height: 128px;" loop muted playsinline autoplay>
+						<source src="../results/inversion/joe/full/interpolation_192_final_network-snapshot-000500.mp4" type="video/mp4">
+					  </video>
+					</td>
+				</tr>
+
+			  	<tr>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+						My3DGen
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+						  <img-comparison-slider hover="hover" style="height: 100%;">
+							<img slot="first" style="height: 100%; width: auto;" src="../results/inversion/joe/lora/interpolate_video_192_network-snapshot-000500_image_0.368.jpg"></img>
+							<img slot="second" style="height: 100%; width: auto;" src="../results/inversion/joe/lora/interpolate_video_192_network-snapshot-000500_geometry.jpg"></img>
+						  </img-comparison-slider>
+						</div>
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <video class="sync-video" style="height: 128px;" loop muted playsinline autoplay>
+						<source src="../results/inversion/joe/lora/interpolation_192_final_network-snapshot-000500.mp4" type="video/mp4">
+					  </video>
+					</td>
+				</tr>
+
+				<tr style="text-align: center;">
+					<td colspan="5">
+					</td>
+				</tr>
+			</tbody>
+		  </table>
+		</td>
+		</tr>
+	</tbody>
+</table>
+  
+
+</body>
+</html>

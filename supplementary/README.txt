@@ -1,0 +1,1 @@
+We wrap visual supplementary materials (images, videos, etc.) into one html file, which can be viewed in index.html. 

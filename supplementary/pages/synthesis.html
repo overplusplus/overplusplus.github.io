@@ -1,0 +1,686 @@
+<html>
+<link>
+<title>Image Synthesis</title>
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<style type="text/css">
+	l, body, #wrapper
+	{
+		background-color: #ffffff;
+		color: #000000;
+		font-family: Arial, Helvetica, sans-serif;
+		text-align: center;
+		margin: 0;
+		padding: 0;
+	}
+	
+	img
+	{
+		border: 0;
+	}
+	
+	td
+	{
+		text-align: center;
+		padding: 5px;
+	}
+	
+	.section
+	{
+		font-size: 40px;
+		font-weight: bold;
+		text-align: center;
+		margin-top: 10px;
+	}
+	
+	.subsection
+	{
+		font-size: 28px;
+		font-weight: bold;
+		text-align: center;
+		margin-top: 20px;
+	}
+	
+	.subsubsection
+	{
+		font-size: 20px;
+		font-weight: bold;
+		text-align: center;
+		margin-top: 20px;
+	}
+	
+	.navselected
+	{
+		color: #ff0000;
+		text-decoration: underline;
+		cursor: pointer;
+	}
+	
+	.navunselected
+	{
+		color: #4488ff;
+		text-decoration: underline;
+		cursor: pointer;
+	}
+
+	a:link {color: #4488ff; text-decoration: underline; }
+	a:active {color: #4488ff; text-decoration: underline; }
+	a:visited {color: #4488ff; text-decoration: underline; }
+	a:hover {color: #ff0000; text-decoration: none; }
+
+
+
+	.before,
+	.after {
+		margin: 0;
+	}
+
+	.before figcaption,
+	.after figcaption {
+		background: #fff;
+		border: 1px solid #c0c0c0;
+		border-radius: 12px;
+		color: #2e3452;
+		opacity: 0.8;
+		padding: 12px;
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		line-height: 100%;
+	}
+
+	.before figcaption {
+		left: 12px;
+	}
+
+	.after figcaption {
+		right: 12px;
+	}
+
+</style>
+<script
+	defer
+	src="../static/js/index.js"
+></script>
+<link
+	rel="stylesheet"
+	href="../static/css/styles.css"
+/>
+
+
+
+</head>
+<body>
+
+<center>
+
+
+<div class="section">
+    Image Synthesis
+</div>
+
+<div class="subsubsection" style="text-align: center; width: 75%;">
+	<p style="text-align: left;">
+	We generate uncurated images of the same person using randomly sampled poses.
+	</p>
+	<p style="text-align: left;">
+	We compare the results of our method with the pretrained method and the full fine-tuning method.
+	</p>
+</div>
+
+<br>
+<br>
+
+<table style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+	<tbody>
+		<tr style="padding:0px">
+		<td style="padding:0px">
+		  <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+			<tbody>
+				<!-- example -->
+				<tr style="text-align: center;">
+					<td colspan="5">
+						<div class="subsubsection" style="text-align: center;">
+						Kamala Harris
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td style="padding:0;vertical-align:middle">
+                        <div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+                          Pretrained
+                        </div>
+                    </td>
+					<td style="padding:0 5 0 5;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+							<img style="height: 100%; width: auto;" src="../results/synthesis/kamala/pretrained/0.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/kamala/pretrained/1.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/kamala/pretrained/2.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/kamala/pretrained/3.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/kamala/pretrained/4.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/kamala/pretrained/5.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/kamala/pretrained/7.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/kamala/pretrained/8.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/kamala/pretrained/9.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/kamala/pretrained/10.jpg"></img>
+					  </div>
+					</td>
+				</tr>
+				<tr>
+					<td style="padding:0;vertical-align:middle">
+                        <div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+                          Full Fine-tuning
+                        </div>
+                    </td>
+					<td style="padding:0 5 0 5;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+							<img style="height: 100%; width: auto;" src="../results/synthesis/kamala/full/0.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/kamala/full/1.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/kamala/full/2.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/kamala/full/3.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/kamala/full/4.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/kamala/full/5.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/kamala/full/7.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/kamala/full/8.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/kamala/full/9.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/kamala/full/10.jpg"></img>
+					  </div>
+					</td>
+				</tr>
+				<tr>
+					<td style="padding:0;vertical-align:middle">
+                        <div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+                          My3DGen
+                        </div>
+                    </td>
+					<td style="padding:0 5 0 5;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+							<img style="height: 100%; width: auto;" src="../results/synthesis/kamala/lora/0.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/kamala/lora/1.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/kamala/lora/2.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/kamala/lora/3.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/kamala/lora/4.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/kamala/lora/5.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/kamala/lora/7.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/kamala/lora/8.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/kamala/lora/9.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/kamala/lora/10.jpg"></img>
+					  </div>
+					</td>
+				</tr>
+
+                <!-- example -->
+				<tr style="text-align: center;">
+					<td colspan="5">
+						<div class="subsubsection" style="text-align: center;">
+						Michelle Obama
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td style="padding:0;vertical-align:middle">
+                        <div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+                          Pretrained
+                        </div>
+                    </td>
+					<td style="padding:0 5 0 5;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+							<img style="height: 100%; width: auto;" src="../results/synthesis/michelle/pretrained/0.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/michelle/pretrained/1.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/michelle/pretrained/2.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/michelle/pretrained/3.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/michelle/pretrained/4.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/michelle/pretrained/5.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/michelle/pretrained/7.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/michelle/pretrained/8.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/michelle/pretrained/9.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/michelle/pretrained/10.jpg"></img>
+					  </div>
+					</td>
+				</tr>
+				<tr>
+					<td style="padding:0;vertical-align:middle">
+                        <div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+                          Full Fine-tuning
+                        </div>
+                    </td>
+					<td style="padding:0 5 0 5;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+							<img style="height: 100%; width: auto;" src="../results/synthesis/michelle/full/0.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/michelle/full/1.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/michelle/full/2.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/michelle/full/3.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/michelle/full/4.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/michelle/full/5.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/michelle/full/7.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/michelle/full/8.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/michelle/full/9.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/michelle/full/10.jpg"></img>
+					  </div>
+					</td>
+				</tr>
+				<tr>
+					<td style="padding:0;vertical-align:middle">
+                        <div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+                            My3DGen
+                        </div>
+                    </td>
+					<td style="padding:0 5 0 5;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+							<img style="height: 100%; width: auto;" src="../results/synthesis/michelle/lora/0.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/michelle/lora/1.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/michelle/lora/2.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/michelle/lora/3.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/michelle/lora/4.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/michelle/lora/5.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/michelle/lora/7.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/michelle/lora/8.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/michelle/lora/9.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/michelle/lora/10.jpg"></img>
+					  </div>
+					</td>
+				</tr>
+
+
+				<!-- example -->
+				<tr style="text-align: center;">
+					<td colspan="5">
+						<div class="subsubsection" style="text-align: center;">
+						Oprah Winfrey
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td style="padding:0;vertical-align:middle">
+                        <div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+                          Pretrained
+                        </div>
+                    </td>
+					<td style="padding:0 5 0 5;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+							<img style="height: 100%; width: auto;" src="../results/synthesis/oprah/pretrained/0.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/oprah/pretrained/1.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/oprah/pretrained/2.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/oprah/pretrained/3.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/oprah/pretrained/4.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/oprah/pretrained/5.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/oprah/pretrained/7.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/oprah/pretrained/8.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/oprah/pretrained/9.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/oprah/pretrained/10.jpg"></img>
+					  </div>
+					</td>
+				</tr>
+				<tr>
+					<td style="padding:0;vertical-align:middle">
+                        <div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+                          Full Fine-tuning
+                        </div>
+                    </td>
+					<td style="padding:0 5 0 5;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+							<img style="height: 100%; width: auto;" src="../results/synthesis/oprah/full/0.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/oprah/full/1.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/oprah/full/2.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/oprah/full/3.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/oprah/full/4.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/oprah/full/5.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/oprah/full/7.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/oprah/full/8.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/oprah/full/9.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/oprah/full/10.jpg"></img>
+					  </div>
+					</td>
+				</tr>
+				<tr>
+					<td style="padding:0;vertical-align:middle">
+                        <div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+                          My3DGen
+                        </div>
+                    </td>
+					<td style="padding:0 5 0 5;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+							<img style="height: 100%; width: auto;" src="../results/synthesis/oprah/lora/0.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/oprah/lora/1.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/oprah/lora/2.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/oprah/lora/3.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/oprah/lora/4.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/oprah/lora/5.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/oprah/lora/7.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/oprah/lora/8.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/oprah/lora/9.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/oprah/lora/10.jpg"></img>
+					  </div>
+					</td>
+				</tr>
+
+
+				<!-- example -->
+				<tr style="text-align: center;">
+					<td colspan="5">
+						<div class="subsubsection" style="text-align: center;">
+						Joe Biden
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td style="padding:0;vertical-align:middle">
+                        <div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+                          Pretrained
+                        </div>
+                    </td>
+					<td style="padding:0 5 0 5;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+							<img style="height: 100%; width: auto;" src="../results/synthesis/joe/pretrained/0.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/joe/pretrained/1.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/joe/pretrained/2.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/joe/pretrained/3.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/joe/pretrained/4.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/joe/pretrained/5.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/joe/pretrained/7.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/joe/pretrained/8.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/joe/pretrained/9.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/joe/pretrained/10.jpg"></img>
+					  </div>
+					</td>
+				</tr>
+				<tr>
+					<td style="padding:0;vertical-align:middle">
+                        <div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+                          Full Fine-tuning
+                        </div>
+                    </td>
+					<td style="padding:0 5 0 5;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+							<img style="height: 100%; width: auto;" src="../results/synthesis/joe/full/0.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/joe/full/1.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/joe/full/2.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/joe/full/3.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/joe/full/4.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/joe/full/5.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/joe/full/7.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/joe/full/8.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/joe/full/9.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/joe/full/10.jpg"></img>
+					  </div>
+					</td>
+				</tr>
+				<tr>
+					<td style="padding:0;vertical-align:middle">
+                        <div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+                          My3DGen
+                        </div>
+                    </td>
+					<td style="padding:0 5 0 5;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+							<img style="height: 100%; width: auto;" src="../results/synthesis/joe/lora/0.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/joe/lora/1.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/joe/lora/2.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/joe/lora/3.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/joe/lora/4.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/joe/lora/5.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/joe/lora/7.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/joe/lora/8.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/joe/lora/9.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/joe/lora/10.jpg"></img>
+					  </div>
+					</td>
+				</tr>
+
+
+
+
+				<!-- example -->
+				<tr style="text-align: center;">
+					<td colspan="5">
+						<div class="subsubsection" style="text-align: center;">
+						Dwayne Johnson
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td style="padding:0;vertical-align:middle">
+                        <div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+                          Pretrained
+                        </div>
+                    </td>
+					<td style="padding:0 5 0 5;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+							<img style="height: 100%; width: auto;" src="../results/synthesis/dwayne/pretrained/0.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/dwayne/pretrained/1.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/dwayne/pretrained/2.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/dwayne/pretrained/3.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/dwayne/pretrained/4.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/dwayne/pretrained/5.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/dwayne/pretrained/7.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/dwayne/pretrained/8.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/dwayne/pretrained/9.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/dwayne/pretrained/10.jpg"></img>
+					  </div>
+					</td>
+				</tr>
+				<tr>
+					<td style="padding:0;vertical-align:middle">
+                        <div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+                          Full Fine-tuning
+                        </div>
+                    </td>
+					<td style="padding:0 5 0 5;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+							<img style="height: 100%; width: auto;" src="../results/synthesis/dwayne/full/0.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/dwayne/full/1.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/dwayne/full/2.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/dwayne/full/3.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/dwayne/full/4.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/dwayne/full/5.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/dwayne/full/7.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/dwayne/full/8.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/dwayne/full/9.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/dwayne/full/10.jpg"></img>
+					  </div>
+					</td>
+				</tr>
+				<tr>
+					<td style="padding:0;vertical-align:middle">
+                        <div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+                          My3DGen
+                        </div>
+                    </td>
+					<td style="padding:0 5 0 5;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+							<img style="height: 100%; width: auto;" src="../results/synthesis/dwayne/lora/0.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/dwayne/lora/1.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/dwayne/lora/2.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/dwayne/lora/3.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/dwayne/lora/4.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/dwayne/lora/5.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/dwayne/lora/7.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/dwayne/lora/8.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/dwayne/lora/9.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/dwayne/lora/10.jpg"></img>
+					  </div>
+					</td>
+				</tr>
+
+
+				<!-- example -->
+				<tr style="text-align: center;">
+					<td colspan="5">
+						<div class="subsubsection" style="text-align: center;">
+						Scarlett Johansson
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td style="padding:0;vertical-align:middle">
+                        <div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+                          Pretrained
+                        </div>
+                    </td>
+					<td style="padding:0 5 0 5;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+							<img style="height: 100%; width: auto;" src="../results/synthesis/scarlett/pretrained/0.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/scarlett/pretrained/1.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/scarlett/pretrained/2.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/scarlett/pretrained/3.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/scarlett/pretrained/4.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/scarlett/pretrained/5.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/scarlett/pretrained/7.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/scarlett/pretrained/8.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/scarlett/pretrained/9.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/scarlett/pretrained/10.jpg"></img>
+					  </div>
+					</td>
+				</tr>
+				<tr>
+					<td style="padding:0;vertical-align:middle">
+                        <div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+                          Full Fine-tuning
+                        </div>
+                    </td>
+					<td style="padding:0 5 0 5;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+							<img style="height: 100%; width: auto;" src="../results/synthesis/scarlett/full/0.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/scarlett/full/1.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/scarlett/full/2.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/scarlett/full/3.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/scarlett/full/4.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/scarlett/full/5.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/scarlett/full/7.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/scarlett/full/8.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/scarlett/full/9.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/scarlett/full/10.jpg"></img>
+					  </div>
+					</td>
+				</tr>
+				<tr>
+					<td style="padding:0;vertical-align:middle">
+                        <div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+                          My3DGen
+                        </div>
+                    </td>
+					<td style="padding:0 5 0 5;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+							<img style="height: 100%; width: auto;" src="../results/synthesis/scarlett/lora/0.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/scarlett/lora/1.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/scarlett/lora/2.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/scarlett/lora/3.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/scarlett/lora/4.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/scarlett/lora/5.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/scarlett/lora/7.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/scarlett/lora/8.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/scarlett/lora/9.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/scarlett/lora/10.jpg"></img>
+					  </div>
+					</td>
+				</tr>
+
+				<!-- example -->
+				<tr style="text-align: center;">
+					<td colspan="5">
+						<div class="subsubsection" style="text-align: center;">
+						Barack Obama
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td style="padding:0;vertical-align:middle">
+                        <div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+                          Pretrained
+                        </div>
+                    </td>
+					<td style="padding:0 5 0 5;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+							<img style="height: 100%; width: auto;" src="../results/synthesis/barack/pretrained/0.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/barack/pretrained/1.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/barack/pretrained/2.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/barack/pretrained/3.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/barack/pretrained/4.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/barack/pretrained/5.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/barack/pretrained/7.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/barack/pretrained/8.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/barack/pretrained/9.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/barack/pretrained/10.jpg"></img>
+					  </div>
+					</td>
+				</tr>
+				<tr>
+					<td style="padding:0;vertical-align:middle">
+                        <div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+                          Full Fine-tuning
+                        </div>
+                    </td>
+					<td style="padding:0 5 0 5;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+							<img style="height: 100%; width: auto;" src="../results/synthesis/barack/full/0.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/barack/full/1.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/barack/full/2.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/barack/full/3.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/barack/full/4.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/barack/full/5.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/barack/full/7.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/barack/full/8.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/barack/full/9.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/barack/full/10.jpg"></img>
+					  </div>
+					</td>
+				</tr>
+				<tr>
+					<td style="padding:0;vertical-align:middle">
+                        <div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+                          My3DGen
+                        </div>
+                    </td>
+					<td style="padding:0 5 0 5;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+							<img style="height: 100%; width: auto;" src="../results/synthesis/barack/lora/0.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/barack/lora/1.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/barack/lora/2.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/barack/lora/3.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/barack/lora/4.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/barack/lora/5.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/barack/lora/7.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/barack/lora/8.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/barack/lora/9.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/synthesis/barack/lora/10.jpg"></img>
+					  </div>
+					</td>
+				</tr>
+
+                <!-- example -->
+				<tr style="text-align: center;">
+					<td colspan="5">
+					</td>
+				</tr>
+
+				
+			</tbody>
+		  </table>
+		</td>
+		</tr>
+	</tbody>
+</table>
+  
+
+</body>
+</html>

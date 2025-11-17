@@ -1,0 +1,616 @@
+<html>
+<link>
+<title>Image Enhancement</title>
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<style type="text/css">
+	l, body, #wrapper
+	{
+		background-color: #ffffff;
+		color: #000000;
+		font-family: Arial, Helvetica, sans-serif;
+		text-align: center;
+		margin: 0;
+		padding: 0;
+	}
+	
+	img
+	{
+		border: 0;
+	}
+	
+	td
+	{
+		text-align: center;
+		padding: 5px;
+	}
+	
+	.section
+	{
+		font-size: 40px;
+		font-weight: bold;
+		text-align: center;
+		margin-top: 10px;
+	}
+	
+	.subsection
+	{
+		font-size: 28px;
+		font-weight: bold;
+		text-align: center;
+		margin-top: 20px;
+	}
+	
+	.subsubsection
+	{
+		font-size: 20px;
+		font-weight: bold;
+		text-align: center;
+		margin-top: 20px;
+	}
+	
+	.navselected
+	{
+		color: #ff0000;
+		text-decoration: underline;
+		cursor: pointer;
+	}
+	
+	.navunselected
+	{
+		color: #4488ff;
+		text-decoration: underline;
+		cursor: pointer;
+	}
+
+	a:link {color: #4488ff; text-decoration: underline; }
+	a:active {color: #4488ff; text-decoration: underline; }
+	a:visited {color: #4488ff; text-decoration: underline; }
+	a:hover {color: #ff0000; text-decoration: none; }
+
+
+
+	.before,
+	.after {
+		margin: 0;
+	}
+
+	.before figcaption,
+	.after figcaption {
+		background: #fff;
+		border: 1px solid #c0c0c0;
+		border-radius: 12px;
+		color: #2e3452;
+		opacity: 0.8;
+		padding: 12px;
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		line-height: 100%;
+	}
+
+	.before figcaption {
+		left: 12px;
+	}
+
+	.after figcaption {
+		right: 12px;
+	}
+
+</style>
+<script
+	defer
+	src="../static/js/index.js"
+></script>
+<link
+	rel="stylesheet"
+	href="../static/css/styles.css"
+/>
+
+
+
+</head>
+<body>
+
+<center>
+
+
+<div class="section">
+    Image Enhancement
+</div>
+
+<div class="subsubsection" style="text-align: center; width: 75%;">
+	<p style="text-align: left;">
+	We show the original image in the first column, the degraded input image in the second column, and the restored images in the subsequent columns following the order of 
+    <span style="color: #ff0000;">
+        pretrained EG3D, full fine-tuning, My3DGen.
+    </span>
+	</p>
+</div>
+
+<table style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto; margin: 0 auto;">
+	<tbody>
+		<tr style="padding:0px">
+		<td style="padding:0px">
+        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+			<tbody>
+				<!-- example -->
+				<tr style="text-align: center;">
+					<td colspan="5">
+                        <div class="subsubsection" style="text-align: center;">
+                            Inpainting
+                        </div>
+                        <br>
+					</td>
+				</tr>
+				<tr>
+                    <td style="padding:0 5 0 5;vertical-align:middle">
+                        <div style="display: flex; align-items: center; height: 128px; margin: 0 auto;">
+                          <div style="height: 100%; display: flex; align-items: center; margin: 0 auto;">
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/inpainting_original/barack/test_0.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/inpainting_input/Barack/test_0.jpg"></img>
+                            <hr>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/inpainting_output/barack/pretrained/test_0.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/inpainting_output/barack/full/test_0.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/inpainting_output/barack/lora/test_0.jpg"></img>
+					  </div>
+					</td>
+				</tr>
+
+				<tr>
+                    <td style="padding:0 5 0 5;vertical-align:middle">
+                        <div style="display: flex; align-items: center; height: 128px; margin: 0 auto;">
+                          <div style="height: 100%; display: flex; align-items: center; margin: 0 auto;">
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/inpainting_original/barack/test_1.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/inpainting_input/Barack/test_1.jpg"></img>
+                            <hr>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/inpainting_output/barack/pretrained/test_1.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/inpainting_output/barack/full/test_1.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/inpainting_output/barack/lora/test_1.jpg"></img>
+					  </div>
+					</td>
+				</tr>
+
+				<tr>
+                    <td style="padding:0 5 0 5;vertical-align:middle">
+                        <div style="display: flex; align-items: center; height: 128px; margin: 0 auto;">
+                          <div style="height: 100%; display: flex; align-items: center; margin: 0 auto;">
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/inpainting_original/barack/test_2.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/inpainting_input/Barack/test_2.jpg"></img>
+                            <hr>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/inpainting_output/barack/pretrained/test_2.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/inpainting_output/barack/full/test_2.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/inpainting_output/barack/lora/test_2.jpg"></img>
+					  </div>
+					</td>
+				</tr>
+
+                <tr>
+                    <td style="padding:0 5 0 5;vertical-align:middle">
+                        <div style="display: flex; align-items: center; height: 128px; margin: 0 auto;">
+                          <div style="height: 100%; display: flex; align-items: center; margin: 0 auto;">
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/inpainting_original/barack/test_4.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/inpainting_input/Barack/test_4.jpg"></img>
+                            <hr>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/inpainting_output/barack/pretrained/test_4.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/inpainting_output/barack/full/test_4.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/inpainting_output/barack/lora/test_4.jpg"></img>
+                      </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td style="padding:0 5 0 5;vertical-align:middle">
+                        <div style="display: flex; align-items: center; height: 128px; margin: 0 auto;">
+                          <div style="height: 100%; display: flex; align-items: center; margin: 0 auto;">
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/inpainting_original/barack/test_5.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/inpainting_input/Barack/test_5.jpg"></img>
+                            <hr>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/inpainting_output/barack/pretrained/test_5.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/inpainting_output/barack/full/test_5.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/inpainting_output/barack/lora/test_5.jpg"></img>
+                      </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td style="padding:0 5 0 5;vertical-align:middle">
+                        <div style="display: flex; align-items: center; height: 128px; margin: 0 auto;">
+                          <div style="height: 100%; display: flex; align-items: center; margin: 0 auto;">
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/inpainting_original/barack/test_6.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/inpainting_input/Barack/test_6.jpg"></img>
+                            <hr>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/inpainting_output/barack/pretrained/test_6.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/inpainting_output/barack/full/test_6.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/inpainting_output/barack/lora/test_6.jpg"></img>
+                      </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td style="padding:0 5 0 5;vertical-align:middle">
+                        <div style="display: flex; align-items: center; height: 128px; margin: 0 auto;">
+                          <div style="height: 100%; display: flex; align-items: center; margin: 0 auto;">
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/inpainting_original/barack/test_7.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/inpainting_input/Barack/test_7.jpg"></img>
+                            <hr>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/inpainting_output/barack/pretrained/test_7.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/inpainting_output/barack/full/test_7.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/inpainting_output/barack/lora/test_7.jpg"></img>
+                      </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td style="padding:0 5 0 5;vertical-align:middle">
+                        <div style="display: flex; align-items: center; height: 128px; margin: 0 auto;">
+                          <div style="height: 100%; display: flex; align-items: center; margin: 0 auto;">
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/inpainting_original/barack/test_8.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/inpainting_input/Barack/test_8.jpg"></img>
+                            <hr>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/inpainting_output/barack/pretrained/test_8.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/inpainting_output/barack/full/test_8.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/inpainting_output/barack/lora/test_8.jpg"></img>
+                      </div>
+                    </td>
+                </tr>
+
+				<!-- example -->
+				<tr style="text-align: center;">
+					<td colspan="5">
+					</td>
+				</tr>
+                <tr>
+                    <td style="padding:0 5 0 5;vertical-align:middle">
+                        <div style="display: flex; align-items: center; height: 128px; margin: 0 auto;">
+                          <div style="height: 100%; display: flex; align-items: center; margin: 0 auto;">
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/inpainting_original/kamala/test_0.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/inpainting_input/Kamala/test_0.jpg"></img>
+                            <hr>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/inpainting_output/kamala/pretrained/test_0.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/inpainting_output/kamala/full/test_0.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/inpainting_output/kamala/lora/test_0.jpg"></img>
+                      </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding:0 5 0 5;vertical-align:middle">
+                        <div style="display: flex; align-items: center; height: 128px; margin: 0 auto;">
+                          <div style="height: 100%; display: flex; align-items: center; margin: 0 auto;">
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/inpainting_original/kamala/test_1.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/inpainting_input/Kamala/test_1.jpg"></img>
+                            <hr>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/inpainting_output/kamala/pretrained/test_1.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/inpainting_output/kamala/full/test_1.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/inpainting_output/kamala/lora/test_1.jpg"></img>
+                      </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding:0 5 0 5;vertical-align:middle">
+                        <div style="display: flex; align-items: center; height: 128px; margin: 0 auto;">
+                          <div style="height: 100%; display: flex; align-items: center; margin: 0 auto;">
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/inpainting_original/kamala/test_2.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/inpainting_input/Kamala/test_2.jpg"></img>
+                            <hr>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/inpainting_output/kamala/pretrained/test_2.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/inpainting_output/kamala/full/test_2.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/inpainting_output/kamala/lora/test_2.jpg"></img>
+                      </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding:0 5 0 5;vertical-align:middle">
+                        <div style="display: flex; align-items: center; height: 128px; margin: 0 auto;">
+                          <div style="height: 100%; display: flex; align-items: center; margin: 0 auto;">
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/inpainting_original/kamala/test_3.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/inpainting_input/Kamala/test_3.jpg"></img>
+                            <hr>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/inpainting_output/kamala/pretrained/test_3.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/inpainting_output/kamala/full/test_3.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/inpainting_output/kamala/lora/test_3.jpg"></img>
+                      </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding:0 5 0 5;vertical-align:middle">
+                        <div style="display: flex; align-items: center; height: 128px; margin: 0 auto;">
+                          <div style="height: 100%; display: flex; align-items: center; margin: 0 auto;">
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/inpainting_original/kamala/test_4.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/inpainting_input/Kamala/test_4.jpg"></img>
+                            <hr>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/inpainting_output/kamala/pretrained/test_4.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/inpainting_output/kamala/full/test_4.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/inpainting_output/kamala/lora/test_4.jpg"></img>
+                      </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding:0 5 0 5;vertical-align:middle">
+                        <div style="display: flex; align-items: center; height: 128px; margin: 0 auto;">
+                          <div style="height: 100%; display: flex; align-items: center; margin: 0 auto;">
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/inpainting_original/kamala/test_5.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/inpainting_input/Kamala/test_5.jpg"></img>
+                            <hr>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/inpainting_output/kamala/pretrained/test_5.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/inpainting_output/kamala/full/test_5.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/inpainting_output/kamala/lora/test_5.jpg"></img>
+                      </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding:0 5 0 5;vertical-align:middle">
+                        <div style="display: flex; align-items: center; height: 128px; margin: 0 auto;">
+                          <div style="height: 100%; display: flex; align-items: center; margin: 0 auto;">
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/inpainting_original/kamala/test_6.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/inpainting_input/Kamala/test_6.jpg"></img>
+                            <hr>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/inpainting_output/kamala/pretrained/test_6.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/inpainting_output/kamala/full/test_6.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/inpainting_output/kamala/lora/test_6.jpg"></img>
+                      </div>
+                    </td>
+                </tr>
+
+
+				<tr style="text-align: center;">
+					<td colspan="5">
+                        <div class="subsubsection" style="text-align: center;">
+                            Super-resolution
+                        </div>
+                        <br>
+					</td>
+				</tr>
+				<tr>
+                    <td style="padding:0 5 0 5;vertical-align:middle">
+                        <div style="display: flex; align-items: center; height: 128px; margin: 0 auto;">
+                          <div style="height: 100%; display: flex; align-items: center; margin: 0 auto;">
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/sr/scarlett/original/test_0.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/sr/scarlett/input/test_0.jpg"></img>
+                            <hr>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/sr/scarlett/pretrained/test_0.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/sr/scarlett/full/test_0.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/sr/scarlett/lora/test_0.jpg"></img>
+					  </div>
+					</td>
+				</tr>
+
+				<tr>
+                    <td style="padding:0 5 0 5;vertical-align:middle">
+                        <div style="display: flex; align-items: center; height: 128px; margin: 0 auto;">
+                          <div style="height: 100%; display: flex; align-items: center; margin: 0 auto;">
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/sr/scarlett/original/test_2.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/sr/scarlett/input/test_2.jpg"></img>
+                            <hr>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/sr/scarlett/pretrained/test_2.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/sr/scarlett/full/test_2.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/sr/scarlett/lora/test_2.jpg"></img>
+					  </div>
+					</td>
+				</tr>
+
+				<tr>
+                    <td style="padding:0 5 0 5;vertical-align:middle">
+                        <div style="display: flex; align-items: center; height: 128px; margin: 0 auto;">
+                          <div style="height: 100%; display: flex; align-items: center; margin: 0 auto;">
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/sr/scarlett/original/test_5.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/sr/scarlett/input/test_5.jpg"></img>
+                            <hr>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/sr/scarlett/pretrained/test_5.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/sr/scarlett/full/test_5.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/sr/scarlett/lora/test_5.jpg"></img>
+					  </div>
+					</td>
+				</tr>
+
+				<tr>
+                    <td style="padding:0 5 0 5;vertical-align:middle">
+                        <div style="display: flex; align-items: center; height: 128px; margin: 0 auto;">
+                          <div style="height: 100%; display: flex; align-items: center; margin: 0 auto;">
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/sr/scarlett/original/test_7.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/sr/scarlett/input/test_7.jpg"></img>
+                            <hr>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/sr/scarlett/pretrained/test_7.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/sr/scarlett/full/test_7.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/sr/scarlett/lora/test_7.jpg"></img>
+					  </div>
+					</td>
+				</tr>
+				<tr>
+                    <td style="padding:0 5 0 5;vertical-align:middle">
+                        <div style="display: flex; align-items: center; height: 128px; margin: 0 auto;">
+                          <div style="height: 100%; display: flex; align-items: center; margin: 0 auto;">
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/sr/scarlett/original/test_9.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/sr/scarlett/input/test_9.jpg"></img>
+                            <hr>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/sr/scarlett/pretrained/test_9.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/sr/scarlett/full/test_9.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/sr/scarlett/lora/test_9.jpg"></img>
+					  </div>
+					</td>
+				</tr>
+				<tr>
+                    <td style="padding:0 5 0 5;vertical-align:middle">
+                        <div style="display: flex; align-items: center; height: 128px; margin: 0 auto;">
+                          <div style="height: 100%; display: flex; align-items: center; margin: 0 auto;">
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/sr/scarlett/original/test_10.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/sr/scarlett/input/test_10.jpg"></img>
+                            <hr>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/sr/scarlett/pretrained/test_10.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/sr/scarlett/full/test_10.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/sr/scarlett/lora/test_10.jpg"></img>
+					  </div>
+					</td>
+				</tr>
+
+                <!-- example -->
+				<tr style="text-align: center;">
+					<td colspan="5">
+					</td>
+				</tr>
+				<tr>
+                    <td style="padding:0 5 0 5;vertical-align:middle">
+                        <div style="display: flex; align-items: center; height: 128px; margin: 0 auto;">
+                          <div style="height: 100%; display: flex; align-items: center; margin: 0 auto;">
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/sr/dwayne/original/test_0.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/sr/dwayne/input/test_0.jpg"></img>
+                            <hr>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/sr/dwayne/pretrained/test_0.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/sr/dwayne/full/test_0.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/sr/dwayne/lora/test_0.jpg"></img>
+					  </div>
+					</td>
+				</tr>
+				<tr>
+                    <td style="padding:0 5 0 5;vertical-align:middle">
+                        <div style="display: flex; align-items: center; height: 128px; margin: 0 auto;">
+                          <div style="height: 100%; display: flex; align-items: center; margin: 0 auto;">
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/sr/dwayne/original/test_2.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/sr/dwayne/input/test_2.jpg"></img>
+                            <hr>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/sr/dwayne/pretrained/test_2.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/sr/dwayne/full/test_2.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/sr/dwayne/lora/test_2.jpg"></img>
+					  </div>
+					</td>
+				</tr>
+				<tr>
+                    <td style="padding:0 5 0 5;vertical-align:middle">
+                        <div style="display: flex; align-items: center; height: 128px; margin: 0 auto;">
+                          <div style="height: 100%; display: flex; align-items: center; margin: 0 auto;">
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/sr/dwayne/original/test_3.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/sr/dwayne/input/test_3.jpg"></img>
+                            <hr>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/sr/dwayne/pretrained/test_3.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/sr/dwayne/full/test_3.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/sr/dwayne/lora/test_3.jpg"></img>
+					  </div>
+					</td>
+				</tr>
+				<tr>
+                    <td style="padding:0 5 0 5;vertical-align:middle">
+                        <div style="display: flex; align-items: center; height: 128px; margin: 0 auto;">
+                          <div style="height: 100%; display: flex; align-items: center; margin: 0 auto;">
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/sr/dwayne/original/test_6.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/sr/dwayne/input/test_6.jpg"></img>
+                            <hr>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/sr/dwayne/pretrained/test_6.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/sr/dwayne/full/test_6.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/sr/dwayne/lora/test_6.jpg"></img>
+					  </div>
+					</td>
+				</tr>
+				<tr>
+                    <td style="padding:0 5 0 5;vertical-align:middle">
+                        <div style="display: flex; align-items: center; height: 128px; margin: 0 auto;">
+                          <div style="height: 100%; display: flex; align-items: center; margin: 0 auto;">
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/sr/dwayne/original/test_7.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/sr/dwayne/input/test_7.jpg"></img>
+                            <hr>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/sr/dwayne/pretrained/test_7.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/sr/dwayne/full/test_7.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/sr/dwayne/lora/test_7.jpg"></img>
+					  </div>
+					</td>
+				</tr>
+
+
+
+                <!-- example -->
+				<tr style="text-align: center;">
+					<td colspan="5">
+					</td>
+				</tr>
+				<tr>
+                    <td style="padding:0 5 0 5;vertical-align:middle">
+                        <div style="display: flex; align-items: center; height: 128px; margin: 0 auto;">
+                          <div style="height: 100%; display: flex; align-items: center; margin: 0 auto;">
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/sr/joe/original/test_0.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/sr/joe/input/test_0.jpg"></img>
+                            <hr>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/sr/joe/pretrained/test_0.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/sr/joe/full/test_0.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/sr/joe/lora/test_0.jpg"></img>
+					  </div>
+					</td>
+				</tr>
+				<tr>
+                    <td style="padding:0 5 0 5;vertical-align:middle">
+                        <div style="display: flex; align-items: center; height: 128px; margin: 0 auto;">
+                          <div style="height: 100%; display: flex; align-items: center; margin: 0 auto;">
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/sr/joe/original/test_1.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/sr/joe/input/test_1.jpg"></img>
+                            <hr>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/sr/joe/pretrained/test_1.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/sr/joe/full/test_1.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/sr/joe/lora/test_1.jpg"></img>
+					  </div>
+					</td>
+				</tr>
+				<tr>
+                    <td style="padding:0 5 0 5;vertical-align:middle">
+                        <div style="display: flex; align-items: center; height: 128px; margin: 0 auto;">
+                          <div style="height: 100%; display: flex; align-items: center; margin: 0 auto;">
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/sr/joe/original/test_3.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/sr/joe/input/test_3.jpg"></img>
+                            <hr>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/sr/joe/pretrained/test_3.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/sr/joe/full/test_3.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/sr/joe/lora/test_3.jpg"></img>
+					  </div>
+					</td>
+				</tr>
+				<tr>
+                    <td style="padding:0 5 0 5;vertical-align:middle">
+                        <div style="display: flex; align-items: center; height: 128px; margin: 0 auto;">
+                          <div style="height: 100%; display: flex; align-items: center; margin: 0 auto;">
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/sr/joe/original/test_4.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/sr/joe/input/test_4.jpg"></img>
+                            <hr>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/sr/joe/pretrained/test_4.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/sr/joe/full/test_4.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/sr/joe/lora/test_4.jpg"></img>
+					  </div>
+					</td>
+				</tr>
+				<tr>
+                    <td style="padding:0 5 0 5;vertical-align:middle">
+                        <div style="display: flex; align-items: center; height: 128px; margin: 0 auto;">
+                          <div style="height: 100%; display: flex; align-items: center; margin: 0 auto;">
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/sr/joe/original/test_5.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/sr/joe/input/test_5.jpg"></img>
+                            <hr>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/sr/joe/pretrained/test_5.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/sr/joe/full/test_5.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/sr/joe/lora/test_5.jpg"></img>
+					  </div>
+					</td>
+				</tr>
+				<tr>
+                    <td style="padding:0 5 0 5;vertical-align:middle">
+                        <div style="display: flex; align-items: center; height: 128px; margin: 0 auto;">
+                          <div style="height: 100%; display: flex; align-items: center; margin: 0 auto;">
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/sr/joe/original/test_7.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/sr/joe/input/test_7.jpg"></img>
+                            <hr>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/sr/joe/pretrained/test_7.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/sr/joe/full/test_7.jpg"></img>
+                            <img style="height: 100%; width: auto;" src="../results/enhancement/sr/joe/lora/test_7.jpg"></img>
+					  </div>
+					</td>
+				</tr>          
+
+
+				<tr style="text-align: center;">
+					<td colspan="5">
+					</td>
+				</tr>
+			</tbody>
+		  </table>
+		</td>
+		</tr>
+	</tbody>
+</table>
+  
+
+</body>
+</html>

@@ -1,0 +1,762 @@
+<html>
+<link>
+<title>Image Interpolation</title>
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<style type="text/css">
+	l, body, #wrapper
+	{
+		background-color: #ffffff;
+		color: #000000;
+		font-family: Arial, Helvetica, sans-serif;
+		text-align: center;
+		margin: 0;
+		padding: 0;
+	}
+	
+	img
+	{
+		border: 0;
+	}
+	
+	td
+	{
+		text-align: center;
+		padding: 5px;
+	}
+	
+	.section
+	{
+		font-size: 40px;
+		font-weight: bold;
+		text-align: center;
+		margin-top: 10px;
+	}
+	
+	.subsection
+	{
+		font-size: 28px;
+		font-weight: bold;
+		text-align: center;
+		margin-top: 20px;
+	}
+	
+	.subsubsection
+	{
+		font-size: 20px;
+		font-weight: bold;
+		text-align: center;
+		margin-top: 20px;
+	}
+	
+	.navselected
+	{
+		color: #ff0000;
+		text-decoration: underline;
+		cursor: pointer;
+	}
+	
+	.navunselected
+	{
+		color: #4488ff;
+		text-decoration: underline;
+		cursor: pointer;
+	}
+
+	a:link {color: #4488ff; text-decoration: underline; }
+	a:active {color: #4488ff; text-decoration: underline; }
+	a:visited {color: #4488ff; text-decoration: underline; }
+	a:hover {color: #ff0000; text-decoration: none; }
+
+
+
+	.before,
+	.after {
+		margin: 0;
+	}
+
+	.before figcaption,
+	.after figcaption {
+		background: #fff;
+		border: 1px solid #c0c0c0;
+		border-radius: 12px;
+		color: #2e3452;
+		opacity: 0.8;
+		padding: 12px;
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		line-height: 100%;
+	}
+
+	.before figcaption {
+		left: 12px;
+	}
+
+	.after figcaption {
+		right: 12px;
+	}
+
+</style>
+<script
+	defer
+	src="../static/js/index.js"
+></script>
+<link
+	rel="stylesheet"
+	href="../static/css/styles.css"
+/>
+
+
+
+</head>
+<body>
+
+<center>
+
+
+<div class="section">
+    Image Interpolation
+</div>
+
+<div class="subsubsection" style="text-align: center; width: 75%;">
+	<p style="text-align: left;">
+	We show the results of interpolation between anchor pairs. The anchor pairs are shown in the first and last columns. The middle column shows the interpolation results using the interpolated latent code and camera pose.
+	</p>
+	<p>
+	We compare the results between the pretrained model, the full fine-tuned model, and our My3DGen model.
+	</p>
+</div>
+
+<br>
+<br>
+
+<table style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+	<tbody>
+		<tr style="padding:0px">
+		<td style="padding:0px">
+		  <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+			<tbody>
+				<tr>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+						Pretrained
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+							<img style="height: 100%; width: auto;" src="../results/interpolation/dwayne/pretrained/seed_0/46.jpg"></img>
+						</div>
+					  </div>
+					</td>
+					<td style="padding:0 5 0 5;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+							<img style="height: 100%; width: auto;" src="../results/interpolation/dwayne/pretrained/seed_0/pretrained.jpg"></img>
+						</div>
+					  </div>
+					<td style="padding:0;vertical-align:middle">
+						<div style="display: flex; align-items: center; height: 128px;">
+						  <div style="height: 100%; display: flex; align-items: center;">
+							  <img style="height: 100%; width: auto;" src="../results/interpolation/dwayne/pretrained/seed_0/1.jpg"></img>
+						  </div>
+						</div>
+					  </td>
+				</tr>
+				<tr>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+						Full Fine-Tuning
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+							<img style="height: 100%; width: auto;" src="../results/interpolation/dwayne/pretrained/seed_0/46.jpg"></img>
+						</div>
+					  </div>
+					</td>
+					<td style="padding:0 5 0 5;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+							<img style="height: 100%; width: auto;" src="../results/interpolation/dwayne/full/seed_0/full.jpg"></img>
+						</div>
+					  </div>
+					<td style="padding:0;vertical-align:middle">
+						<div style="display: flex; align-items: center; height: 128px;">
+						  <div style="height: 100%; display: flex; align-items: center;">
+							  <img style="height: 100%; width: auto;" src="../results/interpolation/dwayne/pretrained/seed_0/1.jpg"></img>
+						  </div>
+						</div>
+					  </td>
+				</tr>
+				<tr>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+						My3DGen
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+							<img style="height: 100%; width: auto;" src="../results/interpolation/dwayne/pretrained/seed_0/46.jpg"></img>
+						</div>
+					  </div>
+					</td>
+					<td style="padding:0 5 0 5;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+							<img style="height: 100%; width: auto;" src="../results/interpolation/dwayne/lora/seed_0/lora.jpg"></img>
+						</div>
+					  </div>
+					<td style="padding:0;vertical-align:middle">
+						<div style="display: flex; align-items: center; height: 128px;">
+						  <div style="height: 100%; display: flex; align-items: center;">
+							  <img style="height: 100%; width: auto;" src="../results/interpolation/dwayne/pretrained/seed_0/1.jpg"></img>
+						  </div>
+						</div>
+					  </td>
+				</tr>
+				<!-- videos -->
+				<tr style="text-align: center;">
+					<td colspan="5">
+						<p>
+						Considering the file size, we present only a single set of videos here for illustrative purposes.
+						</p>
+					</td>
+				</tr>
+				<tr>
+					<td style="padding:0;vertical-align:middle">
+						<div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+						  Pretrained
+						</div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+						<div style="display: flex; align-items: center; height: 128px;">
+						  <div style="height: 100%; display: flex; align-items: center;">
+							  <img style="height: 100%; width: auto;" src="../results/interpolation/dwayne/pretrained/seed_0/46.jpg"></img>
+						  </div>
+						</div>
+					  </td>
+					<td style="padding: 0 5 0 5; vertical-align: middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<video class="sync-video" width="128" height="128" autoplay loop muted playsinline>
+						  <source src="../results/interpolation/dwayne/pretrained/seed_0/ffhqrebalanced512-128-w_0.mp4" type="video/mp4">
+						</video>
+						<video class="sync-video" width="128" height="128" autoplay loop muted playsinline>
+						  <source src="../results/interpolation/dwayne/pretrained/seed_0/ffhqrebalanced512-128-w_3.mp4" type="video/mp4">
+						</video>
+						<video class="sync-video" width="128" height="128" autoplay loop muted playsinline>
+							<source src="../results/interpolation/dwayne/pretrained/seed_0/ffhqrebalanced512-128-w_5.mp4" type="video/mp4">
+						</video>
+						<video class="sync-video" width="128" height="128" autoplay loop muted playsinline>
+							<source src="../results/interpolation/dwayne/pretrained/seed_0/ffhqrebalanced512-128-w_7.mp4" type="video/mp4">
+						</video>
+						<video class="sync-video" width="128" height="128" autoplay loop muted playsinline>
+							<source src="../results/interpolation/dwayne/pretrained/seed_0/ffhqrebalanced512-128-w_10.mp4" type="video/mp4">
+						</video>
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+						<div style="display: flex; align-items: center; height: 128px;">
+						  <div style="height: 100%; display: flex; align-items: center;">
+							  <img style="height: 100%; width: auto;" src="../results/interpolation/dwayne/pretrained/seed_0/1.jpg"></img>
+						  </div>
+						</div>
+					  </td>
+				</tr>
+				<tr>
+					<td style="padding:0;vertical-align:middle">
+						<div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+						  Full Fine-Tuning
+						</div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+						<div style="display: flex; align-items: center; height: 128px;">
+						  <div style="height: 100%; display: flex; align-items: center;">
+							  <img style="height: 100%; width: auto;" src="../results/interpolation/dwayne/pretrained/seed_0/46.jpg"></img>
+						  </div>
+						</div>
+					  </td>
+					<td style="padding: 0 5 0 5; vertical-align: middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<video class="sync-video" width="128" height="128" autoplay loop muted playsinline>
+						  <source src="../results/interpolation/dwayne/full/seed_0/network-snapshot-000500-w_0.mp4" type="video/mp4">
+						</video>
+						<video class="sync-video" width="128" height="128" autoplay loop muted playsinline>
+						  <source src="../results/interpolation/dwayne/full/seed_0/network-snapshot-000500-w_3.mp4" type="video/mp4">
+						</video>
+						<video class="sync-video" width="128" height="128" autoplay loop muted playsinline>
+							<source src="../results/interpolation/dwayne/full/seed_0/network-snapshot-000500-w_5.mp4" type="video/mp4">
+						</video>
+						<video class="sync-video" width="128" height="128" autoplay loop muted playsinline>
+							<source src="../results/interpolation/dwayne/full/seed_0/network-snapshot-000500-w_7.mp4" type="video/mp4">
+						</video>
+						<video class="sync-video" width="128" height="128" autoplay loop muted playsinline>
+							<source src="../results/interpolation/dwayne/full/seed_0/network-snapshot-000500-w_10.mp4" type="video/mp4">
+						</video>
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+						<div style="display: flex; align-items: center; height: 128px;">
+						  <div style="height: 100%; display: flex; align-items: center;">
+							  <img style="height: 100%; width: auto;" src="../results/interpolation/dwayne/pretrained/seed_0/1.jpg"></img>
+						  </div>
+						</div>
+					  </td>
+				</tr>
+				<tr>
+					<td style="padding:0;vertical-align:middle">
+						<div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+						  My3DGen
+						</div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+						<div style="display: flex; align-items: center; height: 128px;">
+						  <div style="height: 100%; display: flex; align-items: center;">
+							  <img style="height: 100%; width: auto;" src="../results/interpolation/dwayne/pretrained/seed_0/46.jpg"></img>
+						  </div>
+						</div>
+					  </td>
+					<td style="padding: 0 5 0 5; vertical-align: middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<video class="sync-video" width="128" height="128" autoplay loop muted playsinline>
+						  <source src="../results/interpolation/dwayne/lora/seed_0/network-snapshot-000500-w_0.mp4" type="video/mp4">
+						</video>
+						<video class="sync-video" width="128" height="128" autoplay loop muted playsinline>
+						  <source src="../results/interpolation/dwayne/lora/seed_0/network-snapshot-000500-w_3.mp4" type="video/mp4">
+						</video>
+						<video class="sync-video" width="128" height="128" autoplay loop muted playsinline>
+							<source src="../results/interpolation/dwayne/lora/seed_0/network-snapshot-000500-w_5.mp4" type="video/mp4">
+						</video>
+						<video class="sync-video" width="128" height="128" autoplay loop muted playsinline>
+							<source src="../results/interpolation/dwayne/lora/seed_0/network-snapshot-000500-w_7.mp4" type="video/mp4">
+						</video>
+						<video class="sync-video" width="128" height="128" autoplay loop muted playsinline>
+							<source src="../results/interpolation/dwayne/lora/seed_0/network-snapshot-000500-w_10.mp4" type="video/mp4">
+						</video>
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+						<div style="display: flex; align-items: center; height: 128px;">
+						  <div style="height: 100%; display: flex; align-items: center;">
+							  <img style="height: 100%; width: auto;" src="../results/interpolation/dwayne/pretrained/seed_0/1.jpg"></img>
+						  </div>
+						</div>
+					  </td>
+				</tr>
+
+
+				<!-- example -->
+				<!-- make some gap here -->
+				<tr style="text-align: center;">
+					<td colspan="5">
+						<p>
+						Other image examples
+						</p>
+					</td>
+				</tr>
+				<tr>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+						Pretrained
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+							<img style="height: 100%; width: auto;" src="../results/interpolation/barack/pretrained/seed_9/20.jpg"></img>
+						</div>
+					  </div>
+					</td>
+					<td style="padding:0 5 0 5;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+							<img style="height: 100%; width: auto;" src="../results/interpolation/barack/pretrained/seed_9/ffhqrebalanced512-128-w_0.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/interpolation/barack/pretrained/seed_9/ffhqrebalanced512-128-w_3.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/interpolation/barack/pretrained/seed_9/ffhqrebalanced512-128-w_5.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/interpolation/barack/pretrained/seed_9/ffhqrebalanced512-128-w_7.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/interpolation/barack/pretrained/seed_9/ffhqrebalanced512-128-w_10.jpg"></img>
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+						<div style="display: flex; align-items: center; height: 128px;">
+						  <div style="height: 100%; display: flex; align-items: center;">
+							  <img style="height: 100%; width: auto;" src="../results/interpolation/barack/pretrained/seed_9/28.jpg"></img>
+						  </div>
+						</div>
+					  </td>
+				</tr>
+				<tr>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+						Full Fine-Tuning
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+							<img style="height: 100%; width: auto;" src="../results/interpolation/barack/pretrained/seed_9/20.jpg"></img>
+						</div>
+					  </div>
+					</td>
+					<td style="padding:0 5 0 5;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+							<img style="height: 100%; width: auto;" src="../results/interpolation/barack/full/seed_9/network-snapshot-000500-w_0.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/interpolation/barack/full/seed_9/network-snapshot-000500-w_3.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/interpolation/barack/full/seed_9/network-snapshot-000500-w_5.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/interpolation/barack/full/seed_9/network-snapshot-000500-w_7.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/interpolation/barack/full/seed_9/network-snapshot-000500-w_10.jpg"></img>
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+						<div style="display: flex; align-items: center; height: 128px;">
+						  <div style="height: 100%; display: flex; align-items: center;">
+							  <img style="height: 100%; width: auto;" src="../results/interpolation/barack/pretrained/seed_9/28.jpg"></img>
+						  </div>
+						</div>
+					  </td>
+				</tr>
+				<tr>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+						My3DGen
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+							<img style="height: 100%; width: auto;" src="../results/interpolation/barack/pretrained/seed_9/20.jpg"></img>
+						</div>
+					  </div>
+					</td>
+					<td style="padding:0 5 0 5;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+							<img style="height: 100%; width: auto;" src="../results/interpolation/barack/lora/seed_9/network-snapshot-000500-w_0.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/interpolation/barack/lora/seed_9/network-snapshot-000500-w_3.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/interpolation/barack/lora/seed_9/network-snapshot-000500-w_5.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/interpolation/barack/lora/seed_9/network-snapshot-000500-w_7.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/interpolation/barack/lora/seed_9/network-snapshot-000500-w_10.jpg"></img>
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+						<div style="display: flex; align-items: center; height: 128px;">
+						  <div style="height: 100%; display: flex; align-items: center;">
+							  <img style="height: 100%; width: auto;" src="../results/interpolation/barack/pretrained/seed_9/28.jpg"></img>
+						  </div>
+						</div>
+					  </td>
+				</tr>
+
+
+				<!-- example -->
+				<!-- make some gap here -->
+				<tr>
+					<td style="padding:5;vertical-align:middle">
+					</td>
+				</tr>
+				<tr>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+						Pretrained
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+							<img style="height: 100%; width: auto;" src="../results/interpolation/scarlett/pretrained/seed_0/46.jpg"></img>
+						</div>
+					  </div>
+					</td>
+					<td style="padding:0 5 0 5;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+							<img style="height: 100%; width: auto;" src="../results/interpolation/scarlett/pretrained/seed_0/pretrained.jpg"></img>
+						</div>
+					  </div>
+					  </td>
+					<td style="padding:0;vertical-align:middle">
+						<div style="display: flex; align-items: center; height: 128px;">
+						  <div style="height: 100%; display: flex; align-items: center;">
+							  <img style="height: 100%; width: auto;" src="../results/interpolation/scarlett/pretrained/seed_0/1.jpg"></img>
+						  </div>
+						</div>
+					  </td>
+				</tr>
+				<tr>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+						Full Fine-Tuning
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+							<img style="height: 100%; width: auto;" src="../results/interpolation/scarlett/pretrained/seed_0/46.jpg"></img>
+						</div>
+					  </div>
+					</td>
+					<td style="padding:0 5 0 5;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+							<img style="height: 100%; width: auto;" src="../results/interpolation/scarlett/full/seed_0/full.jpg"></img>
+						</div>
+					  </div>
+					  </td>
+					<td style="padding:0;vertical-align:middle">
+						<div style="display: flex; align-items: center; height: 128px;">
+						  <div style="height: 100%; display: flex; align-items: center;">
+							  <img style="height: 100%; width: auto;" src="../results/interpolation/scarlett/pretrained/seed_0/1.jpg"></img>
+						  </div>
+						</div>
+					  </td>
+				</tr>
+				<tr>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+						My3DGen
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+							<img style="height: 100%; width: auto;" src="../results/interpolation/scarlett/pretrained/seed_0/46.jpg"></img>
+						</div>
+					  </div>
+					</td>
+					<td style="padding:0 5 0 5;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+							<img style="height: 100%; width: auto;" src="../results/interpolation/scarlett/lora/seed_0/lora.jpg"></img>
+						</div>
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+						<div style="display: flex; align-items: center; height: 128px;">
+						  <div style="height: 100%; display: flex; align-items: center;">
+							  <img style="height: 100%; width: auto;" src="../results/interpolation/scarlett/pretrained/seed_0/1.jpg"></img>
+						  </div>
+						</div>
+					  </td>
+				</tr>
+
+
+
+
+				<!-- example -->
+				<tr>
+					<td style="padding:5;vertical-align:middle">
+					</td>
+				</tr>
+				<tr>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+						Pretrained
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+							<img style="height: 100%; width: auto;" src="../results/interpolation/oprah/pretrained/seed_4/35.jpg"></img>
+						</div>
+					  </div>
+					</td>
+					<td style="padding:0 5 0 5;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+							<img style="height: 100%; width: auto;" src="../results/interpolation/oprah/pretrained/seed_4/ffhqrebalanced512-128-w_0.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/interpolation/oprah/pretrained/seed_4/ffhqrebalanced512-128-w_3.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/interpolation/oprah/pretrained/seed_4/ffhqrebalanced512-128-w_5.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/interpolation/oprah/pretrained/seed_4/ffhqrebalanced512-128-w_7.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/interpolation/oprah/pretrained/seed_4/ffhqrebalanced512-128-w_10.jpg"></img>
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+						<div style="display: flex; align-items: center; height: 128px;">
+						  <div style="height: 100%; display: flex; align-items: center;">
+							  <img style="height: 100%; width: auto;" src="../results/interpolation/oprah/pretrained/seed_4/25.jpg"></img>
+						  </div>
+						</div>
+					  </td>
+				</tr>
+				<tr>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+						Full Fine-Tuning
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+							<img style="height: 100%; width: auto;" src="../results/interpolation/oprah/pretrained/seed_4/35.jpg"></img>
+						</div>
+					  </div>
+					</td>
+					<td style="padding:0 5 0 5;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+							<img style="height: 100%; width: auto;" src="../results/interpolation/oprah/full/seed_4/network-snapshot-000500-w_0.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/interpolation/oprah/full/seed_4/network-snapshot-000500-w_3.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/interpolation/oprah/full/seed_4/network-snapshot-000500-w_5.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/interpolation/oprah/full/seed_4/network-snapshot-000500-w_7.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/interpolation/oprah/full/seed_4/network-snapshot-000500-w_10.jpg"></img>
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+						<div style="display: flex; align-items: center; height: 128px;">
+						  <div style="height: 100%; display: flex; align-items: center;">
+							  <img style="height: 100%; width: auto;" src="../results/interpolation/oprah/pretrained/seed_4/25.jpg"></img>
+						  </div>
+						</div>
+					  </td>
+				</tr>
+				<tr>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+						My3DGen
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+							<img style="height: 100%; width: auto;" src="../results/interpolation/oprah/pretrained/seed_4/35.jpg"></img>
+						</div>
+					  </div>
+					</td>
+					<td style="padding:0 5 0 5;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+							<img style="height: 100%; width: auto;" src="../results/interpolation/oprah/lora/seed_4/network-snapshot-000500-w_0.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/interpolation/oprah/lora/seed_4/network-snapshot-000500-w_3.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/interpolation/oprah/lora/seed_4/network-snapshot-000500-w_5.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/interpolation/oprah/lora/seed_4/network-snapshot-000500-w_7.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/interpolation/oprah/lora/seed_4/network-snapshot-000500-w_10.jpg"></img>
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+						<div style="display: flex; align-items: center; height: 128px;">
+						  <div style="height: 100%; display: flex; align-items: center;">
+							  <img style="height: 100%; width: auto;" src="../results/interpolation/oprah/pretrained/seed_4/25.jpg"></img>
+						  </div>
+						</div>
+					  </td>
+				</tr>
+
+				<!-- example -->
+				<!-- make some gap here -->
+				<tr>
+					<td style="padding:5;vertical-align:middle">
+					</td>
+				</tr>
+				<tr>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+						Pretrained
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+							<img style="height: 100%; width: auto;" src="../results/interpolation/joe/pretrained/seed_9/20.jpg"></img>
+						</div>
+					  </div>
+					</td>
+					<td style="padding:0 5 0 5;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+							<img style="height: 100%; width: auto;" src="../results/interpolation/joe/pretrained/seed_9/ffhqrebalanced512-128-w_0.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/interpolation/joe/pretrained/seed_9/ffhqrebalanced512-128-w_3.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/interpolation/joe/pretrained/seed_9/ffhqrebalanced512-128-w_5.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/interpolation/joe/pretrained/seed_9/ffhqrebalanced512-128-w_7.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/interpolation/joe/pretrained/seed_9/ffhqrebalanced512-128-w_10.jpg"></img>
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+						<div style="display: flex; align-items: center; height: 128px;">
+						  <div style="height: 100%; display: flex; align-items: center;">
+							  <img style="height: 100%; width: auto;" src="../results/interpolation/joe/pretrained/seed_9/28.jpg"></img>
+						  </div>
+						</div>
+					  </td>
+				</tr>
+
+				<tr>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+						Full Fine-Tuning
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+							<img style="height: 100%; width: auto;" src="../results/interpolation/joe/pretrained/seed_9/20.jpg"></img>
+						</div>
+					  </div>
+					</td>
+					<td style="padding:0 5 0 5;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+							<img style="height: 100%; width: auto;" src="../results/interpolation/joe/full/seed_9/network-snapshot-000500-w_0.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/interpolation/joe/full/seed_9/network-snapshot-000500-w_3.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/interpolation/joe/full/seed_9/network-snapshot-000500-w_5.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/interpolation/joe/full/seed_9/network-snapshot-000500-w_7.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/interpolation/joe/full/seed_9/network-snapshot-000500-w_10.jpg"></img>
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+						<div style="display: flex; align-items: center; height: 128px;">
+						  <div style="height: 100%; display: flex; align-items: center;">
+							  <img style="height: 100%; width: auto;" src="../results/interpolation/joe/pretrained/seed_9/28.jpg"></img>
+						  </div>
+						</div>
+					  </td>
+				</tr>
+
+				<tr>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="transform: rotate(270deg); white-space: nowrap; margin-right: 0px;">
+						My3DGen
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+							<img style="height: 100%; width: auto;" src="../results/interpolation/joe/pretrained/seed_9/20.jpg"></img>
+						</div>
+					  </div>
+					</td>
+					<td style="padding:0 5 0 5;vertical-align:middle">
+					  <div style="display: flex; align-items: center; height: 128px;">
+						<div style="height: 100%; display: flex; align-items: center;">
+							<img style="height: 100%; width: auto;" src="../results/interpolation/joe/lora/seed_9/network-snapshot-000500-w_0.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/interpolation/joe/lora/seed_9/network-snapshot-000500-w_3.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/interpolation/joe/lora/seed_9/network-snapshot-000500-w_5.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/interpolation/joe/lora/seed_9/network-snapshot-000500-w_7.jpg"></img>
+							<img style="height: 100%; width: auto;" src="../results/interpolation/joe/lora/seed_9/network-snapshot-000500-w_10.jpg"></img>
+					  </div>
+					</td>
+					<td style="padding:0;vertical-align:middle">
+						<div style="display: flex; align-items: center; height: 128px;">
+						  <div style="height: 100%; display: flex; align-items: center;">
+							  <img style="height: 100%; width: auto;" src="../results/interpolation/joe/pretrained/seed_9/28.jpg"></img>
+						  </div>
+						</div>
+					  </td>
+				</tr>
+
+				<tr>
+					<td style="padding:5;vertical-align:middle">
+					</td>
+				</tr>
+			</tbody>
+		  </table>
+		</td>
+		</tr>
+	</tbody>
+</table>
+
+
+</body>
+</html>

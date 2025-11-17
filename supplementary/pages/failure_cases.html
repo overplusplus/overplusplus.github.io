@@ -1,0 +1,215 @@
+<html>
+<link>
+<title>Failure Cases</title>
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<style type="text/css">
+	l, body, #wrapper
+	{
+		background-color: #ffffff;
+		color: #000000;
+		font-family: Arial, Helvetica, sans-serif;
+		text-align: center;
+		margin: 0;
+		padding: 0;
+	}
+	
+	img
+	{
+		border: 0;
+	}
+	
+	td
+	{
+		text-align: center;
+		padding: 5px;
+	}
+	
+	.section
+	{
+		font-size: 40px;
+		font-weight: bold;
+		text-align: center;
+		margin-top: 10px;
+	}
+	
+	.subsection
+	{
+		font-size: 28px;
+		font-weight: bold;
+		text-align: center;
+		margin-top: 20px;
+	}
+	
+	.subsubsection
+	{
+		font-size: 20px;
+		font-weight: bold;
+		text-align: center;
+		margin-top: 20px;
+	}
+	
+	.navselected
+	{
+		color: #ff0000;
+		text-decoration: underline;
+		cursor: pointer;
+	}
+	
+	.navunselected
+	{
+		color: #4488ff;
+		text-decoration: underline;
+		cursor: pointer;
+	}
+
+	a:link {color: #4488ff; text-decoration: underline; }
+	a:active {color: #4488ff; text-decoration: underline; }
+	a:visited {color: #4488ff; text-decoration: underline; }
+	a:hover {color: #ff0000; text-decoration: none; }
+
+
+
+	.before,
+	.after {
+		margin: 0;
+	}
+
+	.before figcaption,
+	.after figcaption {
+		background: #fff;
+		border: 1px solid #c0c0c0;
+		border-radius: 12px;
+		color: #2e3452;
+		opacity: 0.8;
+		padding: 12px;
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		line-height: 100%;
+	}
+
+	.before figcaption {
+		left: 12px;
+	}
+
+	.after figcaption {
+		right: 12px;
+	}
+
+</style>
+<script
+	defer
+	src="../static/js/index.js"
+></script>
+<link
+	rel="stylesheet"
+	href="../static/css/styles.css"
+/>
+
+
+
+</head>
+<body>
+
+<center>
+
+
+<div class="section">
+    Failure Cases
+</div>
+
+<div class="subsubsection" style="text-align: center; width: 75%;">
+	<p style="text-align: left;">
+	We show failed inversion results where My3DGen is unable to reconstruct non-face objects (e.g. hands, hats, and microphones, etc.). We show the input image on the left followed by novel views output.
+	</p>
+	<!-- <p>
+	We compare the results of our method with the pretrained method and the full fine-tuning method.
+	</p> -->
+</div>
+
+<br>
+<br>
+
+<table style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+	<tbody>
+		<tr style="padding:0px">
+		<td style="padding:0px">
+		  <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+			<tbody>
+				<!-- example -->
+
+				<tr>
+					<td style="padding: 0 5px; text-align: center; vertical-align: middle;">
+						<img style="max-height: 128px; width: auto; display: inline-block;" src="../results/failures/barack/interpolate_video_50_network-snapshot-000500_image_0.371.jpg">
+					</td>
+				</tr>
+				<tr>
+					<td style="padding: 0 5px; text-align: center; vertical-align: middle;">
+						<img style="max-height: 128px; width: auto; display: inline-block;" src="../results/failures/barack/interpolate_video_52_network-snapshot-000500_image_0.403.jpg">
+					</td>
+				</tr>
+				<tr>
+					<td style="padding: 0 5px; text-align: center; vertical-align: middle;">
+						<img style="max-height: 128px; width: auto; display: inline-block;" src="../results/failures/barack/interpolate_video_53_network-snapshot-000500_image_0.404.jpg">
+					</td>
+				</tr>								
+
+                <!-- example -->
+				<tr style="text-align: center;">
+					<td colspan="5">
+					</td>
+				</tr>	
+				<tr>
+					<td style="padding: 0 5px; text-align: center; vertical-align: middle;">
+						<img style="max-height: 128px; width: auto; display: inline-block;" src="../results/failures/michelle/interpolate_video_test_0_network-snapshot-000500_image_0.395.jpg">
+					</td>
+				</tr>	
+				<tr>
+					<td style="padding: 0 5px; text-align: center; vertical-align: middle;">
+						<img style="max-height: 128px; width: auto; display: inline-block;" src="../results/failures/michelle/interpolate_video_test_5_network-snapshot-000500_image_0.479.jpg">
+					</td>
+				</tr>	
+				<tr>
+					<td style="padding: 0 5px; text-align: center; vertical-align: middle;">
+						<img style="max-height: 128px; width: auto; display: inline-block;" src="../results/failures/michelle/interpolate_video_test_6_network-snapshot-000500_image_0.508.jpg">
+					</td>
+				</tr>	
+
+
+
+                <!-- example -->
+				<tr style="text-align: center;">
+					<td colspan="5">
+					</td>
+				</tr>
+				<tr>
+					<td style="padding: 0 5px; text-align: center; vertical-align: middle;">
+						<img style="max-height: 128px; width: auto; display: inline-block;" src="../results/failures/oprah/interpolate_video_60_network-snapshot-000500_image_0.392.jpg">
+					</td>
+				</tr>	
+				<tr>
+					<td style="padding: 0 5px; text-align: center; vertical-align: middle;">
+						<img style="max-height: 128px; width: auto; display: inline-block;" src="../results/failures/oprah/interpolate_video_82_network-snapshot-000500_image_0.512.jpg">
+					</td>
+				</tr>	
+				<tr>
+					<td style="padding: 0 5px; text-align: center; vertical-align: middle;">
+						<img style="max-height: 128px; width: auto; display: inline-block;" src="../results/failures/oprah/interpolate_video_test_2_network-snapshot-000500_image_0.397.jpg">
+					</td>
+				</tr>	
+
+
+
+				<tr style="text-align: center;">
+					<td colspan="5">
+					</td>
+				</tr>
+			</tbody>
+		  </table>
+		</td>
+		</tr>
+	</tbody>
+</table>
+
+</body>
+</html>
