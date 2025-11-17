@@ -190,27 +190,29 @@
 
     <div class="container">
 
-        <div class="hero is-light section" style="margin:0px; font-size:35px;">
+        <div class="hero is-light section columns is-12" style="margin:0px; font-size:35px;">
             Over++: Generative Video Compositing for Layer Interaction Effects
         </div>
         <div class="subsection" style="margin: 0px; margin-top: 0px;">Supplementary Material</div>
         
-        <div style="text-align: left; display: inline-block; max-width: 100%; margin-left: 100px; margin-right: 100px; margin-top: 20px; margin-bottom: 20px;">
-        <!-- <div class="subsubsection"> -->
-            <p>
-            Video compositing in real production environments requires artists to reason about foreground–background separation and the complex interaction effects between them (e.g., shadows, reflections, dust; example courtesy of ILM).
-            </p>
-            <br>
-            <p>
-            We introduce $\textbf{augmented compositing}$, a new generative task that aims to synthesize realistic interaction effects while preserving both the foreground subject and the background scene. This task extends conventional compositing by explicitly modeling semi-transparent, spatially varying environmental effects.
-            </p>
-            <br>
-            <p>
-            Our method, $\textit{Over++}$, is the first to address the augmented compositing task.
-            Despite the limited availability of training data \cite{gillman2025force}, $\textit{Over++}$ exhibits strong generalization across a wide range of visual effects, as demonstrated in the benchmarking results below. In addition, we show that $\textit{Over++}$ enables several downstream applications, including text-guided and mask-guided editing, highlighting its flexibility and broader usefulness. Further details are provided in the sections that follow.
-            </p>
-            <div style="text-align: center; margin-top: 20px; margin-bottom: 20px;">
-                <video width="800" controls muted autoplay loop>
+        <div class="columns" style="margin-left: 100px; margin-right: 100px; margin-top: 20px; margin-bottom: 20px;">
+            <div class="column is-7" style="text-align: left; padding-right: 30px;">
+                <p>
+                Video compositing in real production environments requires artists to reason about foreground–background separation and the complex interaction effects between them (e.g., shadows, reflections, dust; example courtesy of a youtube video by professional VFX company).
+                </p>
+                <br>
+                <p>
+                We introduce $\textbf{augmented compositing}$, a new generative task that aims to synthesize realistic interaction effects while preserving both the foreground subject and the background scene. This task extends conventional compositing by explicitly modeling semi-transparent, spatially varying environmental effects.
+                </p>
+                <br>
+                <p>
+                Our method, $\textit{Over++}$, is the first to address the augmented compositing task.
+                Despite the limited availability of training data \cite{gillman2025force}, $\textit{Over++}$ exhibits strong generalization across a wide range of visual effects, as demonstrated in the benchmarking results below. In addition, we show that $\textit{Over++}$ enables several downstream applications, including text-guided and mask-guided editing, highlighting its flexibility and broader usefulness. Further details are provided in the sections that follow.
+                </p>
+            </div>
+            
+            <div class="column is-5" style="display: flex; align-items: center; justify-content: center;">
+                <video width="100%" controls muted autoplay loop style="max-width: 500px;">
                     <source src="teasers/teaser.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
@@ -233,11 +235,11 @@
                 }
             </style>
             
-            <h2 class="subsection" style="padding: 20px 0; text-align: left; margin: 0;">Augmented Compositing - Visual Results (TOC)</h2>
+            <h2 class="subsection column is-12" style="padding: 20px 0; text-align: left; margin: 0;">Augmented Compositing - Visual Results (TOC)</h2>
             
-            <p style="text-align: left;">Below, we provide additional augmented compositing results. Click on any entry to view more details.</p>
+            <p class="column is-12" style="text-align: left;">Below, we provide additional augmented compositing results. Click on any entry to view more details.</p>
             
-            <ul style="list-style: disc; padding-left: 20px; margin: 0; font-size: 18px; line-height: 2; text-align: left;">
+            <ul class="column is-12" style="list-style: disc; padding-left: 20px; margin: 0; font-size: 18px; line-height: 2; text-align: left;">
                      <li>
                         <a href="pages/inversion.html" target="_blank">
                             Visual Benchmarking with untrimmed full results
@@ -270,10 +272,10 @@
                     </li>
             </ul>
         </div>
-
         
-        <h2 class="subsection hero" style="padding: 20px; text-align: left; width: 100%;">References</h2>
-        <div id="my-bib" style="margin-left:5px; padding-left:5px">
+        
+        <h2 class="subsection hero column is-12" style="padding: 20px; text-align: left; width: 100%;">References</h2>
+        <div id="my-bib" class="column is-12" style="margin-left:5px; padding-left:5px">
             <!-- bibliography will appear here -->
         </div>
           
