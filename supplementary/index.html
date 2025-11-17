@@ -207,7 +207,7 @@
             <br>
             <p>
             Our method, $\textit{Over++}$, is the first to address the augmented compositing task.
-            Despite the limited availability of training data \cite{gillman2025force}, $\textit{Over++}$ exhibits strong generalization across a wide range of visual effects, as demonstrated in the benchmarking results below. In addition, we show that $\textit{Over++}$ enables several downstream applications—including text-guided and mask-guided editing—highlighting its flexibility and broader usefulness. Further details are provided in the sections that follow.
+            Despite the limited availability of training data \cite{gillman2025force}, $\textit{Over++}$ exhibits strong generalization across a wide range of visual effects, as demonstrated in the benchmarking results below. In addition, we show that $\textit{Over++}$ enables several downstream applications, including text-guided and mask-guided editing, highlighting its flexibility and broader usefulness. Further details are provided in the sections that follow.
             </p>
             <div style="text-align: center; margin-top: 20px; margin-bottom: 20px;">
                 <video width="800" controls muted autoplay loop>
@@ -217,39 +217,54 @@
             </div>
         </div>
 
-        <div class="section-container hero is-light" style="padding-left: 100px; padding-right: 100px;">
+        <div class="section-container hero is-light" style="padding-left: 100px; padding-right: 100px; padding-bottom: 10px;">
+            <style>
+                .section-container.hero ul li {
+                    margin-bottom: 0px;
+                }
+                
+                .section-container.hero ul li a {
+                    color: #4488ff !important;
+                    text-decoration: underline;
+                }
+                
+                .section-container.hero ul li a:hover {
+                    color: #ff0000 !important;
+                }
+            </style>
+            
             <h2 class="subsection" style="padding: 20px 0; text-align: left; margin: 0;">Augmented Compositing - Visual Results (TOC)</h2>
             
-            <p style="margin: 10px 0; text-align: left;">Below, we provide additional augmented compositing results. Click on any entry to view more details.</p>
+            <p style="text-align: left;">Below, we provide additional augmented compositing results. Click on any entry to view more details.</p>
             
             <ul style="list-style: disc; padding-left: 20px; margin: 0; font-size: 18px; line-height: 2; text-align: left;">
-                     <li style="margin-bottom: 10px;">
-                        <a href="pages/inversion.html" target="_blank" style="color: #4488ff !important; text-decoration: underline;" onmouseover="this.style.color='#ff0000';" onmouseout="this.style.color='#4488ff';">
+                     <li>
+                        <a href="pages/inversion.html" target="_blank">
                             Visual Benchmarking with untrimmed full results
                         </a>
                     </li>
-                    <li style="margin-bottom: 10px;">
-                        <a href="pages/interpolation.html" target="_blank" style="color: #4488ff !important; text-decoration: underline;" onmouseover="this.style.color='#ff0000';" onmouseout="this.style.color='#4488ff';">
+                    <li>
+                        <a href="pages/interpolation.html" target="_blank">
                             Downstream Applications with Fig 6 + Sec 5 + stationary foreground + stacked async keyframe masking
                         </a>
                     </li>
-                    <li style="margin-bottom: 10px;">
-                        <a href="pages/synthesis.html" target="_blank" style="color: #4488ff !important; text-decoration: underline;" onmouseover="this.style.color='#ff0000';" onmouseout="this.style.color='#4488ff';">
+                    <li>
+                        <a href="pages/synthesis.html" target="_blank">
                             Training data (video + mask + prompt)
                         </a>
                     </li>
-                    <li style="margin-bottom: 10px;">
-                        <a href="pages/enhancement.html" target="_blank" style="color: #4488ff !important; text-decoration: underline;" onmouseover="this.style.color='#ff0000';" onmouseout="this.style.color='#4488ff';">
+                    <li>
+                        <a href="pages/enhancement.html" target="_blank">
                             User Study Demo
                         </a>
                     </li>
-                    <!-- <li style="margin-bottom: 10px;">
-                        <a href="pages/semantic_editing.html" target="_blank" style="color: #4488ff !important; text-decoration: underline;" onmouseover="this.style.color='#ff0000';" onmouseout="this.style.color='#4488ff';">
+                    <!-- <li>
+                        <a href="pages/semantic_editing.html" target="_blank">
                             Semantic Editing
                         </a>
                     </li> -->
-                    <li style="margin-bottom: 10px;">
-                        <a href="pages/failure_cases.html" target="_blank" style="color: #4488ff !important; text-decoration: underline;" onmouseover="this.style.color='#ff0000';" onmouseout="this.style.color='#4488ff';">
+                    <li>
+                        <a href="pages/failure_cases.html" target="_blank">
                             Failure Cases
                         </a>
                     </li>
