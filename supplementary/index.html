@@ -100,6 +100,7 @@
     </style>
     
     
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script defer src="./static/js/index.js"></script>
     <!-- custom styles -->
     <link rel="stylesheet" href="./static/css/styles.css">
@@ -130,6 +131,7 @@
 
     <!-- Simple Citation Handler -->
     <script src="./static/js/citations.js"></script>
+    <link rel="stylesheet" href="./static/css/citations.css">
 
     <!-- nerfies -->
     <script src="./static/js/index.js"></script>
@@ -161,21 +163,7 @@
         }
         
         /* References section styling */
-        #my-bib {
-            text-align: left;
-            margin: 0 auto;
-            max-width: 100%;
-            padding: 0 100px 0 100px;
-        }
-        
-        #my-bib ol {
-            padding-left: 40px;
-        }
-        
-        #my-bib li {
-            margin-bottom: 15px;
-            line-height: 1.6;
-        }
+        /* Moved to static/css/citations.css */
     </style>
     
 </head>
@@ -236,7 +224,7 @@
                 }
             </style>
             
-            <h2 class="subsection column is-12" style="padding: 20px 0; text-align: left; margin: 0;">Visual Results and Analysis (TOC)</h2>
+            <h2 class="subsection column is-12" style="padding: 20px 0; text-align: left; margin: 0;" id="visual-results-and-analysis">Visual Results and Analysis (TOC)</h2>
             
             <p class="column is-12" style="text-align: left; margin: 0; padding: 0;">Below, we provide additional video results and analysis. Click on any entry to view more details.</p>
             

@@ -1,5 +1,6 @@
 // Simple BibTeX parser and citation handler
 let citations = {};
+let usedCitations = new Set();
 
 // Simple BibTeX parser - extracts key fields from BibTeX entries
 function parseBibTeX(bibtexText) {
@@ -85,6 +86,12 @@ function loadCitations() {
   pdf          = {https://cs.brown.edu/people/ngillman/pubs/force-prompting.pdf}
 }
 
+@inproceedings{sadat2024eliminating,
+  title={Eliminating oversaturation and artifacts of high guidance scales in diffusion models},
+  author={Sadat, Seyedmorteza and Hilliges, Otmar and Weber, Romann M},
+  booktitle={The Thirteenth International Conference on Learning Representations},
+  year={2024}
+}
 `;
 
     // parse your BibTeX with your existing parser
@@ -122,6 +129,7 @@ function replaceCitations() {
                 const citation = citations[key];
                 
                 if (citation) {
+                    usedCitations.add(key);
                     const span = document.createElement('span');
                     span.className = 'citation';
                     span.style.color = '#4488ff';
@@ -147,8 +155,18 @@ function renderBibliography() {
     const bibDiv = document.getElementById('my-bib');
     if (!bibDiv) return;
     
+    if (usedCitations.size === 0) {
+        bibDiv.style.display = 'none';
+        const header = bibDiv.previousElementSibling;
+        if (header && header.textContent.trim() === 'References') {
+            header.style.display = 'none';
+        }
+        return;
+    }
+    
     let html = '<ol style="text-align: left;">';
     for (const key in citations) {
+        if (!usedCitations.has(key)) continue;
         const cite = citations[key];
         html += `<li style="margin-bottom: 10px;">
             ${cite.author} (${cite.year}). 

@@ -1,18 +1,42 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Visual Benchmarking</title>
+        <title>User Study Demo</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="../static/js/bulma-carousel.min.js"></script>
         <script src="../static/js/bulma-slider.min.js"></script>
-        <script src="../static/js/index.js"></script>
         <link rel="stylesheet" href="../static/css/bulma.min.css">
         <link rel="stylesheet" href="../static/css/bulma-carousel.min.css">
         <link rel="stylesheet" href="../static/css/bulma-slider.min.css">
+        <link rel="stylesheet" href="../static/css/index.css">
         <script src="../static/js/mathjax-config.js" defer></script>
         <script type="text/javascript" id="MathJax-script" defer
             src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
         </script>
 
+        <script>
+            $(document).ready(function() {
+                var options = {
+                    slidesToScroll: 1,
+                    slidesToShow: 1,
+                    loop: true,
+                    infinite: true,
+                    autoplay: true,
+                    autoplaySpeed: 3000,
+                }
+
+                // Initialize all div with carousel class
+                var carousels = bulmaCarousel.attach('.carousel', options);
+
+                // Loop on each carousel initialized
+                for(var i = 0; i < carousels.length; i++) {
+                    // Add listener to  event
+                    carousels[i].on('before:show', state => {
+                        console.log(state);
+                    });
+                }
+            })
+        </script>
         <!-- Apply default attributes to all videos -->
         <script>
             document.addEventListener('DOMContentLoaded', function() {
@@ -114,8 +138,6 @@
     <h4>Quick Navigation</h4>
     <ul>
         <li><a href="#top">↑ Back to Top</a></li>
-        <li><a href="#section1">w/o mask guidance</a></li>
-        <li><a href="#section2">w/ mask guidance</a></li>
         <li><a href="../index.html#visual-results-and-analysis">← Back to Main</a></li>
     </ul>
 </div>
@@ -123,59 +145,29 @@
 <section class="section" id="top">
     <div class="container is-max-desktop">
         <div class="subtitle column is-full-width hero is-light">
-            <h2 class="title is-1">Benchmarking</h2>
+            <h2 class="title is-1">User Study Demo</h2>
         </div>
         <p class="content has-text-justified" id="section1">
-            We provide video results for the benchmarking of our method against the state-of-the-art methods (w/o mask guidance). We trim all videos to the same duration for fair comparison.
+            We provide screencast of our user study demo.
         </p>
 
-        <div class="is-centered">
-            <video width="100%" controls muted autoplay loop style="max-width: 100%;">
-                <source src="../results/benchmarking/boy-water.mp4" type="video/mp4">
-            </video>
-            <video width="100%" controls muted autoplay loop style="max-width: 100%;">
-                <source src="../results/benchmarking/davis_breakdance-flare.mp4" type="video/mp4">
-            </video>
-            <video width="100%" controls muted autoplay loop style="max-width: 100%;">
-                <source src="../results/benchmarking/davis_camel.mp4" type="video/mp4">
-            </video>
-            <video width="100%" controls muted autoplay loop style="max-width: 100%;">
-                <source src="../results/benchmarking/davis_miami-surf.mp4" type="video/mp4">
-            </video>
-            <video width="100%" controls muted autoplay loop style="max-width: 100%;">
-                <source src="../results/benchmarking/davis_surf.mp4" type="video/mp4">
-            </video>
-            <video width="100%" controls muted autoplay loop style="max-width: 100%;">
-                <source src="../results/benchmarking/pexels_car_drift.mp4" type="video/mp4">
-            </video>
-            <video width="100%" controls muted autoplay loop style="max-width: 100%;">
-                <source src="../results/benchmarking/three_swans_lake.mp4" type="video/mp4">
-            </video>
+        <!-- <div class="is-centered">
+            <img src="../results/user_study/demo_1.png" alt="User Study Demo">
+            <img src="../results/user_study/demo_2.png" alt="User Study Demo">
+            <img src="../results/user_study/demo_3.png" alt="User Study Demo">
+        </div> -->
+        <div id="results-carousel" class="carousel results-carousel">
+            <div class="item">
+                <img src="../results/user_study/demo_1.png" alt="User Study Demo" style="width:100%">
+            </div>
+            <div class="item">
+                <img src="../results/user_study/demo_2.png" alt="User Study Demo" style="width:100%">
+            </div>
+            <div class="item">
+                <img src="../results/user_study/demo_3.png" alt="User Study Demo" style="width:100%">
+            </div>
         </div>
 
-        <p class="content has-text-justified" id="section2">
-            We also provide video results for the benchmarking of our method against the state-of-the-art methods (w/ mask guidance). We trim all videos to the same duration for fair comparison.
-        </p>
-        <div class="is-centered">
-            <video width="100%" controls muted autoplay loop style="max-width: 100%;">
-                <source src="../results/benchmarking/mask-guidance-boy-water.mp4" type="video/mp4">
-            </video>
-            <video width="100%" controls muted autoplay loop style="max-width: 100%;">
-                <source src="../results/benchmarking/mask-guidance-comp_breakdance-waterfall.mp4" type="video/mp4">
-            </video>
-            <video width="100%" controls muted autoplay loop style="max-width: 100%;">
-                <source src="../results/benchmarking/mask-guidance-davis_camel.mp4" type="video/mp4">
-            </video>
-            <video width="100%" controls muted autoplay loop style="max-width: 100%;">
-                <source src="../results/benchmarking/mask-guidance-davis_drift-chicane.mp4" type="video/mp4">
-            </video>
-            <video width="100%" controls muted autoplay loop style="max-width: 100%;">
-                <source src="../results/benchmarking/mask-guidance-davis_surf.mp4" type="video/mp4">
-            </video>
-            <video width="100%" controls muted autoplay loop style="max-width: 100%;">
-                <source src="../results/benchmarking/mask-guidance-ilm_boat_1.mp4" type="video/mp4">
-            </video>
-        </div>
 
     </div>
 </section>
