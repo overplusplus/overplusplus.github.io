@@ -49,26 +49,47 @@ function parseBibTeX(bibtexText) {
     return entries;
 }
 
-// Load citations from refs.bib
+// // Load citations from refs.bib
+// function loadCitations() {
+//     return fetch('refs.bib')
+//         .then(response => {
+//             if (!response.ok) {
+//                 throw new Error('Failed to load refs.bib');
+//             }
+//             return response.text();
+//         })
+//         .then(bibtexText => {
+//             citations = parseBibTeX(bibtexText);
+//             // console.log('Loaded citations:', Object.keys(citations));
+//             return citations;
+//         })
+//         .catch(error => {
+//             console.error('Error loading citations:', error);
+//             // Fallback to empty
+//             citations = {};
+//             return citations;
+//         });
+// }
+
+// Option 2: Inline BibTeX directly
 function loadCitations() {
-    return fetch('refs.bib')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Failed to load refs.bib');
-            }
-            return response.text();
-        })
-        .then(bibtexText => {
-            citations = parseBibTeX(bibtexText);
-            // console.log('Loaded citations:', Object.keys(citations));
-            return citations;
-        })
-        .catch(error => {
-            console.error('Error loading citations:', error);
-            // Fallback to empty
-            citations = {};
-            return citations;
-        });
+    const bibtexText = `
+@inproceedings{gillman2025force,
+  title        = {Force Prompting: Video Generation Models Can Learn and Generalize Physics-Based Control Signals},
+  author       = {Gillman, Nate and Herrmann, Charles and Freeman, Michael
+                  and Aggarwal, Daksh and Luo, Evan and Sun, Deqing and Sun, Chen},
+  booktitle    = {Advances in Neural Information Processing Systems},
+  year         = {2025},
+  note         = {Poster \#116909, NeurIPS 2025. Also available as arXiv preprint arXiv:2505.19386},
+  url          = {https://arxiv.org/abs/2505.19386},
+  pdf          = {https://cs.brown.edu/people/ngillman/pubs/force-prompting.pdf}
+}
+
+`;
+
+    // parse your BibTeX with your existing parser
+    citations = parseBibTeX(bibtexText);
+    return Promise.resolve(citations);  // Return a resolved Promise
 }
 
 function replaceCitations() {
