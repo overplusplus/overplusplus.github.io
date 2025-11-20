@@ -114,9 +114,9 @@
     <h4>Quick Navigation</h4>
     <ul>
         <li><a href="#top">↑ Back to Top</a></li>
-        <li><a href="#section1">Compositing FG & BG</a></li>
-        <li><a href="#section2">Downstream Workflows</a></li>
-        <li><a href="#section3">Extensions & Applications</a></li>
+        <li><a href="#downstream-workflows">Downstream Workflows</a></li>
+        <li><a href="#extensions-and-applications">Extensions & Applications</a></li>
+        <li><a href="#additional-results">Additional Results</a></li>
         <li><a href="../index.html#visual-results-and-analysis">← Back to Main</a></li>
     </ul>
 </div>
@@ -130,27 +130,7 @@
             In this section, we provide additional results for the downstream applications of our method.
         </p>
 
-        <div class="is-centered" id="section1">
-            <div class="subtitle column is-full-width hero is-light">
-                <h3 class="title is-3">Compositing FG & BG from different sources</h3>
-            </div>
-            <p>
-                We demonstrate compositing of foreground (FG) and background (BG) layers sourced from different domains, including real dynamic footage and generated static content. When FG and BG originate from disparate sources, the naive composite lacks consistent environmental interaction effects. We apply $\textit{Over++}$ (without a mask) to synthesize in-context interaction effects and produce a coherent, visually consistent composited video.           
-            </p>
-
-            <div class="column is-full-width">
-                <video width="100%" controls muted autoplay loop style="max-width: 100%;">
-                    <source src="../results/downstream_applications/comp_breakdance-all.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-                <video width="100%" controls muted autoplay loop style="max-width: 100%;">
-                    <source src="../results/downstream_applications/comp_cvpr2026-all.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-            </div>
-        </div>
-
-        <div class="is-centered" id="section2">
+        <div class="is-centered" id="downstream-workflows">
             <div class="subtitle column is-full-width hero is-light">
                 <h3 class="title is-3">Various downstream workflows</h3>
             </div>
@@ -159,6 +139,10 @@
             </p>
 
             <div class="column is-full-width">
+                <video width="100%" controls muted autoplay loop style="max-width: 100%;">
+                    <source src="../results/downstream_applications/pexels_car_drift-all.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
                 <video width="100%" controls muted autoplay loop style="max-width: 100%;">
                     <source src="../results/downstream_applications/ilm_boat_1-all.mp4" type="video/mp4">
                     Your browser does not support the video tag.
@@ -178,7 +162,7 @@
             </div>
         </div>
 
-        <div class="is-centered" id="section3">
+        <div class="is-centered" id="extensions-and-applications">
             <div class="subtitle column is-full-width hero is-light">
                 <h3 class="title is-3">Extensions and Applications</h3>
             </div>
@@ -190,10 +174,10 @@
                     <source src="../results/downstream_applications/davis_camel-shadow-all.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
-                <video width="100%" controls muted autoplay loop style="max-width: 100%;">
+                <!-- <video width="100%" controls muted autoplay loop style="max-width: 100%;">
                     <source src="../results/downstream_applications/davis_pigs-shadow-all.mp4" type="video/mp4">
                     Your browser does not support the video tag.
-                </video>
+                </video> -->
                 <video width="100%" controls muted autoplay loop style="max-width: 100%;">
                     <source src="../results/downstream_applications/davis_car-roundabout-shadow-all.mp4" type="video/mp4">
                     Your browser does not support the video tag.
@@ -245,6 +229,40 @@
                 </video>
                 <video width="100%" controls muted autoplay loop style="max-width: 100%;">
                     <source src="../results/downstream_applications/keyframe_truck-water.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <video width="100%" controls muted autoplay loop style="max-width: 100%;">
+                    <source src="../results/downstream_applications/keyframe_davis_miami-surf.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+        
+        <div class="is-centered" id="additional-results">
+            <div class="subtitle column is-full-width hero is-light">
+                <h3 class="title is-3">Additional Results</h3>
+            </div>
+            <p>
+                We demonstrate compositing of foreground (FG) and background (BG) layers sourced from different domains. When FG and BG originate from disparate sources, the naive composite lacks consistent environmental interaction effects. We apply $\textit{Over++}$ (without a mask) to synthesize in-context interaction effects and produce a coherent, visually consistent composited video.
+            </p>
+
+            <div class="column is-full-width">
+                <video width="100%" controls muted autoplay loop style="max-width: 100%;">
+                    <source src="../results/downstream_applications/comp_breakdance-all.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <!-- <video width="100%" controls muted autoplay loop style="max-width: 100%;">
+                    <source src="../results/downstream_applications/comp_cvpr2026-all.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video> -->
+            </div>
+
+            <p>
+                We duplicate the foreground video, followed by resizing and relocating the foreground. $\textit{Over++}$ is able to generate effects for both the duplicated foreground and the original foreground.
+            </p>
+            <div class="column is-full-width">
+                <video width="100%" controls muted autoplay loop style="max-width: 100%;">
+                    <source src="../results/downstream_applications/comp_boy-water.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
             </div>

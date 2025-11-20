@@ -2,24 +2,25 @@
 <html>
     <head>
         <title>Training data</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="../static/js/bulma-carousel.min.js"></script>
         <script src="../static/js/bulma-slider.min.js"></script>
         <script src="../static/js/index.js"></script>
+        <link rel="stylesheet" href="../static/css/index.css">
         <link rel="stylesheet" href="../static/css/bulma.min.css">
         <link rel="stylesheet" href="../static/css/bulma-carousel.min.css">
         <link rel="stylesheet" href="../static/css/bulma-slider.min.css">
+        <link rel="stylesheet" href="../static/css/styles.css">
         <script src="../static/js/mathjax-config.js" defer></script>
         <script type="text/javascript" id="MathJax-script" defer
             src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
         </script>
 
         <!-- Apply default attributes to all videos -->
-        <script>
+        <!-- <script>
             document.addEventListener('DOMContentLoaded', function() {
-                // Get all video elements on the page
                 const videos = document.querySelectorAll('video');
-                
-                // Apply default attributes to each video
+            
                 videos.forEach(video => {
                     video.setAttribute('controls', '');
                     video.setAttribute('muted', '');
@@ -28,9 +29,32 @@
                     video.setAttribute('playsinline', '');
                 });
             });
+        </script> -->
+
+        <script>
+            $(document).ready(function() {
+                var options = {
+                    slidesToScroll: 1,
+                    slidesToShow: 1,
+                    loop: true,
+                    infinite: true,
+                    autoplay: true,
+                    autoplaySpeed: 5000,
+                }
+
+                // Initialize all div with carousel class
+                var carousels = bulmaCarousel.attach('.results-carousel', options);
+
+                // Loop on each carousel initialized
+                for(var i = 0; i < carousels.length; i++) {
+                    // Add listener to  event
+                    carousels[i].on('before:show', state => {
+                        console.log(state);
+                    });
+                }
+            })
         </script>
-        <link rel="stylesheet" href="../static/css/styles.css">
-        
+
         <!-- TOC Widget Styles -->
         <style>
             .toc-widget {
@@ -114,9 +138,9 @@
     <h4>Quick Navigation</h4>
     <ul>
         <li><a href="#top">↑ Back to Top</a></li>
-        <li><a href="#section1">Real data</a></li>
-        <li><a href="#section2">Synthetic data</a></li>
-        <li><a href="#section3">Unpaired data</a></li>
+        <li><a href="#real-data">Real data</a></li>
+        <li><a href="#synthetic-data">Synthetic data</a></li>
+        <li><a href="#unpaired-data">Unpaired data</a></li>
         <li><a href="../index.html#visual-results-and-analysis">← Back to Main</a></li>
     </ul>
 </div>
@@ -126,33 +150,79 @@
         <div class="subtitle column is-full-width hero is-light">
             <h2 class="title is-1">Training data</h2>
         </div>
-        <p class="content has-text-justified" id="section1">
+        <p>
             We provide demo of training data for our method. Below, we showcase the paired real data, paired synthetic data, and unpaired data.
         </p>
 
-        <div class="is-centered">
-            <video width="100%" controls muted autoplay loop style="max-width: 100%;">
-                <source src="../results/training_data/pexels-bike-puddle2.mp4" type="video/mp4">
-            </video>
-            </video>
+
+        <div class="is-centered" id="real-data">
+            <p>
+                Below, we present qualitative demos generated from paired real data.
+            </p>
+            <div class="column is-full-width">
+                <video width="100%" controls muted autoplay loop style="max-width: 100%;">
+                    <source src="../results/training_data/pexels-bike-puddle2.mp4" type="video/mp4">
+                </video>
+                <video width="100%" controls muted autoplay loop style="max-width: 100%;">
+                    <source src="../results/training_data/car-turn.mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
+        <div class="is-centered" id="synthetic-data">
+            <p>
+                Below, we present qualitative demos generated from paired synthetic data.
+            </p>
+            <div class="column is-full-width">
+                <video width="100%" controls muted autoplay loop style="max-width: 100%;">
+                    <source src="../results/training_data/kubric-0000002.mp4" type="video/mp4">
+                </video>
+                <video width="100%" controls muted autoplay loop style="max-width: 100%;">
+                    <source src="../results/training_data/kubric-0000039.mp4" type="video/mp4">
+                </video>
+                <video width="100%" controls muted autoplay loop style="max-width: 100%;">
+                    <source src="../results/training_data/chicken.mp4" type="video/mp4">
+                </video>
+            </div>
         </div>
 
-        <p class="content has-text-justified" id="section2">
-            We also provide video results for the benchmarking of our method against the state-of-the-art methods (w/ mask guidance). We trim all videos to the same duration for fair comparison.
-        </p>
-        <div class="is-centered">
-            <video width="100%" controls muted autoplay loop style="max-width: 100%;">
-                <source src="../results/training_data/kubric-0000002.mp4" type="video/mp4">
-            </video>
-        </div>
-
-        <p class="content has-text-justified" id="section3">
-            Prompt.
-        </p>
-        <div class="is-centered">
-            <video width="100%" controls muted autoplay loop style="max-width: 100%;">
-                <source src="" type="video/mp4">
-            </video>
+        <div class="is-centered" id="unpaired-data">
+            <p>
+                Unpaired data. Although unpaired data is generally lower in quality compared to paired data, it still serves as a valuable source of training supervision for our method. Results using unpaired data are provided in the main paper.
+                Further performance gains may be achievable by leveraging higher-quality commercial video generation models, such as Kling 2.5, Veo 3, and Ray 3.
+            </p>
+            <!-- <div id="results-carousel" class="carousel results-carousel"> -->
+            <div class="column is-full-width">
+                <div class="item">
+                    <video poster="" autoplay controls muted loop playsinline width="100%">
+                        <source src="../results/training_data/unpaired_bmx-bumps-0008.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="item">
+                    <video poster="" autoplay controls muted loop playsinline width="100%">
+                        <source src="../results/training_data/unpaired_car-shadow-0000.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="item">
+                    <video poster="" autoplay controls muted loop playsinline width="100%">
+                        <source src="../results/training_data/unpaired_cows-0003.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="item">
+                    <video poster="" autoplay controls muted loop playsinline width="100%">
+                        <source src="../results/training_data/unpaired_drift-chicane-0001.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="item">
+                    <video poster="" autoplay controls muted loop playsinline width="100%">
+                        <source src="../results/training_data/unpaired_elephant-0002.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="item">
+                    <video poster="" autoplay controls muted loop playsinline width="100%">
+                        <source src="../results/training_data/unpaired_flamingo-0002.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
         </div>
 
 

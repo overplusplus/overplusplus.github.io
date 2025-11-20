@@ -99,28 +99,19 @@
         }
     </style>
     
+
     
+    <!-- js AFTER CSS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script defer src="./static/js/index.js"></script>
-    <!-- custom styles -->
-    <link rel="stylesheet" href="./static/css/styles.css">
-    
-    <!-- css -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <script src="./static/js/bulma-carousel.min.js"></script>
+    <script src="./static/js/bulma-slider.min.js"></script>
+    <script src="./static/js/index.js"></script>
+
+    <link rel="stylesheet" href="./static/css/index.css">
     <link rel="stylesheet" href="./static/css/bulma.min.css">
     <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
     <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
-    
-    
-    <!-- nerfies -->
-    <link rel="stylesheet" href="./static/css/index.css">
-    <!-- reconfusion -->
-    <link rel="stylesheet" href="./static/css/app.css">
-    
-    <!-- js -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="./static/css/styles.css">
     
     <!-- mathjax -->
     <!-- https://docs.mathjax.org/en/latest/web/configuration.html#using-a-local-file-for-configuration -->
@@ -128,15 +119,9 @@
     <script type="text/javascript" id="MathJax-script" defer
         src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
     </script>
-
     <!-- Simple Citation Handler -->
     <script src="./static/js/citations.js"></script>
     <link rel="stylesheet" href="./static/css/citations.css">
-
-    <!-- nerfies -->
-    <script src="./static/js/index.js"></script>
-    <!-- reconfusion -->
-    <script src="./static/js/app.js"></script>
     
     <!-- Override framework styles -->
     <style>
@@ -179,32 +164,42 @@
 
     <div class="container">
 
-        <div class="hero is-light section columns is-12" style="margin:0px; font-size:35px;">
+        <div class="hero is-light section columns is-12" style="margin:0px; padding:15px; font-size:30px;">
             Over++: Generative Video Compositing for Layer Interaction Effects
         </div>
-        <div class="subsection" style="margin: 0px; margin-top: 0px;">Supplementary Material</div>
+        <div class="subsection" style="margin: 5px;">Supplementary Material</div>
         
-        <div class="columns" style="margin-left: 100px; margin-right: 100px; margin-top: 20px; margin-bottom: 20px;">
-            <div class="column is-7" style="text-align: left; padding-right: 30px;">
+        <div class="columns is-vcentered">
+            <div class="column is-7 content has-text-justified" style="margin: 15px 0px 15px 15px;">
                 <p>
-                Video compositing in real production environments requires reasoning about foreground–background separation and complex interaction effects such as shadows, reflections, and airborne particles. The accompanying example (from a professional VFX studio demonstration) highlights the workflow and challenges involved.
+                Video compositing in real production environments requires reasoning about foreground–background separation and complex interaction effects such as shadows, reflections, and airborne particles. The accompanying examples (from professional VFX studio demonstrations) highlight the workflow and challenges involved.
                 </p>
-                <br>
                 <p>
-                We introduce $\textbf{augmented compositing}$, a new generative task that aims to synthesize realistic interaction effects while preserving both the foreground subject and the background scene. This task extends conventional compositing without explicitly rendering the interaction effects.
+                We introduce $\textbf{augmented compositing}$, a generative task that synthesizes realistic interaction effects while preserving both the foreground subject and the background scene. This task extends conventional compositing without explicitly rendering the interaction effects.
                 </p>
-                <br>
                 <p>
-                Our method, $\textit{Over++}$, is the first to address the augmented compositing task.
-                Despite the limited availability of training data \cite{gillman2025force}, $\textit{Over++}$ exhibits strong generalization across a wide range of visual effects, as demonstrated in the benchmarking results below. In addition, we show that $\textit{Over++}$ enables several downstream applications, including text-guided and mask-guided editing, highlighting its flexibility and broader usefulness. Further details are provided in the sections that follow.
+                Our method, $\textit{Over++}$, is the first to address the augmented compositing task. Despite the limited training data (around 1K videos versus 15K in Force Prompting \cite{gillman2025force}), $\textit{Over++}$ demonstrates strong generalization across a wide range of visual effects. Additionally, $\textit{Over++}$ enables several downstream applications, including text-guided and mask-guided editing, highlighting its flexibility and broader usefulness. Further details are provided in the sections that follow.
                 </p>
             </div>
             
-            <div class="column is-5" style="display: flex; align-items: center; justify-content: center;">
-                <video width="100%" controls muted autoplay loop style="max-width: 500px;">
-                    <source src="teasers/teaser.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
+            <div class="column is-5">
+                <div id="results-carousel" class="carousel results-carousel">
+                    <div class="item item-video1">
+                        <video poster="" id="video1" autoplay controls muted loop playsinline height="100%">
+                            <source src="teasers/teaser_ilm.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="item item-video2">
+                        <video poster="" id="video2" autoplay controls muted loop playsinline height="100%">
+                            <source src="teasers/teaser_dneg.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="item item-video3">
+                        <video poster="" id="video3" autoplay controls muted loop playsinline height="100%">
+                            <source src="teasers/teaser_weta.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -259,7 +254,7 @@
         
         
         <h2 class="subsection hero column is-12" style="padding: 20px; text-align: left; width: 100%;">References</h2>
-        <div id="my-bib" class="column is-12" style="margin-left:5px; padding-left:5px">
+        <div id="my-bib" class="column is-12 content has-text-justified" style="margin-left:5px; padding-left:5px">
             <!-- bibliography will appear here -->
         </div>
           

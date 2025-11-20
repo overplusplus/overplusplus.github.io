@@ -92,6 +92,14 @@ function loadCitations() {
   booktitle={The Thirteenth International Conference on Learning Representations},
   year={2024}
 }
+
+@inproceedings{bar2024lumiere,
+  title={Lumiere: A space-time diffusion model for video generation},
+  author={Bar-Tal, Omer and Chefer, Hila and Tov, Omer and Herrmann, Charles and Paiss, Roni and Zada, Shiran and Ephrat, Ariel and Hur, Junhwa and Liu, Guanghui and Raj, Amit and others},
+  booktitle={SIGGRAPH Asia 2024 Conference Papers},
+  pages={1--11},
+  year={2024}
+}
 `;
 
     // parse your BibTeX with your existing parser
@@ -134,7 +142,7 @@ function replaceCitations() {
                     span.className = 'citation';
                     span.style.color = '#4488ff';
                     span.style.cursor = 'pointer';
-                    span.textContent = `(${citation.firstAuthor} et al., ${citation.year})`;
+                    span.textContent = `[${citation.firstAuthor} et al., ${citation.year}]`;
                     span.onclick = function() {
                         document.getElementById('my-bib').scrollIntoView({ behavior: 'smooth' });
                     };
