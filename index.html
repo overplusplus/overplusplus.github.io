@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-C0BZGNR279"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-C0BZGNR279');
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="description"
+        content="">
+  <title>OVER++</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./assets/css/bulma.min.css">
+  <link rel="stylesheet" href="./assets/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./assets/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./assets/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.css">
+
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./assets/css/index.css">
+  <link rel="stylesheet" href="./assets/css/twentytwenty.css">
+  <!-- <link rel="stylesheet" href="./assets/css/app.css"> -->
+  <link rel="stylesheet" href="./assets/css/custom.css">
+  <!-- <link rel="icon" href="./assets/images/favicon.svg" sizes="any" type="image/svg+xml"> -->
+  <link rel="icon" href="./assets/images/image.png" type="image/png">
+  
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.3/clipboard.min.js"></script>
+  <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./assets/js/fontawesome.all.min.js"></script>
+  <script src="./assets/js/bulma-carousel.min.js"></script>
+  <script src="./assets/js/bulma-slider.min.js"></script>
+  <script src="./assets/js/app.js"></script>
+  <script src="./assets/js/video-syncer.js"></script>
+  <script src="./assets/js/jquery.event.move.js"></script>
+  <script src="./assets/js/jquery.twentytwenty.js"></script>
+</head>
+<body onresize="onResizeWindow()">
+
+<section class="hero" style="padding-top: 0; margin-top: 0; padding-bottom: 0; margin-bottom: 0;" id="top">
+  <div class="hero-body" style="padding-bottom: 0; margin-bottom: 0;">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title" style="font-weight: bolder; font-size: xx-large;">
+            <span class="gradient-color-text">Over++</span>
+            : Generative Video Compositing for Layer Interaction Effects</span>
+            <br><span style="font-weight:normal"></span></h1>
+          <div class="is-size-5 publication-authors" id="div-row-authors">
+            <span class="author-block">
+              <a target="_blank" rel="noopener noreferrer" href="https://luchaoqi.com/">Luchao Qi</a><sup>1</sup>&nbsp&nbsp</span>
+            <span class="author-block">
+              <a target="_blank" rel="noopener noreferrer" href="https://scholar.google.com/citations?user=g2CuYi4AAAAJ&hl=en">Jiye Wu</a><sup>2</sup>&nbsp&nbsp</span>
+            <span class="author-block">
+              <a target="_blank" rel="noopener noreferrer" href="https://chedgekorea.github.io/">Jun Myeong Choi</a><sup>1</sup>&nbsp&nbsp</span>
+            <span class="author-block">
+              <a target="_blank" rel="noopener noreferrer" href="https://www.imdb.com/name/nm0680288/">Cary Phillips</a><sup>3</sup>&nbsp&nbsp</span>
+            <span class="author-block">
+              <a target="_blank" rel="noopener noreferrer" href="https://www.cs.unc.edu/~ronisen/">Roni Sengupta</a><sup>1</sup>&nbsp&nbsp</span>
+            <!-- <br> -->
+            <span class="author-block">
+              <a target="_blank" rel="noopener noreferrer" href="https://www.danbgoldman.com/home/">Dan B Goldman</a><sup>3</sup>&nbsp&nbsp</span>
+          </div>
+          <div class="is-size-5 publication-authors" style="padding-top: 0.5em">
+            <span class="author-block"><sup>1</sup>University of North Carolina at Chapel Hill &nbsp&nbsp </span>
+            <span class="author-block"><sup>2</sup>University of Maryland &nbsp&nbsp </span>
+            <span class="author-block"><sup>3</sup>Industrial Light and Magic</span>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="column has-text-centered">
+      <div class="publication-links">
+        <div class="btn-group btn-group-sm main-btn-group">
+          <a target="_blank" rel="noopener noreferrer" href="https://arxiv.org/pdf/2512.02015"><span class="button is-normal" onclick="">
+            <span class="icon"><i class="fas fa-file-pdf"></i></span>&nbsp&nbsp
+            PDF
+          </span></a>
+          <a target="_blank" rel="noopener noreferrer" href="https://arxiv.org/abs/2512.02015"><span class="button is-normal" onclick="">
+            <span class="icon"><i class="ai ai-arxiv"></i></span>&nbsp&nbsp
+            arXiv
+          </span></a>
+          <a href="https://youtu.be/aAj6PIgx20o?si=N3iWkVveL6qeEE9Y"><span class="button is-normal" onclick="">
+            <span class="icon">
+              <svg class="svg-inline--fa fa-youtube fa-w-18" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="youtube" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-fa-i2svg=""><path fill="currentColor" d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"></path></svg>
+            </span>&nbsp&nbsp
+            Video
+          </span></a>
+          <a href="#bibtex"><span class="button is-normal" onclick="">
+            <span class="icon"><i class="fas fa-quote-right"></i></span>&nbsp&nbsp
+            BibTeX
+          </span></a>
+        </div>
+      </div>
+  </div>
+</section>
+
+<section id='sec:teaser' class="hero is-small" style="padding-top: 0; margin-top: 0; padding-bottom: 0; margin-bottom: 0;">
+  <div class="container"> 
+    <div class="container-fluid demo-container teaser-container">
+      <div class="row bg-dark" id="div-video-teaser">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- <section id='sec:teaser' class="hero is-small" style="padding-top: 0; margin-top: 0; padding-bottom: 0; margin-bottom: 0;">
+  <div class="container"> 
+    <div class="container-fluid demo-container teaser-container">
+      <div class="row bg-dark" id="div-video-teaser">
+      </div>
+    </div>
+  </div>
+</section> -->
+
+<section id="sec:application-navbar" style="padding-top: 0; margin-top: 0; padding-bottom: 0; margin-bottom: 0;">
+  <div class="container"> 
+    <div class="container-fluid" id="div-app">
+      <div class="row bg-dark" id="div-video-teaser">
+        <div class="text-center" style="color: black;">
+          <div class="has-text-centered  text-description tldr">
+            <p class="tldr">Our Edit-by-Track framework enables precise video motion editing via 3D point tracks. Explore our applications below:
+            </p>
+          </div>
+          <div class="" id="navbar-apps">
+            <div class="btn-group btn-group-sm main-btn-group">
+              <a href="#sec:joint-motion"><span class="button is-normal" onclick="" id="navbar-joint-motion">
+                Joint camera & object motion editing
+              </span></a>
+              <a href="#sec:shape-deform"><span class="button is-normal" onclick="" id="navbar-shape-deform">
+                Shape deformation
+              </span></a>
+              <a href="#sec:removal-duplicate"><span class="button is-normal" onclick="" id="navbar-removal-duplicate">
+                Object removal & duplication
+              </span></a>
+              <a href="#sec:partial"><span class="button is-normal" onclick="" id="navbar-partial">
+                Handling partial tracks
+              </span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id='sec:joint-motion' class="hero is-small">
+  <div class="container"> 
+    <div class="container-fluid demo-container">
+      <h2 class="title has-text-centered is-3">I. Joint Camera & Object Motion Editing</h2>
+      <div class="row bg-dark" id="div-video-joint-motion">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id='sec:shape-deform' class="hero is-small">
+  <div class="container"> 
+    <div class="container-fluid demo-container" style="max-height: 750px;">
+      <h2 class="title has-text-centered is-3">II. Shape Deformation</h2>
+      <div class="row bg-dark" id="div-video-shape-deform">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id='sec:removal-duplicate' class="hero is-small">
+  <div class="container"> 
+    <div class="container-fluid demo-container" style="max-height: 750px;">
+      <h2 class="title has-text-centered is-3">III. Object Removal & Duplication</h2>
+      <div class="row bg-dark" id="div-video-removal-duplicate">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id='sec:partial' class="hero is-small">
+  <div class="container">
+    <div class="container-fluid demo-container">
+      <h2 class="title has-text-centered is-3">IV. Handling Partial Track Inputs</h2>
+      <div class="row bg-dark" id="div-video-partial">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section hide-on-mobile" id="sec:youtube-embed">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column">
+        <iframe width="720" height="480" src="https://www.youtube.com/embed/aAj6PIgx20o"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id='sec:method-overview' class="hero is-small" style="padding-top: 0; margin-top: 0; padding-bottom: 0; margin-bottom: 0;">
+  <div class="container"> 
+    <div class="container-fluid demo-container teaser-container" id="div-method">
+      <div class="row bg-dark" id="div-video-teaser">
+      </div>
+      <hr>
+      <br>
+      <div class="text-center" style="color: black;">
+        <div class="has-text-justified  text-description tldr">
+          <p class="tldr">
+            We introduce a novel method for editing both camera and object motions in a given video, a task that remains challenging for existing approaches.
+            Explore the sections below for more details:
+          </p>
+        </div>
+        <div class=""  id="navbar-method">
+          <div class="btn-group btn-group-sm main-btn-group">
+            <a href="#sec:comparison"><span class="button is-normal" onclick="" id="navbar-comparison">
+              Baseline Comparisons
+            </span></a>
+            <a href="#sec:framework"><span class="button is-normal" onclick="" id="navbar-framework">
+              Our framework
+            </span></a>
+            <a href="#sec:traindata"><span class="button is-normal" onclick="" id="navbar-traindata">
+              Training data
+            </span></a>
+            <a href="#sec:threed-control"><span class="button is-normal" onclick="" id="navbar-threed-control">
+              3D control
+            </span></a>
+            <a href="#sec:model-analysis"><span class="button is-normal" onclick="" id="navbar-model-analysis">
+              Model analysis
+            </span></a>
+            <a href="#sec:failures"><span class="button is-normal" onclick="" id="navbar-failures">
+              Failure cases
+            </span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section id='sec:comparison' class="hero is-small">
+  <div class="container">
+    <div class="container-fluid demo-container">
+      <h2 class="title has-text-centered is-3">Baseline Comparisons</h2>
+      <div class="row bg-dark" id="div-video-comparisons">
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section id='sec:framework' class="hero is-small">
+  <div class="container">
+    <div class="container-fluid demo-container">
+      <h2 class="title has-text-centered is-3">Our Edit-by-Track Framework</h2>
+      <div class="row bg-dark" id="div-video-framework">
+        <div class="has-text-centered description" id="framework-description">
+            <span>
+              Given a video, we first estimate camera poses and 3D tracks using off-the-shelf models.
+              Users then edit the estimated poses and 3D tracks to specify the desired camera and object motions.
+              <br><br>
+              We project both the original (source) and edited (target) 3D tracks into 2D screen coordinates using their respective camera parameters, aligning them with the video frames.
+              These projected 3D tracks provide sparse correspondences, guiding our model to transfer visual context from the source video onto the target motion.
+              <br><br>
+              Our model builds on a pretrained text-to-video generation model, further fine-tuned with LoRAs and an additional 3D track conditioner for precise motion control.
+              To preserve the original visual context, we encode the input source video into source video tokens and concatenate them with noisy target video tokens.
+              The 3D track conditioner transforms the projected 3D tracks into paired track tokens, which are added the corresponding video tokens to guide the motion editing (see our paper for details).
+            </span>
+        </div>
+        <img src="./assets/images/framework.svg" style="padding-left: 8%; padding-right: 8%; padding-bottom: 2em;">
+        <div class='has-text-centered demo-video-instruction'>
+          <div class="instruction-centered">
+              <p>
+                  <a href="#top"><span class="icon">
+                      <i class="fas fa-chevron-up"></i>
+                  </span>Back to top</a>
+                  </span>
+              </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section id='sec:traindata' class="hero is-small">
+  <div class="container">
+    <div class="container-fluid demo-container">
+      <h2 class="title has-text-centered is-3">Training Data</h2>
+      <div class="row bg-dark" id="div-video-traindata">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id='sec:threed-control' class="hero is-small">
+  <div class="container">
+    <div class="container-fluid demo-container">
+      <h2 class="title has-text-centered is-3">3D Control: Depth Order and Occlusion Handling</h2>
+      <div class="row bg-dark" id="div-video-threed-control">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id='sec:model-analysis' class="hero is-small">
+  <div class="container">
+    <div class="container-fluid demo-container">
+      <h2 class="title has-text-centered is-3">Model Analysis</h2>
+      <div class="row bg-dark" id="div-video-model-analysis">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id='sec:failures' class="hero is-small">
+  <div class="container">
+    <div class="container-fluid demo-container">
+      <h2 class="title has-text-centered is-3">Failure Cases</h2>
+      <div class="row bg-dark" id="div-video-failures">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id='sec:reference' class="hero is-small">
+  <div class="container">
+    <div class="container-fluid demo-container">
+      <h2 class="title has-text-centered is-3">References</h2>
+      <div class="row bg-dark" id="div-video-framework">
+        <div class="has-text-justified description" id="framework-description">
+          <strong>Motion-controlled image-to-video (I2V) generation methods</strong>
+          <ul  id="ulreference">
+            <li id="ref-trajattn">Xiao et al. <a target="_blank" rel="noopener noreferrer" href="https://xizaoqu.github.io/trajattn/">Trajectory Attention For Fine-grained Video Motion Control</a>. ICLR, 2025.</li>
+            <li>Geng et al. <a target="_blank" rel="noopener noreferrer" href="https://motion-prompting.github.io/">Motion Prompting: Controlling Video Generation with Motion Trajectories</a>. CVPR, 2025.</li>
+            <li>Wang et al. <a target="_blank" rel="noopener noreferrer" href="https://ppetrichor.github.io/levitor.github.io/">LeviTor: 3D Trajectory Oriented Image-to-Video Synthesis</a>. CVPR, 2025.</li>
+            <li>Jeong et al. <a target="_blank" rel="noopener noreferrer" href="https://hyeonho99.github.io/track4gen/">Track4Gen: Teaching Video Diffusion Models to Track Points Improves Video Generation</a>. CVPR, 2025.</li>
+            <li>Zhang et al. <a target="_blank" rel="noopener noreferrer" href="https://ali-videoai.github.io/tora_video/">Tora: Trajectory-oriented Diffusion Transformer for Video Generation</a>. CVPR, 2025.</li>
+            <li>Burgert et al. <a target="_blank" rel="noopener noreferrer" href="https://eyeline-labs.github.io/Go-with-the-Flow/">Go-with-the-Flow: Motion-Controllable Video Diffusion Models Using Real-Time Warped Noise</a>. CVPR, 2025.</li>
+            <li id="ref-das">Gu et al. <a target="_blank" rel="noopener noreferrer" href="https://igl-hkust.github.io/das/">Diffusion as Shader: 3D-aware Video Diffusion for Versatile Video Generation Control</a>. SIGGRAPH, 2025.</li>
+            <li>Xing et al. <a target="_blank" rel="noopener noreferrer" href="https://motion-canvas25.github.io/">MotionCanvas: Cinematic Shot Design with Controllable Image-to-Video Generation</a>. SIGGRAPH, 2025.</li>
+            <li id="ref-pac">Chen et al. <a target="_blank" rel="noopener noreferrer" href="https://chen-yingjie.github.io/projects/Perception-as-Control/">Perception-as-control: Fine-grained controllable image animation with 3d-aware motion representation</a>. In ICCV, 2025.</li>
+            <li id="ref-ati">Wang et al. <a target="_blank" rel="noopener noreferrer" href="https://anytraj.github.io/">ATI: Any Trajectory Instruction for Controllable Video Generation.</a> arXiv preprint arXiv:2505.22944, 2025.</li>
+          </ul>
+          <strong>Camera-controlled video-to-video (V2V) methods</strong>
+          <ul  id="ulreference">
+            <li id="ref-gen3c">Ren et al. <a target="_blank" rel="noopener noreferrer" href="https://research.nvidia.com/labs/toronto-ai/GEN3C/">GEN3C: 3D-Informed World-Consistent Video Generation with Precise Camera Control</a>. CVPR, 2025.</li>
+            <li id="ref-trajcrafter">Yu et al. <a target="_blank" rel="noopener noreferrer" href="https://trajectorycrafter.github.io/">TrajectoryCrafter: Redirecting Camera Trajectory for Monocular Videos via Diffusion Models</a>. ICCV, 2025.</li>
+            <li id="ref-recamaster">Bai et al. <a target="_blank" rel="noopener noreferrer" href="https://jianhongbai.github.io/ReCamMaster/">ReCamMaster: Camera-Controlled Generative Rendering from A Single Video</a>. ICCV, 2025.</li>
+            <li>Jeong et al. <a target="_blank" rel="noopener noreferrer" href="https://hyeonho99.github.io/reangle-a-video/">Reangle-A-Video: 4D Video Generation as Video-to-Video Translation</a> ICCV, 2025.</li>
+          </ul>
+          <strong>Relevant Video Motion editing</strong>
+          <ul  id="ulreference">
+            <li id="ref-revideo">Muo et al. <a target="_blank" rel="noopener noreferrer" href="https://mc-e.github.io/project/ReVideo/">ReVideo: Remake a Video with Motion and Content Control</a>. NeurIPS, 2024.</li>
+            <li>Ma et al. <a target="_blank" rel="noopener noreferrer" href="https://magic-stick-edit.github.io/">MagicStick: Controllable Video Editing via Control Handle Transformations</a>. WACV, 2025.</li>
+            <li>Liu et al. <a target="_blank" rel="noopener noreferrer" href="https://shapeformotion.github.io/">Shape-for-Motion: Precise and Consistent Video Editing with 3D Proxy</a>. SIGGRAPH Asia, 2025.</li>
+          </ul>
+          <br>
+          <div class="ack">
+            A concurrent work by Burgert et al., <a href="https://ryanndagreat.github.io/MotionV2V/">MotionV2V</a>, also explores video motion editing utilizing 2D point tracks. Their primary focus is on employing few point tracks for more user-friendly editing.
+            We also thank the authors of <a href="https://github.com/Wan-Video/Wan2.1">Wan2.1</a>, <a href="https://github.com/modelscope/DiffSynth-Studio">DiffSynth-Studio</a>, <a href="https://spatialtracker.github.io/">SpatialTrackerV2</a>, and <a href="https://tapip3d.github.io/">TAPIP3D</a> for open-sourcing their codes and models.
+          </div>
+        </div>
+        <div class='has-text-centered demo-video-instruction'>
+          <br>
+          <div class="instruction-centered">
+              <p>
+                  <a href="#sec:comparison"><span class="icon">
+                      <i class="fas fa-chevron-up"></i>
+                  </span>Back to baseline comparisons</a>
+                  <span class="hide-on-mobile">
+                  &nbsp;&nbsp;&nbsp;
+                  <a href="#top"><span class="icon">
+                      <i class="fas fa-chevron-up"></i>
+                  </span>Back to top</a>
+                  </span>
+              </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section id='sec:societal' class="hero is-small">
+  <div class="container">
+    <div class="container-fluid demo-container">
+      <h2 class="title has-text-centered is-3">Societal Impact</h2>
+      <div class="row bg-dark" id="div-video-framework">
+        <div class="has-text-justified description ack">
+          We recognize that powerful video editing tools, including ours, may raise ethical considerations depending on context.
+          While the work aims to augment human creativity and professional workflows, such capabilities could potentially be misused.
+          We encourage responsible use aligned with community guidelines and maintain transparency about the editing applied. 
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section id='sec:ack' class="hero is-small">
+  <div class="container">
+    <div class="container-fluid demo-container">
+      <h2 class="title has-text-centered is-3">Acknowledgements</h2>
+      <div class="row bg-dark" id="div-video-framework">
+        <div class="has-text-justified description ack">
+          We are grateful for the valuable feedback and insightful discussions provided by
+          Yihong Sun, Linyi Jin, Yiran Xu, Quynh Phung, Dekel Galor, Chun-Hao Paul Huang, Tianyu (Steve) Wang,  Ilya Chugunov, Jiawen Chen, Marc Levoy,
+          Wei-Chiu Ma, Ting-Hsuan Liao, Hadi Alzayer, Yi-Ting Chen, Vinayak Gupta, Yu-Hsiang Huang, and Shu-Jung Han.
+          <br><br>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section" id="bibtex">
+  <div class="container">
+    <div class="container-fluid demo-container">
+      <h2 class="title has-text-centered is-3">BibTeX</h2>
+      <pre><code>
+@article{lee2025editbytrack,
+  author    = {Lee, Yao-Chih and Zhang, Zhoutong and Huang, Jiahui and Wang, Jui-Hsien and Lee, Joon-Young and Huang, Jia-Bin and Shechtman, Eli and Li, Zhengqi},
+  title     = {Generative Video Motion Editing with 3D Point Tracks},
+  journal   = {arXiv preprint arXiv:2512.02015},
+  year      = {2025},
+}
+      </code></pre>
+    </div>
+  </div>
+</section>
+
+<br><br>
+<br><br>
+
+<footer>
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="content is-centered">
+        <div class="row bg-dark">
+          <div class="has-text-justified">
+            <p style="font-size: 13px;">
+              <br><br>
+              The source code for this website is licensed under a <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
+              This site is adapted from the work of <a href="https://gen-omnimatte.github.io">Generative Omnimatte</a> and <a href="https://pad3r.github.io/">PAD3R</a>.
+              If you use or adapt this code, we kindly request that you link back to our project page and acknowledge all related website sources.
+              <br><br>
+              <br><br>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
