@@ -23,4 +23,40 @@
       background-position: 200% center;
     }
   }
-  
+
+/* Floating navbar styles */
+#navbar-apps,
+#navbar-method {
+    transition: all 0.3s ease;
+    z-index: 100;
+}
+
+#navbar-apps.navbar-active,
+#navbar-method.navbar-active {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 15px 0;
+    z-index: 1000;
+}
+
+#navbar-apps.navbar-active .btn-group,
+#navbar-method.navbar-active .btn-group {
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+/* Highlight active section button in navbar */
+#navbar-apps .button.active,
+#navbar-method .button.active {
+    background-color: #3273dc;
+    color: white;
+    border-color: #3273dc;
+}

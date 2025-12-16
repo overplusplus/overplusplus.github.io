@@ -6,335 +6,237 @@ var activeModesPill = {};
 var is_mobile = false;
 
 category_examples = {
-    'teaser': {
-        'scenes': ['woman-office', 'wallaby', 'three-skaters'],
+    'effect-generation': {
+        'scenes': ['pexels_car_drift_2', 'davis_breakdance-flare', 'davis_surf', 'pexels_car_drift', 'boys-beach', 'boy-water', 'davis_car-roundabout', 'davis_bear', 'davis_snowboard', 'davis_motorbike', 'pexels_puddle_1', 'davis_miami-surf', 'boy-water-2', 'davis_camel', 'davis_kite-walk'],
         'methods': [''], // disabled
         'modes': [''],  // disabled
         'labels': {
-            'three-skaters': [],
-            'woman-office': [],
+            'davis_breakdance-flare':               ['Foreground', 'Background', 'Output'],
+            'davis_surf': 	 	 	                ['Foreground', 'Background', 'Output'],
+            'pexels_car_drift': 	 	 	        ['Foreground', 'Background', 'Output'],
+            'pexels_car_drift_2': 	 	 	        ['Foreground', 'Background', 'Output'],
+            'boys-beach': 	 	 	                ['Foreground', 'Background', 'Output'],
+            'boy-water': 	 	 	                ['Foreground', 'Background', 'Output'],
+            'davis_car-roundabout': 	 	 	    ['Foreground', 'Background', 'Output'],
+            'davis_bear': 	 	 	                ['Foreground', 'Background', 'Output'],
+            'davis_snowboard': 	 	 	            ['Foreground', 'Background', 'Output'],
+            'davis_motorbike': 	 	 	            ['Foreground', 'Background', 'Output'],
+            'pexels_puddle_1': 	 	 	            ['Foreground', 'Background', 'Output'],
+            'davis_miami-surf': 	                ['Foreground', 'Background', 'Output'],
+            'boy-water-2': 	 	 	                ['Foreground', 'Background', 'Output'],
+            'davis_camel': 	 	 	                ['Foreground', 'Background', 'Output'],
+            'davis_kite-walk': 	 	                ['Foreground', 'Background', 'Output'],
         },
-        'columns': 2,
-        'is_demo': false,
-        'is_comparison': false,
-        'is_teaser': true,
+        'columns': 3,
+        'is_demo': true,
+        'remove_hover': false,
         'current_scene': null,
+        'description': `
+            Motivated by the challenges of effect generation in real production video compositing (see examples from <a href="https://youtu.be/qqQvGNSEFSk?t=87" target="_blank">ILM</a>, <a href="https://youtu.be/e7hutojLU6Q?si=5v0u52z094G87Vyu&t=76" target="_blank">Weta</a>, and <a href="https://youtu.be/dWGlvZX3hVA?si=VErjcIORHRmToT19&t=166" target="_blank">DENG</a>), we introduce Over++, a framework for generating environmental effects without explicitly rendering the underlying interaction effects.
+            By default, Over++ generates complex effects that best physically match the interactions between the foreground and background layers. 
+            <br>
+            Hover to visualize the generated effects.
+        `,
     },
-    'joint-motion': {
-        'scenes': [
-            'biker-delivery', 'woman-yellow-wall', 'bullfight', 'billiards', 'kids-soccer', 'four-women-dance', 'karate', 'paint',
-            'woman-office', 'six-people-swim', 'three-skaters', 'corgi-snow', 'seal', 'sea-turtle', 'woman-shiba', 'two-wallabies', 'tunnel-run',
-        ],  // first item is default
+    'effect-editing': {
+        'scenes': ['pexels_car_drift_edit', 'boat-shore_edit', 'comp_breakdance-waterfall_edit', 'boy-water_edit', 'ilm_boat_1_edit', 'omnimatte_drift_smoke_blue_edit', 'davis_drift-chicane_edit', 'davis_camel_edit', 'davis_car-roundabout_edit'],  // first item is default
         'methods': [''], // disabled
         'modes': [''],  // disabled
         'labels': {
-            'bullfight':            ['Input', 'Stabilize camera motion & Stabilize objects\' motions'],
-            'woman-yellow-wall':    ['Input', 'Camera: pan left; Object: moonwalk'],
-            'paint':                ['Input', 'Camera: unchanged; Object: adjust hand movement'],
-            'kids-soccer':          ['Input', 'Camera: unchanged; Object: make a spiral ball trajectory'],
-            'four-women-dance':     ['Input', 'Camera: unchanged; Object: sync their dance poses'],
-            'karate':               ['Input', 'Camera: unchanged; Object: make the girl perform karate with the master'],
-            'billiards':            ['Input', 'Camera: move up; Object: adjust the yellow ball\'s trajectory'],
-            'woman-office':         ['Input', 'Camera: move up; Object: shrink and make her walk on the desk'],
-            'six-people-swim':      ['Input', 'Camera: static; Object: equalize jumping height and falling timing'],
-            'three-skaters':        ['Input', 'Camera: move right; Object: adjust skateboarders\' paths'],
-            'biker-delivery':       ['Input', 'Camera: unchanged; Object: make the biker fly'],
-            'corgi-snow':           ['Input', 'Camera: unchanged; Object: make the corgi fly'],
-            'seal':                 ['Input', 'Camera: arc left; Object: unchanged'],
-            'sea-turtle':           ['Input', 'Camera: static; Object: unchanged'],
-            'woman-shiba':          ['Input', 'Camera: move from right to left; Object: unchanged'],
-            'two-wallabies':        ['Input', 'Camera: move from left to right; Object: unchanged'],
-            'tunnel-run':           ['Input', 'Stabilize camera motion; Object: unchanged'],
+            'pexels_car_drift_edit': 	 	 	        ['Foreground', 'Background', 'Mask', '"Red smoke"'],
+            'boat-shore_edit': 	 	 	                ['Foreground', 'Background', 'Mask', 'Output'],
+            'comp_breakdance-waterfall_edit':           ['Foreground', 'Background', 'Mask', 'Smaller mask on hover'],
+            'boy-water_edit': 	 	 	                ['Foreground', 'Background', 'Mask', 'Output'],
+            'ilm_boat_1_edit': 	 	 	                ['Foreground', 'Background', 'Mask', 'Output'],
+            'omnimatte_drift_smoke_blue_edit': 	 	 	['Foreground', 'Background', 'Mask', '"Blue smoke"'],
+            'davis_drift-chicane_edit': 	 	 	    ['Foreground', 'Background', 'Mask', '"Red smoke"'],
+            'davis_camel_edit': 	 	 	            ['Foreground', 'Background', 'Mask', '"Soft shadow" on hover'],
+            'davis_car-roundabout_edit': 	 	 	    ['Foreground', 'Background', 'Mask', '"Harsh shadow" on hover'],
         },
-        'columns': 2,
+        'columns': 4,
+        'is_demo': true,
+        'remove_hover': false,
+        'current_scene': null,
+        'description': `
+            Over++ supports editing the generated effect using mask guidance, prompt guidance, or both. 
+            We also provide fine-grained control over the effect (e.g., soft vs. harsh shadow in <a onclick="selectSceneByName('effect-editing', 'davis_car-roundabout_edit')">car</a> and <a onclick="selectSceneByName('effect-editing', 'davis_camel_edit')">camel</a>).
+            <br>
+            Hover to reveal different controls, a gray mask indicates the absence of mask guidance.
+        `,
+    },
+    'effect-keyframe': {
+        'scenes': ['davis_miami-surf_keyframe', 'boy-water_keyframe', 'truck-water_keyframe', 'boys-beach_keyframe'],  // first item is default
+        'methods': [''], // disabled
+        'modes': [''],  // disabled
+        'labels': {
+            'davis_miami-surf_keyframe':                ['Foreground', 'Background', 'Keyframe mask annotation', 'Output'],
+            'boy-water_keyframe':                       ['Foreground', 'Background', 'Keyframe mask annotation', 'Output'],
+            'boys-beach_keyframe':                      ['Foreground', 'Background', 'Keyframe mask annotation', 'Output'],
+            'truck-water_keyframe':                     ['Foreground', 'Background', 'Keyframe mask annotation', 'Output'],
+        },
+        'columns': 4,
+        'is_demo': true,
+        'remove_hover': false,
+        'current_scene': null,
+        'description': `
+            Over++ supports keyframe masking for effect generation. By annotating only a keyframe mask, Over++ produces effects that adhere to the keyframe constraints while propagating consistent effects to the remaining frames—without requiring per-frame mask guidance.
+            <br>
+            Hover to reveal results without keyframe annotation (this is the same setup as effect generation without any guidance shown in <a href="#sec:effect-generation">Sec. I Effect Generation</a>).
+        `,
+    },
+    'effect-background-swap': {
+        'scenes': ['davis_breakdance-flare_background-swap', 'comp_breakdance-waterfall-stab_background-swap', 'comp_breakdance-dune-stab_background-swap'],
+        'methods': [''], // disabled
+        'modes': [''],  // disabled
+        'labels': {
+            'davis_breakdance-flare_background-swap':           ['Foreground', 'Background', 'Output'],
+            'comp_breakdance-waterfall-stab_background-swap':   ['Foreground', 'Background', 'Output'],
+            'comp_breakdance-dune-stab_background-swap':        ['Foreground', 'Background', 'Output'],
+        },
+        'columns': 3,
         'is_demo': true,
         'current_scene': null,
         'description': `
-            Edit camera and/or object motions using edited 3D point tracks and camera poses.
-            We also support complex human motion transfer via SMPL-X human representation (See <a onclick="selectSceneByName('joint-motion', 'four-women-dance')">dance</a> and <a onclick="selectSceneByName('joint-motion', 'karate')">karate</a> examples).
-            <br><br>
-            Note that our model is conditioned on all track correspondence (visible or occluded), allowing it to automatically handle visibility during 3D motion editing.
-            Therefore, our track visualizations display all tracks, including those that may be occluded in certain frames.
+            With the same foreground, Over++ supports background swapping for effect generation. By supplying different background videos, Over++ produces context-aware effects—for example, splashes and reflections (see <a onclick="selectSceneByName('effect-background-swap', 'comp_breakdance-waterfall-stab_background-swap')">waterfall</a>) or dust and shadows (see <a onclick="selectSceneByName('effect-background-swap', 'comp_breakdance-dune-stab_background-swap')">dune</a>).
+            <br>
+            Hover to visualize the generated effects.
         `,
     },
-    'shape-deform': {
-        'scenes': ['dachshund', 'cat-sniff-food', 'dog-sofa', 'ride-horse', 'wallaby', 'kid-door', 'flamingo', 'newspaper', 'white-swan'],  // first item is default
-        'methods': [''], // disabled
-        'modes': [''],  // disabled
+    'traindata': {
+        'scenes': ['car-turn_paired', 'pexels-bike-puddle2_paired', 'chicken_paired', 'kubric-0000039_paired', 'kubric-0000002_paired', 'unpaired-1', 'unpaired-2'],
+        'methods': ['paired', 'unpaired'],
+        'modes': [''],
         'labels': {
-            'cat-sniff-food':       ['Input', 'Enlarge the cat\'s head'],
-            'wallaby':              ['Input', 'Camera: arc right; Object: make the wallaby stand up'],
-            'ride-horse':           ['Input', 'Camera: unchanged; Object: make the horse stand up'],
-            'dog-sofa':             ['Input', 'Enlarge the dog\'s head'],
-            'dachshund':            ['Input', 'Stretch the dachshund\'s body'],
-            'kid-door':             ['Input', 'Enlarge the kid when passing through the door'],
-            'flamingo':             ['Input', 'Extend the flamingo\'s legs'],
-            'newspaper':            ['Input', 'Tear the newspaper'],
-            'white-swan':           ['Input', 'Bend the swan\'s head down'],
+            'pexels-bike-puddle2_paired':       ['Input video w/o effect', 'Target video w/ effect', 'Effect mask'],
+            'car-turn_paired':                  ['Input video w/o effect', 'Target video w/ effect', 'Effect mask'],
+            'kubric-0000039_paired':            ['Input video w/o effect', 'Target video w/ effect', 'Effect mask'],
+            'chicken_paired':                   ['Input video w/o effect', 'Target video w/ effect', 'Effect mask'],
+            'kubric-0000002_paired':            ['Input video w/o effect', 'Target video w/ effect', 'Effect mask'],
+            'unpaired-1':                       ['T2V video 1', 'T2V video 2', 'T2V video 3'],
+            'unpaired-2':                       ['T2V video 1', 'T2V video 2', 'T2V video 3'],
         },
-        'columns': 2,
-        'is_demo': true,
-        'current_scene': null,
-        'description': `Deform dynamic object shapes by applying different 3D transformations to body parts' 3D tracks`,
-    },
-    'removal-duplicate': {
-        'scenes': ['petting-cat', 'kid-puppets', 'yoga-beach', 'proposal', 'wooden-dinosaur', 'six-people-swim', 'penguin', 'meerkat'],  // first item is default
-        'methods': [''], // disabled
-        'modes': [''],  // disabled
-        'labels': {
-            'kid-puppets':          ['Input', 'Remove the kid'],
-            'yoga-beach':           ['Input', 'Remove the man & shift the camera trajectory'],
-            'proposal':             ['Input', 'Remove the photographer & adjust the camera trajectory'],
-            'petting-cat':          ['Input', 'Remove the hands & make the camera static'],
-            'wooden-dinosaur':      ['Input', 'Remove the hand & pan the camera left'],
-            'six-people-swim':      ['Input', 'Remove all people & make the camera static'],
-            'penguin':              ['Input', 'Duplicate the penguin'],
-            'meerkat':              ['Input', 'Duplicate the meerkat'],
+        'enable_scenes': {
+            'paired':                           ['car-turn_paired', 'pexels-bike-puddle2_paired', 'chicken_paired', 'kubric-0000039_paired', 'kubric-0000002_paired'],
+            'unpaired':                         ['unpaired-1', 'unpaired-2'],
         },
-        'columns': 2,
-        'is_demo': true,
-        'current_scene': null,
-        'description': `We perform object removal by moving object tracks off-screen, or duplication by replicating object's tracks. Notably, our method also supports simultaneous camera motion editing (see <a onclick="selectSceneByName('removal-duplicate', 'proposal')">couple</a>) and applying different 3D transformations to each duplicate (see <a onclick="selectSceneByName('removal-duplicate', 'penguin')">penguin</a>).`,
-    },
-    'partial': {
-        'scenes': ['cat-stand', 'goat', 'band', 't-rex', 'dog-beach', 'woman-run'],
-        'methods': [''], // disabled
-        'modes': [''],  // disabled
-        'labels': {
-            'goat':         ['Input', 'Output', "Warped reference"],
-            'cat-stand':    ['Input', 'Output', "Warped reference"],
-            'band':         ['Input', 'Output', "Warped reference"],
-            't-rex':        ['Input', 'Output', "Warped reference"],
-            'dog-beach':    ['Input', 'Output', "Warped reference"],
-            'woman-run':    ['Input', 'Output', "Warped reference"],
+        'method_buttons': {
+            'paired': 'Paired Data',
+            'unpaired': 'Unpaired Data',
         },
         'columns': 3,
         'is_demo': true,
+        'remove_hover': true,
         'current_scene': null,
-        'description': `By specifying only the body motion and removing leg tracks (via a bounding box), our model can synthesize correct leg motion without explicit controls. This allows for easier 3D track editing without requiring dense, full-object motion specifications.`,
-    },
-    'threed-control': {
-        'scenes': ['toy-dinosaurs', 'woman-yoga', 'cake'],
-        'methods': [''], // disabled
-        'modes': [''],  // disabled
-        'labels': {
-            'toy-dinosaurs':    ['Input', 'Left dinosaur in front', 'Right dinosaur in front'],
-            'cake':             ['Input', 'Rotate clockwise', 'Rotate counter-clockwise'],
-            'woman-yoga':       ['Input', 'Rotate clockwise', 'Rotate counter-clockwise'],
-        },
-        'columns': 3,
-        'is_demo': true,
-        'current_scene': null,
-        'description': `Our method leverages 3D point tracks for precise 3D object motion control, accurately handling <a onclick="selectSceneByName('threed-control', 'toy-dinosaurs')">object depth order (tracks visualized with depth values)</a> and occlusions/disocclusions during <a onclick="selectSceneByName('threed-control', 'woman-yoga')">3D rotations</a>.`,
+        'description': `
+            Training an inpainting-based video generation model for effect synthesis is challenging due to the scarcity of ideal, annotated video pairs.
+            To address this, we leverage prior work to decompose real-world videos into foreground and background layers, yielding a limited set of paired data (w/ and w/o effects).
+            We further augment the training set with synthetic, unpaired text-to-video (T2V) samples, resulting in a more abundant collection of unpaired data.
+            Click the buttons below for more details.
+        `,
+        'method_descriptions': {
+            'paired': `
+            Our model is fine-tuned on paired data comprising both limited real-world and synthetic videos. Each video pair shares the same foreground subjects and background scenes, but differs in the effect regions.
+            To obtain paired data, we leverage prior omnimatte-series methods (e.g., <a href="#ref-omnimatte">Omnimatte</a>, <a href="#ref-genomnimatte">GenOmnimatte</a>, and <a href="#ref-omnimatterf">Omnimatte-RF</a>) to decompose real-world videos into foreground and background layers. We further augment the paired dataset with synthetic video pairs collected using <a href="#ref-kubric">Kubric</a> and <a href="#ref-omnimatterf">Movies</a>.
+            `,
+            'unpaired': `
+            We additionally fine-tune on unpaired synthetic data by augmenting captions from the paired dataset, which helps preserve the pretrained model’s original text-to-video editing capabilities after paired fine-tuning, following prior practice (e.g., <a href="#ref-dreambooth">DreamBooth</a>).
+            To obtain unpaired data, we generate T2V videos using text prompts from the paired dataset. We also zero out the latent codes of the foreground and background layers for unpaired data when training with unpaired data.
+            `,
+        }
     },
     'failures': {
-        'scenes': ['pour-coffee', 'jump-boat'],
+        'scenes': ['ilm_PXL_failure', 'davis_boat_failure'],
         'methods': [''], // disabled
         'modes': [''],  // disabled
         'labels': {
-            'beer':         ['Input', 'Output', 'Warped reference'],
-            'pour-coffee':  ['Input', 'Output', 'Warped reference'],
-            'volleyball':   ['Input', 'Output', 'Warped reference'],
-            'mopping':      ['Input', 'Output', 'Warped reference'],
+            'ilm_PXL_failure':                  ['Foreground', 'Background', 'Output'],
+            'davis_boat_failure':               ['Foreground', 'Background', 'Output'],
+        },
+        'columns': 3,
+        'is_demo': true,
+        'remove_hover': true,
+        'current_scene': null,
+        'description': `Our approach still has a few limitations:
+        (i) complex physical effects that require detailed video understanding and reasoning—such as generating subtle splashes before stepping into a puddle or animating floating leaves that move with ripples (see <a onclick="selectSceneByName('failures', 'ilm_PXL_failure')">puddle and leaves</a>)—are not always synthesized correctly; and (ii) effect generation with extremely large CFG scales (e.g., <a onclick="selectSceneByName('failures', 'davis_boat_failure')">boat</a>) can lead to color oversaturation <a href="#ref-cfg">(Sadat et al., 2025)</a>.
+        `,
+    },
+    'robustness': {
+        'scenes': ['davis_kite-walk_robust', 'boy-water-2_robust', 'davis_breakdance-flare_robust'],
+        'methods': [''], // disabled
+        'modes': [''],  // disabled
+        'labels': {
+            'davis_kite-walk_robust':           ['Foreground', 'Background', 'Output'],
+            'boy-water-2_robust':               ['Foreground', 'Background', 'Output'],
+            'davis_breakdance-flare_robust':    ['Foreground', 'Background', 'Output'],
         },
         'columns': 3,
         'is_demo': true,
         'current_scene': null,
-        'description': `Our approach still has a few limitations:
-        (i) complex, motion-dependent physical effects (e.g., liquid dynamics like <a onclick="selectSceneByName('failures', 'pour-coffee')">coffee and milk mixing</a>) are not synthesized correctly,
-        and (ii) small objects with large motion changes (e.g., <a onclick="selectSceneByName('failures', 'jump-boat')">a 270&deg front-flip</a>) can suffer distortions when their tracks are densely clustered and noisy.
+        'description': `Our method demonstrates robustness to imprecise mask annotations, effectively handling masks that partially or fully cover foreground objects (see <a onclick="selectSceneByName('robustness', 'davis_kite-walk_robust')">walk</a> and <a onclick="selectSceneByName('robustness', 'boy-water-2_robust')">water</a>) as well as background regions (e.g., ignoring background masks in <a onclick="selectSceneByName('robustness', 'davis_breakdance-flare_robust')">breakdance</a>).
+        <br>
+        Over++ generates effects through video understanding and reasoning, producing semantically consistent results while robustly interpreting imperfect, real-world user annotations.
+        <br>
+        Hover to visualize the generated effects.
         `,
     },
     'comparisons': {
-        'scenes': ['car-turn', 'sea-turtle', 'three-skaters', 'man-jump-water', 'seal', 'cake'],
-        'methods': ['ATI', 'DaS', 'PaC', 'ReVideo', 'TrajAttn', 'GEN3C', 'TrajCrafter', 'ReCamMaster'],
-        'modes': [''],
-        'labels': {
-            'three-skaters':    ['Input video warped by target motion <br> Camera: move right; Object: adjust skateboarders\' paths'],
-            'seal':             ['Input video warped by target motion <br> Camera: arc left; Object: unchanged'],
-            'car-turn':         ['Input video warped by target motion <br> Camera: unchanged; Object: rotate the car to make it drift'],
-            'cake':             ['Input video warped by target motion <br> Camera: static; Object: rotate the cake'],
-            'sea-turtle':       ['Input video warped by target motion <br> Camera: static; Object: unchanged'],
-            'man-jump-water':   ['Input video warped by target motion <br> Camera: move left; Object: adjust falling location'],
-            'mochi':            ['Ground-truth'],
-            'backpack':         ['Ground-truth'],
+        'scenes': [
+            'boat-shore_comparison', 'boy-water_comparison', 'davis_breakdance-flare_comparison', 
+            'davis_camel_comparison', 'davis_mbike-trick_comparison', 'davis_miami-surf_comparison',
+            'davis_parkour_comparison', 'davis_skate-park_comparison', 'davis_snowboard_comparison', 
+            'davis_surf_comparison', 'pexels_car_drift_comparison', 'three_swans_lake_comparison',
+            'truck-water_comparison'
+        ],
+        'methods': [''],
+        'modes': ['no-mask', 'mask'],
+        'mode_labels': {
+            'no-mask': 'No-Mask Methods',
+            'mask': 'Mask Methods',
         },
-        'method_labels': {
-            'DaS':              'Diffusion as Shader<br>(track-conditioned I2V)',
-            'ATI':              'ATI<br>(track-conditioned I2V)',
-            'PaC':              'Perception as Control<br>(track-conditioned I2V)',
-            'ReVideo':          'ReVideo<br>(track-conditioned IV2V)',
-            'GEN3C':            'GEN3C<br>(Camera-controlled inpainting-based V2V)',
-            'TrajCrafter':      'Trajectory Crafter<br>(Camera-controlled inpainting-based V2V)',
-            'TrajAttn':         'Trajectory Attention<br>(track-conditioned I2V with an NVS-Solver extension)',
-            'ReCamMaster':      'ReCamMaster<br>(Camera-controlled V2V)',
+        'enable_scenes': {
+            'no-mask': ['boat-shore_comparison', 'boy-water_comparison', 'davis_breakdance-flare_comparison', 'davis_camel_comparison', 'davis_parkour_comparison', 'pexels_car_drift_comparison', 'three_swans_lake_comparison', 'truck-water_comparison'],
+            'mask': ['boat-shore_comparison', 'davis_camel_comparison', 'davis_mbike-trick_comparison', 'davis_miami-surf_comparison', 'davis_parkour_comparison', 'davis_skate-park_comparison', 'davis_snowboard_comparison', 'davis_surf_comparison', 'pexels_car_drift_comparison', 'truck-water_comparison'],
         },
-        'enable_methods': {
-            'three-skaters':    ['ATI', 'DaS', 'PaC', 'GEN3C', 'TrajCrafter', 'TrajAttn', 'ReVideo'],
-            'car-turn':         ['ATI', 'DaS', 'PaC', 'GEN3C', 'TrajCrafter', 'TrajAttn', 'ReVideo'],
-            'cake':             ['ATI', 'DaS', 'PaC', 'GEN3C', 'TrajCrafter', 'TrajAttn', 'ReVideo'],
-            'sea-turtle':       ['ATI', 'DaS', 'PaC', 'GEN3C', 'TrajCrafter', 'TrajAttn', 'ReVideo', 'ReCamMaster'],
-            'seal':             ['ATI', 'DaS', 'PaC', 'GEN3C', 'TrajCrafter', 'TrajAttn', 'ReVideo', 'ReCamMaster'],
-            'man-jump-water':   ['ATI', 'DaS', 'PaC', 'GEN3C', 'TrajCrafter', 'TrajAttn', 'ReVideo'],
+        'video_labels': {
+            'fg': 'Foreground',
+            'bg': 'Background',
+            'mask': 'Mask',
+            'ours': 'Ours',
+            'anyv2v': 'AnyV2V',
+            'loraedit': 'LoRA Edit',
+            'runway': 'Runway',
+            'vace': 'VACE',
+            'ours_mask': 'Ours (Mask)',
         },
         'is_demo': false,
         'is_comparison': true,
         'current_scene': null,
-        'current_method': null,
+        'current_mode': null,
         'description': `
-            Existing methods have limitations in jointly editing camera and object motions while preserving scene context:
+            Over++ supports both mask-free and mask-guided effect generation. We compare our method against representative video editing baselines for effect synthesis.
             <ul>
-                <li> <b>Track-conditioned image-to-video (I2V)</b> methods (<a href="#ref-das">DaS</a>, <a href="#ref-ati">ATI</a>, <a href="#ref-pac">PaC</a>) generate videos from a single frame,
-                    while <a href="#ref-revideo">ReVideo</a> and the extended <a href="#ref-trajattn">TrajAttn</a> additionally takes a masked video input (cropped background or warped frames), these methods  <a onclick="selectSceneByName('comparisons', 'car-turn', 'ATI')">lose the full scene context</a> of the input video.</li>
-                </li>
-                <li> <b>Camera-controlled video-to-video (V2V)</b> approaches (<a href="#ref-gen3c">GEN3C</a>, <a href="#ref-trajcrafter">TrajCrafter</a>) inpaint from the warped input video but fails to <a onclick="selectSceneByName('comparisons', 'car-turn', 'GEN3C')">shadows</a> or <a onclick="selectSceneByName('comparisons', 'man-jump-water', 'TrajCrafter')">water splashes</a> of the edited objects.
-                    <a href="#ref-recamaster">ReCamMaster</a> directly inputs the target camera extrinsics (see camera-only editing cases, <a onclick="selectSceneByName('comparisons', 'sea-turtle', 'ReCamMaster')">sea turtle</a> and <a onclick="selectSceneByName('comparisons', 'seal', 'ReCamMaster')">seal</a>).
-                    We observed that ReCamMaster fails in specific fixed-viewpoint cases (e.g., <a onclick="selectSceneByName('comparisons', 'sea-turtle', 'ReCamMaster')">sea turtle</a>), likely because such scenarios were not adequately represented in its training data.
-                </li>
+            <li>
+                <b>No-mask methods.</b> We compare against first-frame–guided video editing (I+V2V) baselines, where the ground-truth video’s first frame is provided as guidance (<a href="#ref-anyv2v">AnyV2V</a>, <a href="#ref-loraedit">LoRA Edit</a>), as well as context-aware video-to-video (V2V) editing methods (<a href="#ref-runway">Runway Aleph</a>).
+            </li>
+            <li>
+                <b>Mask-guided methods.</b> We compare against mask-guided video editing (M+V2V) baselines that take explicit mask inputs (<a href="#ref-vace">VACE</a>).
+            </li>
             </ul>
-            In contrast, our method conditions on the entire unmasked input video and the pair of input and target 3D tracks for joint camera and object motion editing with the consistency of the original scene context.
         `,
     },
-    'traindata': {
-        'scenes': ['syn-exp1', 'syn-exp2', 'real-exp1', 'real-exp2'],
-        'methods': ['synthetic', 'real'],
-        'modes': [''],
-        'labels': {
-            'syn-exp1':     ['Training input', 'Ground-truth'],
-            'syn-exp2':     ['Training input', 'Ground-truth'],
-            'real-exp1':    ['Training input', 'Target output'],
-            'real-exp2':    ['Training input', 'Target output'],
-        },
-        'enable_scenes': {
-            'synthetic':    ['syn-exp1', 'syn-exp2'],
-            'real':         ['real-exp1', 'real-exp2'],
-        },
-        'method_buttons': {
-            'synthetic': 'Stage 1: Synthetic Data',
-            'real': 'Stage 2: Real Data',
-        },
-        'columns': 2,
-        'is_demo': true,
-        'current_scene': null,
-        'description': `To train our track-conditioned V2V model, a major challenge lies in the scarcity of ideal, annotated video pairs for motion manipulation.
-                        To tackle this, we adopt a two-stage fine-tuning approach. Click the buttons below to see the training data used in each stage.`,
-        'method_descriptions': {
-            'synthetic': `Our model is first fine-tuned on the synthetic data with ground-truth point tracks to learn motion control. Each video pair shares the same objects and background scenes but differs in object actions and camera motions.`,
-            'real': `We continue fine-tuning on real data by sampling two non-contiguous clips from a monocular video (as illustrated), leveraging its natural motion to scalably simulate joint camera and object motion changes. Please note: The examples shown are from publicly available videos, not our internal training data.
-                    <br><span class="description-real-data-illustration"><img src="./assets/images/traindata-real.svg"></span>`,
-        }
-    },
-    'model-analysis': {
-        'methods': ['2dvs3d', 'tokenvis', 'sparsity', 'noisiness', 'text-prompt', 'seeds'],
-        'scenes': ['ride-horse', 'woman-yellow-wall', 'three-skaters', 'sea-turtle', 'taichi', 'toy-dinosaurs', 'wallaby', 'dog-beach', 'woman-yoga'],
-        'method_buttons': {
-            'sparsity': 'Sparsity of tracks',
-            'noisiness': 'Noisiness of tracks',
-            '2dvs3d': '2D vs 3D tracks',
-            'tokenvis': 'Track token visualization',
-            'text-prompt': 'Effect of texts',
-            'seeds': 'Random seeds',
-        },
-        'modes': [
-            'N=32', 'N=256', 'STD=4', 'STD=16',
-        ],
-        'enable_scenes': {
-            'sparsity':     ['ride-horse', 'woman-yellow-wall'],
-            'noisiness':    ['three-skaters', 'sea-turtle'],
-            '2dvs3d':       ['taichi', 'toy-dinosaurs'],
-            'tokenvis':     ['toy-dinosaurs'],
-            'text-prompt':  ['wallaby', 'dog-beach'],
-            'seeds':        ['woman-yoga'],
-        },
-        'enable_modes': {
-            'sparsity':     [],
-            'noisiness':    [],
-            '2dvs3d':       [],
-            'tokenvis':     [],
-            'text-prompt':  [],
-            'seeds':        [],
-        },
-        'method_columns': {
-            'sparsity':     [['Input', 'N=1024', 'N=256', 'N=32']],
-            'noisiness':    [['Input', 'STD=0', 'STD=4', 'STD=16']],
-            '2dvs3d':       [['ref', '3D', '2D']],
-            'text-prompt':  [['Input', 'prompt1', 'prompt2']],
-            'seeds':        [['Input', 'seed0', 'seed1', 'seed2']],
-            'tokenvis':     [['Input', 'left', 'right']],
-        },
-        'column_labels': {
-            '2dvs3d': {
-                'taichi': {'ref': 'Target motion', '3D': 'Model with 3D tracks (Ours)', '2D': 'Model with 2D tracks'},
-                'toy-dinosaurs': {'ref': 'Target motion warped<br>(left dinosaur in front)', '3D': 'Model with 3D tracks (Ours)', '2D': 'Model with 2D tracks'},
-            },
-            'text-prompt': {
-                'dog-beach': {'Input': 'Input', 'prompt1': '\"a dog jumps on a beach, causing water splashes.\"', 'prompt2': '\"A dog jumps on a sticky honey without splashes\"'},
-                'wallaby': {'Input': 'Input', 'prompt1': '\"A wallaby in a zoo\"', 'prompt2': '\"A wallaby on a beach\"'},
-            },
-            'seeds': {
-                'woman-yoga': {'Input': 'Input', 'seed0': 'Seed 0', 'seed1': 'Seed 1', 'seed2': 'Seed 2'}
-            },
-            'tokenvis': {
-                'toy-dinosaurs': {'Input': 'Input', 'left': 'Left dinosaur in front', 'right': 'Right dinosaur in front'}
-            }
-        },
-        'method_descriptions': {
-            '2dvs3d': `
-                        We compare our final model using 3D tracks with an ablated version trained only with 2D tracks.
-                        <br><br>
-                        The 3D track inputs provide crucial depth cues, enabling the model to correctly handle <a onclick="selectSceneByName('model-analysis', 'taichi', '2dvs3d')">complex 3D rotations during human motion transfer</a>
-                        and <a onclick="selectSceneByName('model-analysis', 'toy-dinosaurs', '2dvs3d')">depth ordering (tracks visualized with depth values)</a>.
-                        <br><br>
-                        Top row: video; bottom row: Track overlay.
-                    `,
-            'tokenvis': `
-                        We visualize the paired track tokens from our 3D track conditioner using PCA.
-                        <br><br>
-                        The 3rd row shows the tokens <i>before</i> adding the z-embedding, which primarily capture rich visual context sampled from the input video.
-                        <br><br>
-                        The 4th row shows the final tokens <i>after</i> adding the z-embedding. These now contain additional depth cues (e.g., in the visualization, darker colors represent closer objects). 
-                    `,
-            'sparsity': `
-                        Our model is trained on a random number of point tracks between [500, 1000], and we test its robustness to sparser inputs not seen during training.
-                        <br><br>
-                        While extremely sparse inputs (N=32) can cause motion artifacts and undesired generation due to insufficient correspondences,
-                        a denser sparse input (N=256)—though still sparser than the training range—significantly enhances motion control and visual quality.
-                    `,
-            'noisiness': `
-                        To account for potential noise and inaccuracies in estimated 3D tracks and camera poses, we test our model's robustness to perturbed inputs.
-                        This experiment involves adding varying amounts of Gaussian noise to the target point tracks.
-                        <br><br>
-                        Our model maintains satisfactory motion control and visual quality with mild noise (STD=4px),
-                        but excessive noise (STD=16px) leads to noticeable artifacts and diminished control accuracy.
-                    `,
-            'text-prompt': `
-                        While our model primarily relies on 3D track conditions for precise motion control,
-                        text prompts can provide supplementary context.
-                        This is particularly useful for generating <a onclick="selectSceneByName('model-analysis', 'wallaby', 'text-prompt')">unseen regions</a> or adding fine-grained details (e.g., <a onclick="selectSceneByName('model-analysis', 'dog-beach', 'text-prompt')">water effects</a>).
-                    `,
-            'seeds': `
-                        Using different random seeds leads to slight variations in the output.
-                        Please note that all above results shown on this webpage are generated using the same seed (=0).
-            `,
-        },
-        'is_demo': false,
-        'is_comparison': false,
-    }
 }
 
 
 $(document).ready(function () {
     category_names = [
-        'teaser',
-        'joint-motion',
-        'shape-deform',
-        'removal-duplicate',
-        'partial',
-        'threed-control',
-        'failures',
-        'traindata',
+        'effect-generation',
+        'effect-editing',
+        'effect-keyframe',
+        'effect-background-swap',
         'comparisons',
-        'model-analysis',
+        'traindata',
+        'robustness',
+        'failures',
     ];
     for (let i = 0; i < category_names.length; i++) {
         category_name = category_names[i];
@@ -373,8 +275,8 @@ function getSectionTopBottom(section_id) {
 
 
 float_navbars = {
-    'navbar-apps': ["sec:joint-motion", "sec:shape-deform", "sec:removal-duplicate", "sec:partial"],
-    'navbar-method': ["sec:comparison", "sec:framework", "sec:traindata", "sec:threed-control", "sec:model-analysis", "sec:failures"],
+    'navbar-apps': ["sec:effect-generation", "sec:effect-editing", "sec:effect-keyframe", "sec:effect-background-swap"],
+    'navbar-method': ["sec:comparison", "sec:framework", "sec:traindata", "sec:robustness", "sec:failures"],
 }
 
 
@@ -423,10 +325,10 @@ function updateNavbarsOnScroll() {
     }
 }
 
-
-// $(window).scroll(function(){
-//     updateNavbarsOnScroll();
-// });
+/* ---------------- scroll event handler (comment to disable) --------------- */
+$(window).scroll(function(){
+    updateNavbarsOnScroll();
+});
 
 
 function display_block(category_name) {
@@ -580,31 +482,54 @@ function display_block(category_name) {
         
     `;
     if (category_examples[category_name]['is_demo']) {
+        remove_hover = category_examples[category_name]['remove_hover'] === true;
         if (!is_mobile) {
-            instruction = `
-            <div class='has-text-centered demo-video-instruction'>
-                <div class="instruction-centered">
-                    <p>
-                        <span class="icon">
-                            <i class="far fa-hand-paper"></i>
-                        </span>Hover on video to show tracks
-                        &nbsp;&nbsp;&nbsp;&nbsp;
-                        <span class="icon">
-                            <i class="far fa-hand-point-up"></i>
-                        </span>Click video to pause
-                        &nbsp;&nbsp;&nbsp;&nbsp;                        
-                        <span class="icon">
-                            <i class="fas fa-download"></i>
-                        </span>Download [<u><a id="${category_name}-download-video" target="_blank" href="" download="">video</a></u> / 
-                            <u><a id="${category_name}-download-video-tracks" target="_blank" href="" download="">video with track</a></u>]
-                        &nbsp;&nbsp;&nbsp;&nbsp;
-                        <a href="#top"><span class="icon">
-                            <i class="fas fa-chevron-up"></i>
-                        </span>Back to top</a>
-                    </p>
+            if (remove_hover) {
+                instruction = `
+                <div class='has-text-centered demo-video-instruction'>
+                    <div class="instruction-centered">
+                        <p>
+                            <span class="icon">
+                                <i class="far fa-hand-point-up"></i>
+                            </span>Click video to pause
+                            &nbsp;&nbsp;&nbsp;&nbsp; 
+                            <span class="icon">
+                                <i class="fas fa-download"></i>
+                            </span>Download [<u><a id="${category_name}-download-video" target="_blank" href="" download="">video</a></u>]
+                            &nbsp;&nbsp;&nbsp;&nbsp;                       
+                            <a href="#top"><span class="icon">
+                                <i class="fas fa-chevron-up"></i>
+                            </span>Back to top</a>
+                        </p>
+                    </div>
                 </div>
-            </div>
-            `;
+                `;
+            } else {
+                instruction = `
+                <div class='has-text-centered demo-video-instruction'>
+                    <div class="instruction-centered">
+                        <p>
+                            <span class="icon">
+                                <i class="far fa-hand-paper"></i>
+                            </span>Hover on video to toggle control
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            <span class="icon">
+                                <i class="far fa-hand-point-up"></i>
+                            </span>Click video to pause
+                            &nbsp;&nbsp;&nbsp;&nbsp;                        
+                            <span class="icon">
+                                <i class="fas fa-download"></i>
+                            </span>Download [<u><a id="${category_name}-download-video" target="_blank" href="" download="">video</a></u> / 
+                                <u><a id="${category_name}-download-video-tracks" target="_blank" href="" download="">video on hover</a></u>]
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            <a href="#top"><span class="icon">
+                                <i class="fas fa-chevron-up"></i>
+                            </span>Back to top</a>
+                        </p>
+                    </div>
+                </div>
+                `;
+            }
         } else {
             instruction = `
             <div class='has-text-centered demo-video-instruction'>
@@ -612,7 +537,7 @@ function display_block(category_name) {
                     <p>
                         <span class="icon">
                             <i class="far fa-hand-point-up"></i>
-                        </span>Touch video to toggle track overlay
+                        </span>Touch video to ${remove_hover ? 'pause' : 'toggle track overlay'}
                     </p>
                 </div>
             </div>
@@ -684,22 +609,39 @@ function loadDemoVideoContainer(video_container, category_name, scene, method, m
         filename = `${filename}-${mode}`;
     }
 
+    // Check if hover functionality should be removed
+    remove_hover = category_examples[category_name]['remove_hover'] === true;
+
     current_filename = category_examples[category_name]['current_scene'];
     if (current_filename == null) {
-        video_container.innerHTML = `
-            <div class="twentytwenty-container" id="${category_name}-video-twentytwenty">
-                <div class="video">
-                    <video class="video demo-video" style="width: 100%;" id="${category_name}Video0" loop playsinline autoplay muted>
-                        <source src="./assets/videos/${category_name}/${filename}.mp4" />
-                    </video>
+        if (remove_hover) {
+            // Side-by-side layout without hover slider
+            video_container.innerHTML = `
+                <div>
+                    <div class="video">
+                        <video class="video demo-video" style="width: 100%;" id="${category_name}Video0" loop playsinline autoplay muted>
+                            <source src="./assets/videos/${category_name}/${filename}.mp4" />
+                        </video>
+                    </div>
                 </div>
-                <div class="video">
-                    <video class="video demo-video" style="width: 100%;" id="${category_name}Video1" loop playsinline autoplay muted>
-                        <source src="./assets/videos/${category_name}/${filename}-tracks.mp4" />
-                    </video>
+            `;
+        } else {
+            // Original twentytwenty slider layout
+            video_container.innerHTML = `
+                <div class="twentytwenty-container" id="${category_name}-video-twentytwenty">
+                    <div class="video">
+                        <video class="video demo-video" style="width: 100%;" id="${category_name}Video0" loop playsinline autoplay muted>
+                            <source src="./assets/videos/${category_name}/${filename}.mp4" />
+                        </video>
+                    </div>
+                    <div class="video">
+                        <video class="video demo-video" style="width: 100%;" id="${category_name}Video1" loop playsinline autoplay muted>
+                            <source src="./assets/videos/${category_name}/${filename}-tracks.mp4" />
+                        </video>
+                    </div>
                 </div>
-            </div>
-        `;
+            `;
+        }
     } else if (current_filename != filename) {
         video_container.innerHTML = video_container.innerHTML.replaceAll(current_filename, filename);
     }
@@ -708,30 +650,76 @@ function loadDemoVideoContainer(video_container, category_name, scene, method, m
     var video_active1 = document.getElementById(category_name + "Video1");
 
     video_active0.load();
-    video_active1.load();
+    if (video_active1) {
+        video_active1.load();
+    }
+    
     function _play_together() {
-        if (video_active0.readyState >= 4 && video_active1.readyState >= 4) {
-            video_active0.play();
-            video_active1.play();
+        if (remove_hover) {
+            // Single video case
+            if (video_active0 && video_active0.readyState >= 4) {
+                video_active0.play();
+            } else if (video_active0) {
+                setTimeout(_play_together, 100);
+            }
         } else {
-            setTimeout(_play_together, 100);
+            // Two videos case (with hover)
+            if (video_active0 && video_active1 && video_active0.readyState >= 4 && video_active1.readyState >= 4) {
+                video_active0.play();
+                video_active1.play();
+            } else {
+                setTimeout(_play_together, 100);
+            }
         }
     }
     _play_together();
 
-    // Reinitialize twentytwenty if needed
-    two_column_ratio = 0.285;
-    three_column_ratio = 0.19;
-    if (category_examples[category_name]['columns'] == 2) {
-        ratio = two_column_ratio;
-    } else if (category_examples[category_name]['columns'] == 3) {
-        ratio = three_column_ratio;
-    } else {
-        ratio = two_column_ratio;
-    }
+    // Only initialize twentytwenty if hover is not removed
+    if (!remove_hover) {
+        // Reinitialize twentytwenty if needed
+        two_column_ratio = 0.285;
+        three_column_ratio = 0.19;
+        four_column_ratio = 0.15;
 
-    if (window.jQuery && $.fn.twentytwenty) {
-        $("#" + category_name + "-video-twentytwenty").twentytwenty({ ratio: ratio, hover_to_leftmost: true, default_offset_pct: 0.999, disable_resize: true, is_mobile: is_mobile  });
+        if (category_examples[category_name]['columns'] == 2) {
+            ratio = two_column_ratio;
+        } else if (category_examples[category_name]['columns'] == 3) {
+            ratio = three_column_ratio;
+        } else if (category_examples[category_name]['columns'] == 4) {
+            ratio = four_column_ratio;
+        }
+        else {
+            ratio = two_column_ratio;
+        }
+
+        if (window.jQuery && $.fn.twentytwenty) {
+            $("#" + category_name + "-video-twentytwenty").twentytwenty({ ratio: ratio, hover_to_leftmost: true, default_offset_pct: 0.999, disable_resize: false, is_mobile: is_mobile  });
+        }
+    } else {
+        // Use syncer for videos when hover is removed
+        // Initialize syncer after a small delay to ensure DOM is ready
+        // setTimeout(function() {
+        //     if (window.jQuery && $.fn.syncer) {
+        //         var container = $("#" + category_name + "-video-container");
+        //         if (container.length) {
+        //             container.syncer({
+        //                 reset_height: true,
+        //                 click_to_pause: true,
+        //                 hover_to_sync: false
+        //             });
+        //         }
+        //     }
+        // }, 100);
+        if (window.jQuery && $.fn.syncer) {
+            var container = $("#" + category_name + "-video-container");
+            if (container.length) {
+                container.syncer({
+                    reset_height: true,
+                    click_to_pause: true,
+                    hover_to_sync: false
+                });
+            }
+        }
     }
 
     // load labels
@@ -769,76 +757,115 @@ function loadDemoVideoContainer(video_container, category_name, scene, method, m
 
 }
 
-function loadComparisonVideoContainer(video_container, category_name, method_name, pill) {
+function loadComparisonVideoContainer(video_container, category_name, method_name, scene, mode) {
 
-    label1 = category_examples[category_name]['labels'][pill][0];
-    label2 = category_examples[category_name]['method_labels'][method_name];
-
+    video_labels = category_examples[category_name]['video_labels'];
     current_scene = category_examples[category_name]['current_scene'];
-    current_method = category_examples[category_name]['current_method'];
+    current_mode = category_examples[category_name]['current_mode'];
 
     init_sync = true;
 
-    if (current_scene == null || current_method == null) {
-        video_container.innerHTML = `
-            <div class="columns">
-                <div class="column comparison-video-div">
-                    <video class="comparison-video"  loop playsinline muted>
-                        <source src="./assets/videos/${category_name}/${pill}/input.mp4" />
-                    </video>
-                    <div class="has-text-centered demo-video-label">
-                        Input
+    if (current_scene == null || current_mode == null) {
+        // First load - build full HTML
+        if (mode == 'no-mask') {
+            video_container.innerHTML = `
+                <div class="columns">
+                    <div class="column comparison-video-div">
+                        <video class="comparison-video" loop playsinline muted>
+                            <source src="./assets/videos/${category_name}/${scene}/fg.webm" />
+                        </video>
+                        <div class="has-text-centered demo-video-label">${video_labels['fg']}</div>
+                    </div>
+                    <div class="column comparison-video-div">
+                        <video class="comparison-video" loop playsinline muted>
+                            <source src="./assets/videos/${category_name}/${scene}/bg.webm" />
+                        </video>
+                        <div class="has-text-centered demo-video-label">${video_labels['bg']}</div>
+                    </div>
+                    <div class="column comparison-video-div">
+                        <video class="comparison-video" loop playsinline muted>
+                            <source src="./assets/videos/${category_name}/${scene}/ours.webm" />
+                        </video>
+                        <div class="has-text-centered demo-video-label">${video_labels['ours']}</div>
                     </div>
                 </div>
-                <div class="column comparison-video-div">
-                    <video class="comparison-video"  loop playsinline muted id="video-comparison-ref">
-                        <source src="./assets/videos/${category_name}/${pill}/ref.mp4" />
-                    </video>
-                    <div class="has-text-centered demo-video-label">
-                        ${label1}
+                <div class="columns">
+                    <div class="column comparison-video-div">
+                        <video class="comparison-video" loop playsinline muted>
+                            <source src="./assets/videos/${category_name}/${scene}/anyv2v.webm" />
+                        </video>
+                        <div class="has-text-centered demo-video-label">${video_labels['anyv2v']}</div>
+                    </div>
+                    <div class="column comparison-video-div">
+                        <video class="comparison-video" loop playsinline muted>
+                            <source src="./assets/videos/${category_name}/${scene}/loraedit.webm" />
+                        </video>
+                        <div class="has-text-centered demo-video-label">${video_labels['loraedit']}</div>
+                    </div>
+                    <div class="column comparison-video-div">
+                        <video class="comparison-video" loop playsinline muted>
+                            <source src="./assets/videos/${category_name}/${scene}/runway.webm" />
+                        </video>
+                        <div class="has-text-centered demo-video-label">${video_labels['runway']}</div>
                     </div>
                 </div>
-            </div>
-            <div class="columns">            
-                <div class="column comparison-video-div">
-                    <video class="comparison-video"  loop playsinline muted id="video-comparison-baseline">
-                        <source src="./assets/videos/${category_name}/${pill}/${method_name}.mp4" id="src-comparison-baseline" />
-                    </video>
-                    <div class="has-text-centered demo-video-label">
-                        ${label2}
+            `;
+        } else if (mode == 'mask') {
+            video_container.innerHTML = `
+                <div class="columns">
+                    <div class="column is-one-third comparison-video-div">
+                        <video class="comparison-video" loop playsinline muted>
+                            <source src="./assets/videos/${category_name}/${scene}/fg.webm" />
+                        </video>
+                        <div class="has-text-centered demo-video-label">${video_labels['fg']}</div>
+                    </div>
+                    <div class="column is-one-third comparison-video-div">
+                        <video class="comparison-video" loop playsinline muted>
+                            <source src="./assets/videos/${category_name}/${scene}/bg.webm" />
+                        </video>
+                        <div class="has-text-centered demo-video-label">${video_labels['bg']}</div>
+                    </div>
+                    <div class="column is-one-third comparison-video-div">
+                        <video class="comparison-video" loop playsinline muted>
+                            <source src="./assets/videos/${category_name}/${scene}/mask.webm" />
+                        </video>
+                        <div class="has-text-centered demo-video-label">${video_labels['mask']}</div>
                     </div>
                 </div>
-                <div class="column comparison-video-div">
-                    <video class="comparison-video"  loop playsinline muted>
-                        <source src="./assets/videos/${category_name}/${pill}/Ours.mp4" />
-                    </video>
-                    <div class="has-text-centered demo-video-label">
-                        Ours
+                <div class="columns is-centered">
+                    <div class="column is-one-third comparison-video-div">
+                        <video class="comparison-video" loop playsinline muted>
+                            <source src="./assets/videos/${category_name}/${scene}/ours_mask.webm" />
+                        </video>
+                        <div class="has-text-centered demo-video-label">${video_labels['ours_mask']}</div>
+                    </div>
+                    <div class="column is-one-third comparison-video-div">
+                        <video class="comparison-video" loop playsinline muted>
+                            <source src="./assets/videos/${category_name}/${scene}/vace.webm" />
+                        </video>
+                        <div class="has-text-centered demo-video-label">${video_labels['vace']}</div>
                     </div>
                 </div>
-            </div>
-        `;
-    } else if (current_method != method_name && current_scene == pill) {
-        // only replace the baseline video while keep playing other videos
-        document.getElementById('src-comparison-baseline').src = `./assets/videos/${category_name}/${pill}/${method_name}.mp4`;
-        vid_baseline_ele = document.getElementById('video-comparison-baseline');
-        vid_baseline_ele.load();
-        vid_ref_ele = document.getElementById('video-comparison-ref');
-        vid_baseline_ele.currentTime = vid_ref_ele.currentTime;
-        if (!vid_ref_ele.paused)
-            vid_baseline_ele.play();
-        init_sync = false;
-        
+            `;
+        }
+    } else if (current_mode != mode) {
+        // Mode changed - rebuild HTML with new layout
+        category_examples[category_name]['current_scene'] = null;
+        category_examples[category_name]['current_mode'] = null;
+        loadComparisonVideoContainer(video_container, category_name, method_name, scene, mode);
+        return;
+    } else if (current_scene != scene && current_mode == mode) {
+        // Same mode but different scene - use replaceAll to swap scene names
+        console.log('replace comparison videos - scene changed');
+        video_container.innerHTML = video_container.innerHTML.replaceAll(current_scene, scene);
     } else {
-        console.log('replace comparison videos');
-        video_container.innerHTML = video_container.innerHTML
-            .replaceAll(category_examples[category_name]['labels'][current_scene][0], label1)
-            .replaceAll(category_examples[category_name]['method_labels'][current_method], label2)
-            .replaceAll(current_scene, pill)
-            .replaceAll(current_method, method_name);
+        // Same scene and mode - no rebuild needed
+        init_sync = false;
     }
-    category_examples[category_name]['current_scene'] = pill;
-    category_examples[category_name]['current_method'] = method_name;
+
+    category_examples[category_name]['current_scene'] = scene;
+    category_examples[category_name]['current_mode'] = mode;
+
     if (init_sync && window.jQuery && $.fn.syncer) {
         $("#" + category_name + "-video-container").syncer();
     }
@@ -1001,7 +1028,11 @@ function selectVideo(category_name, methodPill, scenePill, modePill) {
     }
 
     enable_scenes = category_examples[category_name]['enable_scenes'];
-    if (enable_scenes && enable_scenes[method] && enable_scenes[method].length == 1) {
+    // Check for mode-based filtering first (for comparisons), then fall back to method-based
+    enable_scenes_key = (enable_scenes && enable_scenes[mode]) ? mode : method;
+    enable_scenes_list = enable_scenes ? enable_scenes[enable_scenes_key] : null;
+    
+    if (enable_scenes_list && enable_scenes_list.length == 1) {
         document.getElementById(category_name + "-scene-pills").style.display = "none";
     } else {
         document.getElementById(category_name + "-scene-pills").style.display = "block";
@@ -1010,7 +1041,7 @@ function selectVideo(category_name, methodPill, scenePill, modePill) {
     first_active_scene_btn = null;
     for (let i = 0; i < scenes.length; i++) {
         btn_scene = document.getElementById(category_name + "-scene-" + scenes[i]);
-        if (enable_scenes && enable_scenes[method] && !enable_scenes[method].includes(scenes[i])) {
+        if (enable_scenes_list && !enable_scenes_list.includes(scenes[i])) {
             btn_scene.style.display = "none";
         } else {
             if (first_active_scene_btn == null) {
@@ -1052,7 +1083,7 @@ function selectVideo(category_name, methodPill, scenePill, modePill) {
     if (category_examples[category_name]['is_demo']) {
         loadDemoVideoContainer(video_container, category_name, scene, method, mode);
     } else if (category_examples[category_name]['is_comparison']) {
-        loadComparisonVideoContainer(video_container, category_name, method, scene);
+        loadComparisonVideoContainer(video_container, category_name, method, scene, mode);
     } else if (category_examples[category_name]['is_teaser']) {
         loadTeaserVideoContainer(video_container, category_name, scene);
     } else {
