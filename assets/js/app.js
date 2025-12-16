@@ -32,7 +32,7 @@ category_examples = {
         'remove_hover': false,
         'current_scene': null,
         'description': `
-            Motivated by the challenges of effect generation in real production video compositing (see examples from <a href="https://youtu.be/qqQvGNSEFSk?t=87" target="_blank">ILM</a>, <a href="https://youtu.be/e7hutojLU6Q?si=5v0u52z094G87Vyu&t=76" target="_blank">Weta</a>, and <a href="https://youtu.be/dWGlvZX3hVA?si=VErjcIORHRmToT19&t=166" target="_blank">DENG</a>), we introduce Over++, a framework for generating environmental effects without explicitly rendering the underlying interaction effects.
+            Motivated by the challenges of effect generation in real production video compositing (see examples from <a href="https://youtu.be/qqQvGNSEFSk?t=87" target="_blank">ILM</a>, <a href="https://youtu.be/e7hutojLU6Q?si=5v0u52z094G87Vyu&t=76" target="_blank">Weta</a>, and <a href="https://youtu.be/dWGlvZX3hVA?si=VErjcIORHRmToT19&t=166" target="_blank">DNEG</a>), we introduce Over++, a framework for generating environmental effects without explicitly rendering the underlying interaction effects.
             By default, Over++ generates complex effects that best physically match the interactions between the foreground and background layers. 
             <br>
             Hover to visualize the generated effects.
