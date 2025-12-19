@@ -7,7 +7,11 @@ var is_mobile = false;
 
 category_examples = {
     'effect-generation': {
-        'scenes': ['pexels_car_drift_2', 'davis_breakdance-flare', 'davis_surf', 'pexels_car_drift', 'boys-beach', 'boy-water', 'davis_car-roundabout', 'davis_bear', 'davis_snowboard', 'davis_motorbike', 'pexels_puddle_1', 'davis_miami-surf', 'boy-water-2', 'davis_camel', 'davis_kite-walk'],
+        'scenes': ['pexels_car_drift_2', 'davis_breakdance-flare', 'davis_surf', 'pexels_car_drift', 'boys-beach', 
+            'boy-water', 
+            'davis_car-roundabout', 'davis_bear', 'davis_snowboard', 'davis_motorbike', 'pexels_puddle_1', 'davis_miami-surf', 
+            'boy-water-2', 
+            'davis_camel', 'davis_kite-walk'],
         'methods': [''], // disabled
         'modes': [''],  // disabled
         'labels': {
