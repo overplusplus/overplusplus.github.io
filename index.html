@@ -49,7 +49,14 @@
   <script src="./assets/js/jquery.event.move.js"></script>
   <script src="./assets/js/jquery.twentytwenty.js"></script>
   <!-- <script src="./assets/js/custom.js"></script> -->
-  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: { '[+]': [['$', '$']] }
+      }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js"></script>
 </head>
 
 <body onresize="onResizeWindow()">
@@ -130,7 +137,7 @@
       <div class="columns is-centered has-text-centered">
         <div class="column video">
           <video class="video" style="width: 100%; border-radius: 10px;" loop playsinline autoplay muted>
-            <source src="./assets/videos/teaser/teaser.webm" type="video/webm">
+            <source src="./assets/videos/teaser/teaser.mp4" type="video/mp4">
             Your browser does not support the video tag.
           </video>
         </div>
