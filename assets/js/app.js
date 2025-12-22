@@ -8,10 +8,12 @@ var is_mobile = false;
 category_examples = {
     'effect-generation': {
         'scenes': ['pexels_car_drift_2', 'davis_breakdance-flare', 'davis_surf', 'pexels_car_drift', 'boys-beach', 
-            'boy-water', 
+            // 'boy-water', 
             'davis_car-roundabout', 'davis_bear', 'davis_snowboard', 'davis_motorbike', 'pexels_puddle_1', 'davis_miami-surf', 
-            'boy-water-2', 
-            'davis_camel', 'davis_kite-walk'],
+            // 'boy-water-2', 
+            'davis_camel', 'davis_kite-walk',
+            // 'three_swans_lake',
+        ],
         'methods': [''], // disabled
         'modes': [''],  // disabled
         'labels': {
@@ -20,16 +22,17 @@ category_examples = {
             'pexels_car_drift': 	 	 	        ['Foreground', 'Background', 'Output'],
             'pexels_car_drift_2': 	 	 	        ['Foreground', 'Background', 'Output'],
             'boys-beach': 	 	 	                ['Foreground', 'Background', 'Output'],
-            'boy-water': 	 	 	                ['Foreground', 'Background', 'Output'],
+            // 'boy-water': 	 	 	                ['Foreground', 'Background', 'Output'],
             'davis_car-roundabout': 	 	 	    ['Foreground', 'Background', 'Output'],
             'davis_bear': 	 	 	                ['Foreground', 'Background', 'Output'],
             'davis_snowboard': 	 	 	            ['Foreground', 'Background', 'Output'],
             'davis_motorbike': 	 	 	            ['Foreground', 'Background', 'Output'],
             'pexels_puddle_1': 	 	 	            ['Foreground', 'Background', 'Output'],
             'davis_miami-surf': 	                ['Foreground', 'Background', 'Output'],
-            'boy-water-2': 	 	 	                ['Foreground', 'Background', 'Output'],
+            // 'boy-water-2': 	 	 	                ['Foreground', 'Background', 'Output'],
             'davis_camel': 	 	 	                ['Foreground', 'Background', 'Output'],
             'davis_kite-walk': 	 	                ['Foreground', 'Background', 'Output'],
+            // 'three_swans_lake':                   ['Foreground', 'Background', 'Output'],
         },
         'columns': 3,
         'is_demo': true,
@@ -43,14 +46,16 @@ category_examples = {
         `,
     },
     'effect-editing': {
-        'scenes': ['pexels_car_drift_edit', 'boat-shore_edit', 'comp_breakdance-waterfall_edit', 'boy-water_edit', 'ilm_boat_1_edit', 'omnimatte_drift_smoke_blue_edit', 'davis_drift-chicane_edit', 'davis_camel_edit', 'davis_car-roundabout_edit'],  // first item is default
+        'scenes': ['pexels_car_drift_edit', 'boat-shore_edit', 'comp_breakdance-waterfall_edit', 
+            // 'boy-water_edit', 
+            'ilm_boat_1_edit', 'omnimatte_drift_smoke_blue_edit', 'davis_drift-chicane_edit', 'davis_camel_edit', 'davis_car-roundabout_edit'],  // first item is default
         'methods': [''], // disabled
         'modes': [''],  // disabled
         'labels': {
             'pexels_car_drift_edit': 	 	 	        ['Foreground', 'Background', 'Mask', '"Red smoke"'],
             'boat-shore_edit': 	 	 	                ['Foreground', 'Background', 'Mask', 'Output'],
             'comp_breakdance-waterfall_edit':           ['Foreground', 'Background', 'Mask', 'Smaller mask on hover'],
-            'boy-water_edit': 	 	 	                ['Foreground', 'Background', 'Mask', 'Output'],
+            // 'boy-water_edit': 	 	 	                ['Foreground', 'Background', 'Mask', 'Output'],
             'ilm_boat_1_edit': 	 	 	                ['Foreground', 'Background', 'Mask', 'Output'],
             'omnimatte_drift_smoke_blue_edit': 	 	 	['Foreground', 'Background', 'Mask', '"Blue smoke"'],
             'davis_drift-chicane_edit': 	 	 	    ['Foreground', 'Background', 'Mask', '"Red smoke"'],
@@ -69,12 +74,14 @@ category_examples = {
         `,
     },
     'effect-keyframe': {
-        'scenes': ['davis_miami-surf_keyframe', 'boy-water_keyframe', 'truck-water_keyframe', 'boys-beach_keyframe'],  // first item is default
+        'scenes': ['davis_miami-surf_keyframe', 
+            // 'boy-water_keyframe', 
+            'truck-water_keyframe', 'boys-beach_keyframe'],  // first item is default
         'methods': [''], // disabled
         'modes': [''],  // disabled
         'labels': {
             'davis_miami-surf_keyframe':                ['Foreground', 'Background', 'Keyframe mask annotation', 'Output'],
-            'boy-water_keyframe':                       ['Foreground', 'Background', 'Keyframe mask annotation', 'Output'],
+            // 'boy-water_keyframe':                       ['Foreground', 'Background', 'Keyframe mask annotation', 'Output'],
             'boys-beach_keyframe':                      ['Foreground', 'Background', 'Keyframe mask annotation', 'Output'],
             'truck-water_keyframe':                     ['Foreground', 'Background', 'Keyframe mask annotation', 'Output'],
         },
@@ -165,18 +172,20 @@ category_examples = {
         `,
     },
     'robustness': {
-        'scenes': ['davis_kite-walk_robust', 'boy-water-2_robust', 'davis_breakdance-flare_robust'],
+        'scenes': ['davis_kite-walk_robust', 
+            // 'boy-water-2_robust', 
+            'davis_breakdance-flare_robust'],
         'methods': [''], // disabled
         'modes': [''],  // disabled
         'labels': {
             'davis_kite-walk_robust':           ['Foreground', 'Background', 'Output'],
-            'boy-water-2_robust':               ['Foreground', 'Background', 'Output'],
+            // 'boy-water-2_robust':               ['Foreground', 'Background', 'Output'],
             'davis_breakdance-flare_robust':    ['Foreground', 'Background', 'Output'],
         },
         'columns': 3,
         'is_demo': true,
         'current_scene': null,
-        'description': `Our method demonstrates robustness to imprecise mask annotations, effectively handling masks that partially or fully cover foreground objects (see <a onclick="selectSceneByName('robustness', 'davis_kite-walk_robust')">walk</a> and <a onclick="selectSceneByName('robustness', 'boy-water-2_robust')">water</a>) as well as background regions (e.g., ignoring background masks in <a onclick="selectSceneByName('robustness', 'davis_breakdance-flare_robust')">breakdance</a>).
+        'description': `Our method demonstrates robustness to imprecise mask annotations, effectively handling masks that partially or fully cover foreground objects (see <a onclick="selectSceneByName('robustness', 'davis_kite-walk_robust')">walk</a>) as well as background regions (e.g., ignoring background masks in <a onclick="selectSceneByName('robustness', 'davis_breakdance-flare_robust')">breakdance</a>).
         <br>
         Over++ generates effects through video understanding and reasoning, producing semantically consistent results while robustly interpreting imperfect, real-world user annotations.
         <br>
@@ -185,7 +194,9 @@ category_examples = {
     },
     'comparisons': {
         'scenes': [
-            'boat-shore_comparison', 'boy-water_comparison', 'davis_breakdance-flare_comparison', 
+            'boat-shore_comparison', 
+            // 'boy-water_comparison', 
+            'davis_breakdance-flare_comparison', 
             'davis_camel_comparison', 'davis_mbike-trick_comparison', 'davis_miami-surf_comparison',
             'davis_parkour_comparison', 'davis_skate-park_comparison', 'davis_snowboard_comparison', 
             'davis_surf_comparison', 'pexels_car_drift_comparison', 'three_swans_lake_comparison',
@@ -198,7 +209,9 @@ category_examples = {
             'mask': 'Mask Methods',
         },
         'enable_scenes': {
-            'no-mask': ['boat-shore_comparison', 'boy-water_comparison', 'davis_breakdance-flare_comparison', 'davis_camel_comparison', 'davis_parkour_comparison', 'pexels_car_drift_comparison', 'three_swans_lake_comparison', 'truck-water_comparison'],
+            'no-mask': ['boat-shore_comparison', 
+                // 'boy-water_comparison', 
+                'davis_breakdance-flare_comparison', 'davis_camel_comparison', 'davis_parkour_comparison', 'pexels_car_drift_comparison', 'three_swans_lake_comparison', 'truck-water_comparison'],
             'mask': ['boat-shore_comparison', 'davis_camel_comparison', 'davis_mbike-trick_comparison', 'davis_miami-surf_comparison', 'davis_parkour_comparison', 'davis_skate-park_comparison', 'davis_snowboard_comparison', 'davis_surf_comparison', 'pexels_car_drift_comparison', 'truck-water_comparison'],
         },
         'video_labels': {
