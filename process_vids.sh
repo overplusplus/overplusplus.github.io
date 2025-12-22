@@ -9,6 +9,13 @@ fi
 BITRATE="600k"
 CRF=30
 
+# TODO
+# ffmpeg -i "/playpen-nas-ssd/luchao/projects/overplusplus.github.io/assets/videos/teaser/teaser.mp4" \
+#         -c:v libx265 -crf "28" \
+#         -pix_fmt yuv420p -tag:v hvc1 \
+#         "/playpen-nas-ssd/luchao/projects/overplusplus.github.io/assets/videos/teaser/teaser-tmp.mp4" \
+#         -y
+
 find "$1" -type f -iname "*.mp4" -print0 |
 while IFS= read -r -d '' file; do
     filename="${file%.*}"
