@@ -139,9 +139,11 @@ category_examples = {
         'remove_hover': true,
         'current_scene': null,
         'description': `
-            Training an inpainting-based video generation model for effect synthesis is challenging due to the scarcity of ideal, annotated video pairs.
+            Training a video generation model for effect synthesis is challenging due to the scarcity of ideal, annotated video pairs.
             To address this, we leverage prior work to decompose real-world videos into foreground and background layers, yielding a limited set of paired data (w/ and w/o effects).
             We further augment the training set with synthetic, unpaired text-to-video (T2V) samples, resulting in a more abundant collection of unpaired data.
+            <br>
+            Our final dataset contains ≈50 paired real-world videos, 600 paired synthetic videos, and 500 unpaired synthetic videos—≈1.1K total, which is significantly less than the ≈15K paired videos used in <a href="#ref-forceprompting">Force Prompting</a> for force-guided video generation.
             Click the buttons below for more details.
         `,
         'method_descriptions': {
