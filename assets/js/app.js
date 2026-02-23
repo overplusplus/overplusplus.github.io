@@ -180,11 +180,11 @@ category_examples = {
         'methods': [''], // disabled
         'modes': [''],  // disabled
         'labels': {
-            'davis_kite-walk_robust':           ['Foreground', 'Background', 'Output'],
+            'davis_kite-walk_robust':           ['Foreground', 'Background', 'Imperfect mask', 'Output'],
             // 'boy-water-2_robust':               ['Foreground', 'Background', 'Output'],
-            'davis_breakdance-flare_robust':    ['Foreground', 'Background', 'Output'],
+            'davis_breakdance-flare_robust':    ['Foreground', 'Background', 'Imperfect mask', 'Output'],
         },
-        'columns': 3,
+        'columns': 4,
         'is_demo': true,
         'current_scene': null,
         'description': `Our method demonstrates robustness to imprecise mask annotations, effectively handling masks that partially or fully cover foreground objects (see <a onclick="selectSceneByName('robustness', 'davis_kite-walk_robust')">walk</a>) as well as background regions (e.g., ignoring background masks in <a onclick="selectSceneByName('robustness', 'davis_breakdance-flare_robust')">breakdance</a>).
