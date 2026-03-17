@@ -100,6 +100,14 @@ function loadCitations() {
   pages={1--11},
   year={2024}
 }
+
+@misc{foundryNukeFilm,
+	author = {},
+	title = {Nuke | VFX and Film Editing Software},
+	howpublished = {https://www.foundry.com/products/nuke-family/nuke},
+	year = {},
+	note = {[Accessed 27-02-2026]},
+}
 `;
 
     // parse your BibTeX with your existing parser

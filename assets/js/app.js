@@ -174,24 +174,29 @@ category_examples = {
         `,
     },
     'robustness': {
-        'scenes': ['davis_kite-walk_robust', 
+        'scenes': [
+            'metal-forging_robust',
+            'phone-charging_robust',
+            'davis_kite-walk_robust', 
             // 'boy-water-2_robust', 
-            'davis_breakdance-flare_robust'],
+            'davis_breakdance-flare_robust'
+        ],
         'methods': [''], // disabled
         'modes': [''],  // disabled
         'labels': {
+            'metal-forging_robust':             ['Raw video', 'No mask', 'Output', 'Difference'],
+            'phone-charging_robust':            ['Raw video', 'No mask', 'Output', 'Difference'],
             'davis_kite-walk_robust':           ['Foreground', 'Background', 'Imperfect mask', 'Output'],
             // 'boy-water-2_robust':               ['Foreground', 'Background', 'Output'],
             'davis_breakdance-flare_robust':    ['Foreground', 'Background', 'Imperfect mask', 'Output'],
         },
         'columns': 4,
         'is_demo': true,
+        'remove_hover': true,
         'current_scene': null,
-        'description': `Our method demonstrates robustness to imprecise mask annotations, effectively handling masks that partially or fully cover foreground objects (see <a onclick="selectSceneByName('robustness', 'davis_kite-walk_robust')">walk</a>) as well as background regions (e.g., ignoring background masks in <a onclick="selectSceneByName('robustness', 'davis_breakdance-flare_robust')">breakdance</a>).
+        'description': `Our method demonstrates robustness to 1) OOD in-the-wild effects, generalizing to effects not present in the paired training data (see <a onclick="selectSceneByName('robustness', 'metal-forging')">metal forging</a> and <a onclick="selectSceneByName('robustness', 'phone-charging')">phone charging</a>; note that input videos are raw original videos without any compositing), and 2) imprecise mask annotations, handling masks that partially or fully cover foreground objects (see <a onclick="selectSceneByName('robustness', 'davis_kite-walk_robust')">walk</a>) as well as background regions (e.g., ignoring background masks in <a onclick="selectSceneByName('robustness', 'davis_breakdance-flare_robust')">breakdance</a>).
         <br>
-        Over++ generates effects through video understanding and reasoning, producing semantically consistent results while robustly interpreting imperfect, real-world user annotations.
-        <br>
-        Hover to visualize the generated effects.
+        Over++ generalizes to in-the-wild effects and handles imprecise mask annotations by generating effects through video understanding and reasoning, producing semantically consistent results.
         `,
     },
     'comparisons': {

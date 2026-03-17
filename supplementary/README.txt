@@ -1,1 +1,1 @@
-We wrap visual supplementary materials (images, videos, etc.) into one html file, which can be viewed in index.html. 
+We provide additional results in supplementary.pdf and compile the visual supplementary materials (images, videos, etc.) in index.html.

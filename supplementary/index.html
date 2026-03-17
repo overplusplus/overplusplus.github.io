@@ -164,22 +164,37 @@
 
     <div class="container">
 
+
         <div class="hero is-light section columns is-12" style="margin:0px; padding:15px; font-size:30px;">
-            Over++: Generative Video Compositing for Layer Interaction Effects
+            Over++ Supplementary Material
         </div>
-        <div class="subsection" style="margin: 5px;">Supplementary Material</div>
-        
+        <!-- <div class="subsection" style="margin: 5px;">Supplementary Material</div> -->
+       
+        <div class="column is-12 content has-text-justified">
+            <div class="item item-teaser">
+                <video poster="" id="video1" autoplay controls muted height="100%">
+                    <source src="teasers/teaser-anonymous.mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
+
         <div class="columns is-vcentered">
             <div class="column is-7 content has-text-justified" style="margin: 15px 0px 15px 15px;">
-                <p>
-                Video compositing in real production environments requires reasoning about foreground–background separation and complex interaction effects such as shadows, reflections, and airborne particles. The accompanying examples (from professional VFX studio demonstrations) highlight the workflow and challenges involved.
-                </p>
-                <p>
-                We introduce $\textbf{augmented compositing}$, a generative task that synthesizes realistic interaction effects while preserving both the foreground subject and the background scene. This task extends conventional compositing without explicitly rendering the interaction effects.
-                </p>
-                <p>
-                Our method, $\textit{Over++}$, is the first to address the augmented compositing task. Despite the limited training data (around 1K videos versus 15K in Force Prompting \cite{gillman2025force}), $\textit{Over++}$ demonstrates strong generalization across a wide range of visual effects. Additionally, $\textit{Over++}$ enables several downstream applications, including text-guided and mask-guided editing, highlighting its flexibility and broader usefulness. Further details are provided in the sections that follow.
-                </p>
+            <p>
+            Video compositing in professional production environments requires explicit reasoning about foreground–background separation and complex interaction effects such as shadows, reflections, and airborne particles. The accompanying examples (shown on the right) from professional VFX studio demonstrations illustrate real-world, layer-by-layer compositing workflows. This modular pipeline motivates our formulation, where foreground and background layers are assumed to be geometrically and temporally aligned prior to effect synthesis.
+            </p>
+
+            <p>
+            We introduce <b>augmented layering</b>, a generative task that synthesizes realistic interaction effects while strictly preserving both the foreground subject and the background scene. This formulation extends conventional compositing by modeling interaction-specific visual phenomena without explicitly simulating or rendering them.
+            </p>
+
+            <p>
+            As discussed in Sec. 3.1 (Task Formulation), environmental effect synthesis is typically performed after foreground and background elements have been prepared through complementary processes such as harmonization, motion alignment, and camera calibration. For example, in the teaser video (0:41), we stabilize the dancer in the foreground using Nuke to ensure consistent motion relative to the background. The same stabilized foreground is then composited with multiple backgrounds (0:46), preventing motion inconsistencies (e.g., the dancer’s hand drifting when the background camera remains static).
+            </p>
+
+            <p>
+            Our method, <i>Over++</i>, explicitly addresses this augmented layering setting. Despite being trained on a relatively modest dataset (approximately 1K videos), it demonstrates strong generalization across diverse real-world visual effects (see main paper Sec. 4). Furthermore, <i>Over++</i> supports text-guided and mask-guided editing, enabling flexible downstream applications (see main paper Sec. 5).
+            </p>
             </div>
             
             <div class="column is-5">
@@ -245,15 +260,15 @@
                         </a>
                     </li>
                     <li>
-                        <a href="pages/failure_cases.html" target="_blank">
-                            Failure Cases
+                        <a href="pages/generalization.html" target="_blank">
+                            Generalization
                         </a>
                     </li>
             </ul>
         </div>
         
         
-        <h2 class="subsection hero column is-12" style="padding: 20px; text-align: left; width: 100%;">References</h2>
+        <!-- <h2 class="subsection hero column is-12" style="padding: 20px; text-align: left; width: 100%;">References</h2> -->
         <div id="my-bib" class="column is-12 content has-text-justified" style="margin-left:5px; padding-left:5px">
             <!-- bibliography will appear here -->
         </div>

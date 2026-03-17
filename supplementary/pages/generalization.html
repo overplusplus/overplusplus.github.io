@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Failure Cases</title>
+        <title>Generalization</title>
         <script src="../static/js/bulma-carousel.min.js"></script>
         <script src="../static/js/bulma-slider.min.js"></script>
         <script src="../static/js/index.js"></script>
@@ -125,30 +125,39 @@
 <section class="section" id="top">
     <div class="container is-max-desktop">
         <div class="subtitle column is-full-width hero is-light">
-            <h2 class="title is-1">Failure Cases</h2>
+            <h2 class="title is-1">Generalization</h2>
         </div>
         <p class="content has-text-justified" id="section1">
-            With an excessively large CFG scale, $\textit{Over++}$ may shift the global color tone and produce over-saturated content \cite{sadat2024eliminating}. Future work may investigate improved, possibly mask-conditioned, guidance-score sampling strategies for more stable video generation.
+            Given the input videos in the first column, our method successfully generates output videos in the third column, with the difference maps visualized in the fourth column. The second column shows that no mask guidance is used.
+        </p>
+
+        <p class="content has-text-justified" id="section2">
+            Our method generalizes well to out-of-distribution (OOD) effects, such as fire and sparks on the top and lightning arcs on the bottom. Note that the input consists of raw, unprocessed real-world video.
         </p>
         <div class="is-centered">
             <video width="100%" controls muted autoplay loop style="max-width: 100%;">
-                <source src="../results/failure_cases/davis_boat-fg=-1-0001_tuple.mp4" type="video/mp4">
+                <source src="../results/generalization/metal-forging.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="is-centered">
+            <video width="100%" controls muted autoplay loop style="max-width: 100%;">
+                <source src="../results/generalization/phone-charging.mp4" type="video/mp4">
             </video>
         </div>
 
         <p class="content has-text-justified" id="section2">
-            In addition, $\textit{Over++}$ can sometimes hallucinate environmental effects that are not present in the original background with large CFG scale. We believe fine-tuning our model on stronger priors such as Lumiere \cite{bar2024lumiere} may help alleviate this issue.
+            Given a composited video, our method generates strong interactions beyond shadows and dust, such as foot trails in the sand.
         </p>
         <div class="is-centered">
             <video width="100%" controls muted autoplay loop style="max-width: 100%;">
-                <source src="../results/failure_cases/comp_breakdance-sand.mp4" type="video/mp4">
+                <source src="../results/generalization/pexels-sand-dune.mp4" type="video/mp4">
             </video>
         </div>
 
-        <h2 class="subsection hero column is-12" style="padding: 20px; text-align: left; width: 100%;">References</h2>
+
+        <!-- <h2 class="subsection hero column is-12" style="padding: 20px; text-align: left; width: 100%;">References</h2>
         <div id="my-bib" class="column is-12 content has-text-justified" style="margin-left:5px; padding-left:5px">
-            <!-- bibliography will appear here -->
-        </div>
+        </div> -->
 
     </div>
 </section>
